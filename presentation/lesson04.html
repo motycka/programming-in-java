@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/motyka.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section data-background-color="#523996">
+			<i>Week 1 | Lesson 4</i>
+			<h1>Java Programming Basics</h1>
+			<em>Programming language and communication of intent</em><br />
+			<em>Polymorphism, Inheritance</em>
+			<em>Exceptions</em>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Programming language</h2>
+				<h3>and communication of intent</h3>
+			</section>
+			<section>
+				<h3>Communication of intent</h3>
+				<hr />
+				<!--				<p>Programming <b>language</b> is a way of communication to a computer what we want it to do.</p>-->
+				<!--				<p>It is also a way of communicating our intent to other programmers or even to ourselves when we look at our code later.</p>-->
+				<!--				<p>It is therefore very important that our code is clean and easy to understand, and that it communicates our intentions well.</p>-->
+				<p>
+					Programming <b>language</b> provides means of expressing programmer's intent to a computer system.
+				</p>
+				<p>
+					But programming it is not just a way of giving instructions to a computer.
+					It can also be a means of communication between humans,
+					particularly in the context of team development,
+					code reviews, and future maintenance of the software.
+					Here are few points to keep in mind ...
+				</p>
+				<hr />
+				<ul>
+					<li>
+						<strong>Code Clarity</strong><br />
+						<p>
+							Code is more often read than it is written. Therefore, it is important to keep it clean and easily understood.
+						</p>
+					</li>
+					<li>
+						<strong>Code Consistency</strong><br />
+						<p>
+							Keeping your code consistent in terms of syntax, programming style and design patterns makes
+							it easier to understand.
+						</p>
+					</li>
+					<li>
+						<strong>Documentation and Comments</strong><br />
+						<p>
+							Some code can become hard to understand despite our best effort. In these cases,
+							comments and code documentation should be used to clarify the programmer's intent
+							or communicate unintuitive information.
+						</p>
+					</li>
+				</ul>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Object-oriented Programming</h2>
+				<h3>Principles in Java</h3>
+			</section>
+			<section>
+				<h3>Object-oriented Programming Principles in Java</h3>
+				<p>There are four main OOP principles in Java:</p>
+				<ol>
+					<li>Encapsulation</li>
+					<li>Polymorphism</li>
+					<li>Inheritance</li>
+					<li>Abstraction</li>
+				</ol>
+
+				<p>We will go more into detail of each of these on the following slides.</p>
+				<!--				<p>Encapsulation in an important concept in OOP.</p>-->
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Encapsulation</h2>
+			</section>
+			<section>
+				<h3>What is Encapsulation</h3>
+				<ul style="font-size: 80%">
+					<li>
+						Encapsulation is a principle concerned with hiding the internal state of an object and protecting it from unauthorized access.
+					</li>
+					<li>
+						In Java, this is typically achieved using access modifiers (private, protected, public) and getter/setter methods.
+					</li>
+					<li>
+						By using getter/setter methods, the class can enforce it's own data validation rules to ensure it's internal state remains valid and consistent.
+					</li>
+				</ul>
+				<pre>Example:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						class UniversityCourse {
+
+							private String subject;
+							private LocalDate startDate;
+
+							public UniversityCourse(String subject, LocalDate startDate) {
+								this.subject = subject;
+								this.startDate = startDate;
+							}
+
+							public String getSubject() { return subject; }
+
+							public LocalDate getStartDate() { return startDate; }
+
+							// state validation
+							public void setStartDate(LocalDate startDate) {
+								if (startDate.isBefore(LocalDate.now())) {
+									throw new IllegalArgumentException("Course cannot start in the past");
+								} else {
+									this.startDate = startDate;
+								}
+							}
+						}
+					</code>
+				</pre>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Inheritance</h2>
+			</section>
+			<section>
+				<h3>What is Inheritance</h3>
+				<hr />
+				<p>
+					<strong>Inheritance</strong> establishes an <strong><em>"is-a"</em></strong> relationship between two classes,
+					where one class inherits properties and methods of the other class.
+					<br />
+					<br />
+					The class that inherits is called <strong>subclass</strong> and the class inherited from is called <strong>superclass</strong>.
+					<!--					Inheritance enhances code re-usability and reduces code duplication-->
+					<!--					subclass (child) - the class that inherits from another class-->
+					<!--					superclass (parent) - the class being inherited from-->
+					<!--					To inherit from a class, use the extends keyword.-->
+				</p>
+				<hr />
+				<ul>
+					<li>To define inheritance, the <strong><code>extends</code></strong> keyword is used.</li>
+					<li>If a superclass has a <em>non-default</em> constructor, you must call <strong><code>super();</code></strong> method in the subclass constructior.</li>
+					<li>
+						You can mark methods and attributes of a superclass as <strong><code>protected</code></strong>.
+						This will make them only accessible within subclass.
+					</li>
+					<li>You can reference fields and methods in the superclass class using the <strong><code>super</code></strong> keyword.</li>
+					<li>To prevent inheritance, you can mark the class with <strong><code>final</code></strong> modifier.</li>
+				</ul>
+				<p>
+					Let's have a look at this in detail ...
+				</p>
+			</section>
+
+			<section>
+				<h4>Inheritance</h4>
+				<em>
+					Creating a superclass - subclass relationship
+				</em>
+				<pre>Main:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class InheritanceExample {
+
+							public static void main(String[] args) {
+
+								Cat cat = new Cat("meow");
+								cat.makeSound();
+
+								Dog dog = new Dog();
+								dog.makeSound();
+							}
+						}
+					</code>
+				</pre>
+				<table style="width: 100%">
+					<tbody>
+					<tr>
+						<td>
+							<pre>Superclass:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Animal {
+										private final String sound;
+
+										public Animal(String sound){
+											this.sound = sound;
+										}
+
+										public void makeSound() {
+											System.out.println(sound);
+										}
+									}
+								</code>
+							</pre>
+							<pre>Subclass of Animal, superclass of Cat and Dog:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class BarkingAnimal extends Animal {
+
+										public BarkingAnimal() {
+											// calls superclass constructor
+											super("woof");
+										}
+									}
+								</code>
+							</pre>
+						</td>
+						<td>
+							<pre>Subclass of Animal:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Cat extends Animal {
+
+										public Cat(String sound) {
+											// needs to call superclass constructor
+											super(sound);
+										}
+
+									}
+								</code>
+							</pre>
+							<pre>Subclass of BarkingAnimal:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Dog extends BarkingAnimal {
+										// doesn't need to call superclass constructor
+									}
+								</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h4>Inheritance</h4>
+				<em>
+					Setting field/method visibility with <code>protected</code> modifier.
+				</em>
+				<pre>Example:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// TODO
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h4>Inheritance</h4>
+				<em>
+					Preventing inheritance
+				</em>
+				<p>
+					You can use the <strong><code>final</code></strong> class modifier to prevent class to be inherited from.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						final class Cat {
+							public void makeSound(){
+								System.out.println("meow");
+							}
+						}
+					</code>
+				</pre>
+				<p>
+					We are trying to extend final class Cat, this code will not compile!
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java" style="background-color: maroon;">
+						public class MyCat extends Cat {
+
+							// ... rest of the code
+
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h4>Pros of inheritance</h4>
+				<ol>
+					<li>
+						<strong>Promotes code reuse</strong><br />
+						<p>Inheritance allows subclasses to inherit methods and fields from superclasses which leads to a reduction in code duplication.</p>
+					</li>
+					<li>
+						<strong>Promotes polymorphism</strong><br />
+						<p>Subclasses can redefine certain methods based on their requirement.</p>
+					</li>
+					<li>
+						<strong>Hierarchy and organization</strong><br />
+						<p>Inheritance helps to design the software in a hierarchical manner where classes with general characteristics are at a higher level and classes with specific characteristics are at lower level.</p>
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h4>Cons of inheritance</h4>
+				<!--				Can lead to tight coupling and a lack of encapsulation, because changes in the parent class can break code in the child classes. Java and Kotlin does not support multiple inheritance (a class can't extend multiple classes), which can limit its usefulness.-->
+				<ol>
+					<li>
+						<strong>Tight coupling</strong><br />
+						<p>A subclass is tightly coupled with its superclass. If the superclass is modified, subclasses could be affected, as they inherit methods and fields from the superclass.</p>
+					</li>
+					<li>
+						<strong>Inheritance chain</strong><br />
+						<p>
+							Inheritance often leads to long chains which could make tracking down errors in the code difficult.
+						</p>
+					</li>
+					<!--					<li>-->
+					<!--						<strong>Hidden Parent Class Dependencies</strong><br />-->
+					<!--						<p>Sometimes, superclass dependencies might not be entirely clear to developers who are using subclassing which can lead to erroneous code.</p>-->
+					<!--					</li>-->
+					<li>
+						<strong>Issues with multiple inheritance</strong><br />
+						<p>
+							Java does not support multiple inheritance (a class can’t extend more than one class).<br />
+							However, it supports multiple interface implementation, which is a partial workaround for this issue.
+						</p>
+					</li>
+					<li>
+						<strong>Memory overhead</strong><br />
+						<p>
+							When a subclass object is created, a separate memory space is reserved for it in addition
+							to the separate memory space reserved for the superclass object. This might result in
+							memory wastage if the subclass makes limited use of the superclass's features.
+						</p>
+					</li>
+				</ol>
+			</section>
+			<section>
+				<h3>Composition</h3>
+				<hr />
+				<p>
+					<strong>Composition</strong> provides a <strong><em>"has-a"</em></strong> relationship.
+					It allows you to use object instances as fields within the other classes.
+					<!--					resulting in classes having the intended functionality.-->
+				</p>
+				<hr />
+				<strong class="subheader">Pros</strong>
+				<ul>
+					<li>Results in loose coupling and improves encapsulation, because the contained objects can be easily swapped without changing the code that uses them.</li>
+					<li>Can be used to overcome lack of multiple inheritance in Java.</li>
+					<li>Usually allows for better testability as well.</li>
+				</ul>
+				<hr />
+				<strong class="subheader">Cons</strong>
+				<ul>
+					<li>It can result in bloated classes if overused, and requires more code setup than inheritance.</li>
+					<li>it can be more difficult to use when requests must be delegated to the appropriate class.</li>
+				</ul>
+<!--				<p>-->
+<!--					Results in loose coupling and improves encapsulation, because the contained objects can be easily swapped without changing the code that uses them.-->
+<!--					&lt;!&ndash;					It's easier to change behavior on the fly with composition. &ndash;&gt;-->
+<!--					&lt;!&ndash;					Also, it provides a more flexible way to reuse code and is a viable solution to the lack of multiple inheritance.&ndash;&gt;-->
+<!--					Also, it can be used to overcome lack of multiple inheritance in Java.-->
+<!--				</p>-->
+<!--				<p>-->
+<!--					Usually allows for better testability as well.-->
+<!--				</p>-->
+<!--				<p>-->
+<!--					However, it can result in bloated classes if overused, and requires more code setup than inheritance.-->
+<!--					Also, it can be more difficult to use when requests must be delegated to the appropriate class.-->
+<!--				</p>-->
+			</section>
+			<section>
+				<h4>Composition</h4>
+				<pre>Main:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class CompositionExample {
+
+							public static void main(String[] args) {
+								Cat cat = new Cat("Garfield");
+								cat.meow();
+							}
+
+						}
+					</code>
+				</pre>
+				<table style="width: 100%">
+					<tbody>
+					<tr>
+						<td>
+							<pre>Composed class:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Cat {
+
+										private final String name;
+										private final Sound sound = new Sound("meow");
+
+										public Cat(String name){
+											this.name = name;
+										}
+
+										public String getName() {
+											return name;
+										}
+
+										public void meow() {
+											sound.makeSound();
+										}
+									}
+
+								</code>
+							</pre>
+						</td>
+						<td>
+							<pre>Composition class:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Sound {
+
+										private final String sound;
+
+										public Sound(String sound){
+											this.sound = sound;
+										}
+
+										public void makeSound() {
+											System.out.println(sound);
+										}
+									}
+								</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+<!--				<pre>-->
+<!--					<code data-trim data-noescape data-line-numbers class="hljs java">-->
+<!--						public class CompositionExample {-->
+<!--							public static void main(String[] args) {-->
+<!--								Cat cat = new Cat("Garfield");-->
+<!--								cat.meow();-->
+<!--							}-->
+<!--						}-->
+
+<!--						class Cat {-->
+
+<!--							private String name;-->
+<!--							private Sound sound = new Sound("meow");-->
+
+<!--							public Cat(String name){-->
+<!--								this.name = name;-->
+<!--							}-->
+
+<!--							public String getName() {-->
+<!--								return name;-->
+<!--							}-->
+
+<!--							public void meow() {-->
+<!--								sound.makeSound();-->
+<!--							}-->
+<!--						}-->
+
+<!--						// Composition class-->
+<!--						class Sound {-->
+
+<!--							private String sound;-->
+
+<!--							public Sound(String sound){-->
+<!--								this.sound = sound;-->
+<!--							}-->
+
+<!--							public void makeSound() {-->
+<!--								System.out.println(sound);-->
+<!--							}-->
+<!--						}-->
+
+<!--					</code>-->
+<!--				</pre>-->
+			</section>
+			<section>
+				<h4>Inheritance vs. Composition</h4>
+				<!--				<p>-->
+				<!--					<strong>Inheritance</strong> establishes an <strong><em>"is-a"</em></strong> relationship between two classes,-->
+				<!--					where one class inherits properties and methods of the other class.-->
+				<!--				</p>-->
+
+				<p>
+					Both inheritance and composition have their strengths and weaknesses and deciding when to use each
+					can be instrumental for designing cleaner and more effective code.
+
+					<!--					Use inheritance for is-a relationships where a subclass is a kind of the superclass (e.g, a Dog is an Animal).-->
+
+					<!--					Use composition for has-a relationships where a class often needs to change its behavior or capabilities at runtime, or when you want to use multiple classes to define your new class (e.g., a Car class might be composed of Engine, Wheel, and Doors that represent components or capabilities).-->
+				</p>
+				<p>
+					The two techniques can be, and often are, combined.
+				</p>
+			</section>
+			<section>
+				<h4>Composition and Inheritance</h4>
+				<pre>Main:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class InheritanceCompositionExample {
+
+							public static void main(String[] args) {
+								Cat cat = new Cat("Garfield", new Sound("meow"));
+								cat.makeSound();
+							}
+
+						}
+					</code>
+				</pre>
+				<table style="width: 100%">
+					<tbody>
+					<tr>
+						<td>
+							<pre>Superclass - adding Sound through composition:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Animal {
+
+										private final Sound sound;
+
+										public Animal(Sound sound){
+											this.sound = sound;
+										}
+
+										public void makeSound() {
+											sound.makeSound();
+										}
+									}
+								</code>
+							</pre>
+							<pre>Composed class - has no dependencies:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Sound {
+
+										private final String sound;
+
+										public Sound(String sound){
+											this.sound = sound;
+										}
+
+										public void makeSound() {
+											System.out.println(sound);
+										}
+									}
+								</code>
+							</pre>
+						</td>
+						<td>
+							<pre>Subclass extending Animal:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Cat extends Animal {
+
+										private final String name;
+
+										public Cat(String name, Sound sound){
+											super(sound);
+											this.name = name;
+										}
+
+										public String getName() {
+											return name;
+										}
+									}
+								</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h4>Composition and Inheritance</h4>
+				<em>Opposite direction of inheritance and composition</em>
+				<p>TODO</p>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Polymorphism</h2>
+				<p></p>
+			</section>
+			<section>
+				<h3>What is polymorphism</h3>
+				<hr />
+				<p>
+					In programming, polymorphism allows us to define one interface or method that can have multiple implementations.
+					It means that the same method or property could exhibit different behavior in different instances of object implementing given interface.
+				</p>
+				<hr />
+				<p>
+					<strong class="subheader">There are two types of polymorphism:</strong>
+				</p>
+				<ul>
+					<li>Compile-Time polymorphism</li>
+					<li>Run-Time polymorphism</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Compile-time polymorphism</h4>
+				<em>Also known as static polymorphism</em>
+				<hr />
+				<p>
+					Compile-time polymorphism is achieved through <strong>method overloading</strong>.
+					The correct method to call is determined by the compiler at compile time based on the method signature.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+					public class Main {
+
+						public static void main(String args[]) {
+							Calculate obj = new Calculate();
+							System.out.println(obj.add(10, 20));      // prints 30
+							System.out.println(obj.add(10, 20, 30));  // prints 60
+						}
+
+					}
+					</code>
+				</pre>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+					class Calculate {
+						// method with 2 parameters
+						int add(int a, int b) {
+							return a + b;
+						}
+
+						// overloaded method with 3 parameters
+						int add(int a, int b, int c) {
+							return a + b + c;
+						}
+					}
+					</code>
+				</pre>
+				<hr />
+				<p style="font-size: 80%">
+					<strong>Method overloading</strong> == defining two or more methods in a class with the same name but different <strong>signature</strong>
+				</p>
+				<p style="font-size: 80%">
+					<strong>Method signature</strong> == combination of the method name, return type and the parameters
+				</p>
+			</section>
+
+			<section>
+				<h4>Runtime polymorphism</h4>
+				<em>Also known as dynamic method dispatch</em>
+				<hr />
+				<p>
+					Runtime polymorphism is a process in which a call to an overridden method is resolved at runtime rather than at compile-time.
+					This mechanism allows the Java Virtual Machine (JVM) to decide which method to invoke from the class hierarchy at runtime,
+					based on the type of object.
+				</p>
+				<pre>Main:
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class RuntimePolymorphismExample {
+							public static void main(String[] args) {
+								Animal animal0 = new Animal();
+								Animal animal1 = new Cat(); // Animal reference but Dog object
+								Animal animal2 = new Dog(); // Animal reference but Cat object
+
+								animal0.makeSound(); // prints "(silence)"
+								animal1.makeSound(); // prints "woof"
+								animal2.makeSound(); // prints "meow"
+							}
+						}
+					</code>
+				</pre>
+				<table style="width: 100%">
+					<tbody>
+					<tr>
+						<td>
+							<pre>Superclass:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Animal {
+										void makeSound() {
+											System.out.println("(silence)");
+										}
+									}
+								</code>
+							</pre>
+						</td>
+						<td>
+							<pre>Subclass 1:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Cat extends Animal {
+										void makeSound() {
+											System.out.println("meow");
+										}
+									}
+								</code>
+							</pre>
+							<pre>Subclass 2:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Dog extends Animal {
+										void makeSound() {
+											System.out.println("woof");
+										}
+									}
+								</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Abstraction</h2>
+				<h3>Abstract classes and Interfaces</h3>
+			</section>
+			<section>
+				<h3>Abstract classes</h3>
+			</section>
+			<section>
+				<h3>Interfaces</h3>
+				<p>
+					Interfaces are the keystone of polymorphism in Java.
+				</p>
+				<p>
+					TODO
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Errors and Exception handling</h2>
+			</section>
+			<section>
+				<h3>What is an Exception</h3>
+				<p>
+					Exceptions are events that disrupt the normal flow of program execution. <br />
+					They can arise due to various types of errors such as IO errors, arithmetic errors, null pointer access, etc.
+				</p>
+				<hr />
+				<ul>
+					<li>
+						Exception is just another type of Java object:
+						<ul>
+							<li>Exception is an instance of a <strong><em>Exception</em></strong> class or one of its <em>subclasses</em>.</li>
+							<li>There are several subclasses of Exception provided in Java by default, but we can create our own by extending these superclases.</li>
+							<li>There are two types of exceptions: <strong>Checked</strong> or <strong>Unchecked</strong></li>
+						</ul>
+
+					</li>
+					<li>
+						The Exception object usually carries information about the error that occurred.
+					</li>
+					<li>
+						Exception handling allows us to control the program flow and prevent the program from terminating abruptly, which leads to a more robust and fault-tolerant software.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Checked Exceptions</h4>
+				<p>
+					<br />
+					Checked exceptions are the classes that extend Throwable class except RuntimeException and Error.
+					These are exceptional conditions that a well-written application should anticipate and recover from.
+					For example, FileNotFoundException will be thrown when a file that needs to be opened cannot be found.
+					<br />
+					<br />
+					Checked exceptions are checked at compile-time, hence the name.
+					The compiler forces the programmer to catch these exceptions, i.e., the programmer needs to provide an exception handling mechanism through a try-catch block or throws keyword for checked exceptions.
+					If not, the code will not compile.
+				</p>
+				<h4>Unchecked Exceptions</h4>
+				<p>
+					<br />
+					Unchecked exceptions are the classes that extend RuntimeException class and the Error class.
+					Examples are ArrayIndexOutOfBoundsException, ArithmeticException, NullPointerException, NumberFormatException etc.
+					<br />
+					<br />
+					These represent defects in the program (bugs), often invalid arguments passed to a non-private method.
+					Unchecked exceptions are not checked at compile-time, but at runtime.
+				</p>
+			</section>
+
+			<section>
+				<h3>Handling exceptions</h3>
+				<p>
+					Java provides a standard mechanisms to handle exceptions using <code><strong>try</strong></code>, <code><strong>catch</strong></code>, <code><strong>finally</strong></code> blocks.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						try {
+							// code that might throw an exception
+						} catch (ExceptionType name) {
+							// code to handle the exception
+						} finally {
+							// code that will execute irrespective of an exception occurred or not
+						}
+					</code>
+				</pre>
+				<ul>
+					<li>
+						The <code><strong>try</strong></code> block contains the code that <em>might</em> throw an exception.
+					</li>
+					<li>
+						The <code><strong>catch</strong></code> block contains the code that is executed when an exception of <strong>given type</strong> occurs in the try block.
+					</li>
+					<li>
+						The <code><strong>finally</strong></code> block contains the code that is always executed, regardless of whether an exception occurs or not.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h4>Handling exceptions</h4>
+				<pre>Example
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// TODO
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Throwing exceptions</h3>
+				<p>
+					The <code><strong>throw</strong></code> keyword is used to explicitly throw an exception any block of code. We can throw either checked or unchecked exceptions.
+				</p>
+				<p>
+					The <code><strong>throws</strong></code> keyword is used to declare exceptions.
+					It doesn’t throw an exception but specifies that there may occur an exception in the method.
+					<!--					It is always used with a method signature.-->
+				</p>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Practice</h2>
+			</section>
+		</section>
+	</div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+	// More info about initialization & config:
+	// - https://revealjs.com/initialization/
+	// - https://revealjs.com/config/
+	Reveal.initialize({
+		hash: true,
+
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	});
+</script>
+</body>
+</html>

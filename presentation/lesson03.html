@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/motyka.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section data-background-color="#523996">
+			<i>Week 1 | Lesson 3</i>
+			<h1>Testing</h1>
+			<em>Testing fundamentals, Levels of testing, JUnit</em><br />
+			<em>Dependency Management</em>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Introduction to Software Testing</h2>
+			</section>
+			<section>
+				<h3>What is Testing</h3>
+				<ul>
+					<li>Testing aims to determine the degree of alignment between reality and expectations.</li>
+					<li>It helps measure quality but cannot directly influence it.</li>
+					<li>It provides information to stakeholders.</li>
+					<li>It is an ongoing activity, not a development phase.</li>
+					<li>It is the responsibility of the entire team, not an isolated role.</li>
+					<li>
+						The goal of testing is to:
+						<ul>
+							<li>Verify that the product does what is expected of it.</li>
+							<li>Provide information.</li>
+							<li>Identify problems, not just bugs.</li>
+							<li>Reduce risks.</li>
+						</ul>
+					</li>
+					<li>The goal of testing is not to make decisions but to provide information to support decision-making (the tester is not the decision-maker).</li>
+				</ul>
+			</section>
+			<section>
+				<h3>What is Quality</h3>
+				<p>What is quality, and how does it relate to testing and the product?</p>
+				<blockquote>
+					Is a product considered good quality if it contains no errors?
+				</blockquote>
+				<p>A product is something someone desires because it satisfies certain needs.</p>
+				<p>We can view the quality of a product from two perspectives:</p>
+				<ul>
+					<li><strong>What the product does</strong> = external quality.</li>
+					<li><strong>How it does it</strong> = internal quality.</li>
+				</ul>
+			</section>
+			<section>
+				<h3>External and Internal Quality</h3>
+				<table>
+					<tbody>
+					<tr>
+						<td>
+							<strong>External Quality</strong><br />
+							<ul>
+								<li>Does the product fulfill user's needs?</li>
+								<li>Does it operate in a way that is usable for the user?</li>
+							</ul>
+						</td>
+						<td>
+							<strong>Internal Quality</strong><br />
+							<ul>
+								<li>Is the software well written?</li>
+								<li>Is the code readable and understandable?</li>
+								<li>Is the code designed well?</li>
+								<li>Is the code testable? Is the test coverage sufficient?</li>
+								<li>Is there sufficient documentation?</li>
+								<li>Is there sufficient logging?</li>
+							</ul>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				<div style="font-size: 80%">
+					<p>
+						While it is possible for product with relatively low internal quality to have high external quality,
+						it is not surprising, that the two usually correlate. When software is testable, it is easier to extend and maintain,
+						requiring both less skill and time, making it more resistant to <strong>regression</strong>.
+					</p>
+					<p>
+						<strong>Regression</strong> == in terms of testing, regression is a defect unintentionally introduced by a change into a previously working part of software.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h3>The Testing Pyramid</h3>
+				<img src="./img/testing_pyramid.png">
+			</section>
+			<section>
+				<h3>The Cost of Defects</h3>
+<!--				<img src="./img/testing_pyramid.png">-->
+			</section>
+			<section>
+				<h3>7 principles of testing</h3>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Types of testing</h2>
+			</section>
+			<section>
+				<h3>Types of testing</h3>
+				<ul>
+					<li>
+						Based on the internal knowledge of the system
+						<ul>
+							<li>Blackbox</li>
+							<li>Whitebox</li>
+						</ul>
+					</li>
+					<li>
+						Testing based on code execution
+						<ul>
+							<li>
+								Dynamic
+								<ul>
+									<li>The tested system code is executed during testing</li>
+									<li>
+										Dynamic testing can further be divided into
+										<ul>
+											<li>Functional</li>
+											<li>Non-functional</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								Static
+								<ul>
+									<li>Code is not executed during testing</li>
+									<li>Static analysis usually involves the use of tools</li>
+									<li>Code review</li>
+									<li>Document reviews - specifications, requirement lists, tests, etc</li>
+									<li>Best practices</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Functional vs. Non-Functional Testing</h4>
+
+
+<!--				Funkcionální-->
+<!--				Program pro dané vstupy produkuje očekávané výstupy - dělá to co má-->
+<!--				zminit urvne testovani-->
+<!--				Nefunkcionální-->
+<!--				Security-->
+<!--				Performance, load, stress, volume ..-->
+<!--				Install, recovery-->
+<!--				Usability, compliance, lokalizace-->
+<!--				Interoperability, compatibility-->
+
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Test design techniques</h2>
+			</section>
+			<section>
+				<h4>Test design techniques</h4>
+				<p>What are they and why should developers care?</p>
+
+<!--				Techniky návrhu testů: Proč používat?-->
+
+<!--				Exhaustivní testování je nemožné!-->
+<!--				Optimalizace množství testů-->
+<!--				Maximalizace efektivity testů-->
+<!--				Risk management-->
+
+			</section>
+			<section>
+				<h4>Test design techniques</h4>
+				<p>What are they and why should developers care?</p>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Unit Testing</h2>
+			</section>
+			<section>
+				<h3>Unit Testing</h3>
+				<p>
+					The purpose of unit testing is to verify individual units of the code base work as intended by the author.
+					It is an essential tool in maintaining <strong>internal quality</strong> of a software.
+				</p>
+				<p>
+					Units == smallest testable parts of the software, such as individual methods, functions or objects.
+				</p>
+				<p>
+					Another important role of unit testing is documentation. By writing unit tests, we document the behavior
+					we intended, so that when we, or someone else wants to make changes in the software, they will understand
+					how the software was supposed to work.
+				</p>
+			</section>
+
+			<section>
+				<h3>Test Case</h3>
+				<p>
+					Test conditon =
+					A testable aspect of a component or system identified as a basis for testing.
+
+					In other words, some behavior we expect from the code.
+				</p>
+				<p>
+					Test case =
+					A set of preconditions, inputs, actions (where applicable), expected results and postconditions, developed based on test conditions.
+
+					In other words, test case is a sequence of action steps with preconditons, inputs and expected results.
+				</p>
+			</section>
+
+			<section>
+				<h3>Assertion</h3>
+				<p>
+					Assertion is a term used form mechanism of verifying if test expected outcomes match actual outcomes.
+				</p>
+				<p>
+					Assertion itself is usually a function (method) that we call in our tests which evaluates actual value with expected value.
+					Based on result of this evaluation, the assertion ends in one of two states
+				</p>
+				<ul>
+					<li>passed</li>
+					<li>failed</li>
+				</ul>
+
+				<p>Test may contain any number of assertions, anywhere within the test.</p>
+
+				<p>When a test is run, and no assertion fails, the test is marked as passed.</p>
+				<p>When a test is run, and any assertion fails, the test is marked as failed.</p>
+				<p>Generally, when assertion fails, test is ended immediately. Any code following the assertion is not executed.</p>
+			</section>
+
+<!--			<section>-->
+<!--				<h4>Assertion</h4>-->
+<!--				<pre>-->
+<!--					<code data-trim data-noescape data-line-numbers class="hljs java">-->
+<!--						// TODO example-->
+<!--					</code>-->
+<!--				</pre>-->
+<!--			</section>-->
+
+			<section>
+				<h3>Test Driven Development</h3>
+				<p>
+					You may encounter the term <strong>Test Driven Development</strong> (TDD).
+					Know that, although the term suggest it might be testing technique, it really is not.
+					Rather it is a software design technique.
+				</p>
+				<ol>
+					<li>In TDD, you write a tests first, they will initially be failing.</li>
+					<li>Then you start implement the functionality.</li>
+					<li>When all the tests finally pass, your implementation is complete.</li>
+				</ol>
+				<p>
+					The reason TDD is development technique and not a test technique is because by writing tests
+					first, you are making code testable by design. Well-testable code usually directly correlates with
+					code quality and therefore overall software quality.
+				</p>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Integration Testing</h2>
+			</section>
+			<section>
+				<h3>Integration Testing</h3>
+			</section>
+		</section>
+
+		<section>
+			<h3>JUnit</h3>
+			<p>
+				There are number of unit testing frameworks available in Java. One of the commonly used is JUnit.
+				The concepts that we will learn with JUnit generally apply to all unit testng frameworks.
+			</p>
+		</section>
+
+		<section>
+			<h3>JUnit Test</h3>
+			<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// TODO example
+					</code>
+				</pre>
+		</section>
+
+		<section>
+			<h3>Before, After ...</h3>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Logging</h2>
+			</section>
+			<section>
+				<h3>Logging</h3>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Debugging</h2>
+			</section>
+			<section>
+				<h3>Debugging</h3>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Documentation</h2>
+			</section>
+			<section>
+				<h3>Java Documentation</h3>
+				<p>
+					TODO
+				</p>
+			</section>
+		</section>
+
+		<section>
+			<section>
+				<h2>Dependency Management</h2>
+			</section>
+			<section>
+				<h3>Dependency Management in Java</h3>
+				<p>TODO</p>
+				<ul>
+					<li>Maven</li>
+					<li>Gradle</li>
+				</ul>
+			</section>
+		</section>
+	</div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+	// More info about initialization & config:
+	// - https://revealjs.com/initialization/
+	// - https://revealjs.com/config/
+	Reveal.initialize({
+		hash: true,
+
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	});
+</script>
+</body>
+</html>
