@@ -12,37 +12,6 @@
 
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	<style>
-		blockquote {
-			background-color: mintcream;
-		}
-
-		/* Style the button that is used to open and close the collapsible content */
-		.collapsible {
-			background-color: #eee;
-			color: #444;
-			cursor: pointer;
-			padding: 18px;
-			width: 100%;
-			border: none;
-			text-align: left;
-			outline: none;
-			font-size: 15px;
-		}
-
-		/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-		.active, .collapsible:hover {
-			background-color: #ccc;
-		}
-
-		/* Style the collapsible content. Note: hidden by default */
-		.content {
-			padding: 0 18px;
-			display: none;
-			overflow: hidden;
-			background-color: #f1f1f1;
-		}
-	</style>
 </head>
 <body>
 <div class="reveal" >
@@ -70,7 +39,6 @@
 				<br />
 				<img src="./img/java.png" style="width: 200px"/>
 			</section>
-
 			<section>
 				<h3>Key features of Java</h3>
 				<div style="text-align: left;">
@@ -104,9 +72,8 @@
 					</p>
 				</div>
 			</section>
-
 			<section>
-				<p>Java has two main components ...</p>
+				<em>Java has two main components ...</em>
 				<p>
 				<h3>Java Runtime Environment (JRE)</h3><br/>
 				<i>The JRE provides the libraries, the Java Virtual Machine (JVM), and other components needed to run applications written in Java. It does not include developer tools such as compilers and debuggers. As a user, you would use the JRE to run Java programs on your system.</i>
@@ -119,7 +86,7 @@
 			</section>
 			<section>
 				<h3>Java Development Kit (JDK)</h3>
-				<p>Since open sourcing, multiple implementations of JDK exists ...</p>
+				<em>Since open sourcing, multiple implementations of JDK exists ...</em>
 				<div style="text-align: left;">
 					<p>
 						<b>Oracle JDK</b><br />
@@ -178,13 +145,11 @@
 				</ul>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Java Today</h2>
 				<i>Where does it stand compared to other languages?</i>
 			</section>
-
 			<section>
 				<h3>Use right tools for the job</h3>
 				<div>
@@ -195,12 +160,13 @@
 					</blockquote>
 				</div>
 			</section>
-
 			<section>
 				<h3>C/C++ </h3>
+				<hr />
 				<p>
 					<em>C/C++ family of languages are high-performance languages that give programmers a high level of control over system resources.</em>
 				</p>
+				<hr />
 				<ul>
 					<li>They are best applied where efficiency and performance or fine level of control is required.</li>
 					<li>More complicated syntax and lack of modern language conveniences makes them more difficult to master.</li>
@@ -208,12 +174,13 @@
 					<li>High level complicated business requirements may take a lot of skill and of lines to implement.</li>
 				</ul>
 			</section>
-
 			<section>
 				<h3>Python</h3>
-				<b>
+				<hr />
+				<p>
 					<em>Python is a powerful and flexible, well suited for working with data or scripting.</em>
-				</b>
+				</p>
+				<hr />
 				<ul>
 					<li>Python has simple and readable syntax, which is often easy to learn for beginners.</li>
 					<li>
@@ -223,17 +190,17 @@
 					<li>Python is popular amongst data science community because of its extensive libraries.</li>
 					<li>Python's flexibility may come at an expense of security and type-safety related runtime problems.</li>
 				</ul>
-
 			</section>
-
 			<section>
 				<h3>JavaScript / TypeScript</h3>
+				<hr />
 				<p>
 					<em>
 						JavaScript / TypeScript is great for front-end web development allowing for interactive web application.
 						Server-side JavaScript / TypeScript is also popular, running on Node.js
 					</em>
 				</p>
+				<hr />
 				<ul>
 					<li>Easy to adopt, quick to develop in, flexible.</li>
 					<li>Big community, lots of frameworks and tools.</li>
@@ -245,15 +212,15 @@
 
 			<section>
 				<h3>Java</h3>
-				<ul>
-					<li>
-						Java is a good combination of efficiency, power flexibility and safety
-						<ul>
-							<li>Not quite as efficient as C/C++, but good enough</li>
-							<li>Not quite as flexible s Python/JavaScript/TypeScript, but flexible enough</li>
-							<li>Bigger memory footprint than Python, but better safety</li>
-						</ul>
-					</li>
+				<hr />
+				<p>
+					<em>Java is a good combination of efficiency, power flexibility and safety</em>
+				</p>
+				<hr />
+				<ul style="font-size: 90%">
+					<li>Not quite as efficient as C/C++, but good enough</li>
+					<li>Not quite as flexible s Python/JavaScript/TypeScript, but flexible enough</li>
+					<li>Bigger memory footprint than Python, but better safety</li>
 					<li>Java is mostly used for:
 						<ul>
 							<li>Web Applications - <em>mostly the application backend</em></li>
@@ -271,8 +238,11 @@
 			</section>
 			<section>
 				<h3>C#</h3>
-				<p><em>One of Java's biggest competitors.</em></p>
-
+				<hr />
+				<p>
+					<em>One of Java's biggest competitors.</em>
+				</p>
+				<hr />
 				<ul>
 					<li>They are pretty similar in terms of usage and capabilities</li>
 					<li>
@@ -289,11 +259,13 @@
 			</section>
 			<section>
 				<h3>Scala</h3>
+				<hr />
 				<p>
 					<em>
 						Scala is very powerful language. Compiled into Java bytecode, it actually runs on JVM, just like Java.
 					</em>
 				</p>
+				<hr />
 				<ul>
 					<li>Strongly type, very powerful, very safe, but more difficult to master</li>
 					<li>Modern syntax supporting type inference etc ...</li>
@@ -304,11 +276,13 @@
 			</section>
 			<section>
 				<h3>Kotlin</h3>
+				<hr />
 				<p>
 					<em>
 						Kotlin is maybe the current best substitute for Java. Compiles to Java bytecode, therefore runs on JVM as well.
 					</em>
 				</p>
+				<hr />
 				<ul>
 					<li>Kotlin has all the features Java has and more</li>
 					<li>Modern language with modern language features such as explicit null safety, implicit type inference, and features supporting functional programming</li>
@@ -323,7 +297,6 @@
 				</p>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Object-oriented programming</h2>
@@ -331,10 +304,31 @@
 
 			<section>
 				<h3>Object-oriented programming</h3>
-				<p>TODO</p>
+				<p>
+					<em>There are four main principles in OOP ...</em>
+				</p>
+				<ol>
+					<li>
+						<strong>Encapsulation</strong><br />
+						restricts access to the internal state of an object, protecting it from unauthorized access and ensuring data integrity.
+					</li>
+					<li>
+						<strong>Inheritance</strong><br />
+						enables class to have the same behavior as another class by inheriting it's properties and methods.
+					</li>
+					<li>
+						<strong>Polymorphism</strong><br />
+						allows us to define one interface or method that can have multiple implementations.
+						It means that the same method or property could exhibit different behavior in different instances of object implementing given interface.
+					</li>
+					<li>
+						<strong>Abstraction</strong><br />
+						is a mechanism to represent the object features without exposing the actual implementation details.
+						In other words, user of such object only needs to know what it does, not how it does it.
+					</li>
+				</ol>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Java Language Syntax</h2>
@@ -399,8 +393,9 @@
 
 			<section>
 				<h2>Java Data Types</h2>
-				<p>There are two groups of data types in Java ...</p>
-
+				<p>
+					<em>There are two groups of data types in Java ...</em>
+				</p>
 				<div style="text-align: left;">
 					<h4>Primitive types</h4>
 					<p>
@@ -445,7 +440,6 @@
 					Why is this still important for us to understand?
 				</blockquote>
 			</section>
-
 			<section>
 				<h4>Primitive types</h4>
 				<pre>
@@ -478,7 +472,6 @@
 					</code>
 				</pre>
 			</section>
-
 			<section>
 				<h4>Binary and hexadecimal data representation</h4>
 				<hr />
@@ -550,17 +543,23 @@
 					</tbody>
 				</table>
 			</section>
-
 			<section>
 				<h4>The two's complement</h4>
+				<hr />
 				<p>
 					In Java, two's complement is used for the representation of signed integers.
 					A negative number is represented as the two's complement of its absolute value.
 					This allows positive and negative numbers to be added together directly.
 				</p>
-				<p><b>For positive integers</b>, the two's complement representation is the same as their binary representation.</p>
-				<p><b>For negative integers</b>, you use binary representation of the absolute value of the number, then you invert each bit, and finally add 1 to the least significant bit (LSB).</p>
-
+				<hr />
+				<ul>
+					<li>
+						<strong>For positive integers</strong>, the two's complement representation is the same as their binary representation.
+					</li>
+					<li>
+						<strong>For negative integers</strong>, you use binary representation of the absolute value of the number, then you invert each bit, and finally add 1 to the least significant bit (LSB).
+					</li>
+				</ul>
 				<blockquote>
 					<strong>Example: Binary representation of -5</strong>
 					<ol>
@@ -570,17 +569,20 @@
 					</ol>
 				</blockquote>
 			</section>
-
 			<section>
 				<h3>Type Casting</h3>
-				<p>Typecasting is a method of converting one data type to another. Keep in ming, that type casting may result in data loss!</p>
+				<hr />
+				<p>
+					Typecasting is a method of converting one data type to another. Keep in ming, that type casting may result in data loss!
+				</p>
+				<hr />
 				<div style="text-align: left;">
 					<p>
-						<b>Implicit Casting</b><br /><br />
-						<i style="font-size: 80%">
+						<strong>Implicit Casting</strong><br />
+						<span style="font-size: 80%">
 							This is also known as automatic type conversion.
 							This is done by the JVM when we assign a value of smaller data type to a variable of a bigger data type.
-						</i>
+						</span>
 					<pre>
 							<code data-trim data-noescape class="hljs java">
 								int number = 100;
@@ -592,12 +594,14 @@
 						</pre>
 					</p>
 					<p>
-						<b>Explicit Casting</b><br /><br />
-						<i style="font-size: 80%">
+						<strong>Explicit Casting</strong><br />
+						<span style="font-size: 80%">
 							Also known as manual type conversion, we perform casting explicitly.
-							<b>Upcasting</b> - assigning smaller data type to larger data type - generally doesn't result in data loss.
-							<b>Downcasting</b> - assigning larger data type to smaller data type - may result in data loss.
-						</i>
+							<br />
+							<strong>Upcasting</strong> = assigning smaller data type to larger data type - generally doesn't result in data loss.
+							<br />
+							<strong>Downcasting</strong> = assigning larger data type to smaller data type - may result in data loss.
+						</span>
 					<pre>
 							<code data-trim data-noescape class="hljs java">
 								double preciseNumber = 100.04;
@@ -609,11 +613,14 @@
 					</p>
 				</div>
 			</section>
-
 			<section>
 				<h3>null</h3>
 				<div style="text-align: left; font-size: 80%">
-					<p>In Java, <code>null</code> is a special value that represents the absence of an instance. It is used to indicate that a reference variable doesn't point to any memory location or object.</p>
+					<hr />
+					<p>
+						In Java, <code><strong>null</strong></code> is a special value that represents the absence of an instance. It is used to indicate that a reference variable doesn't point to any memory location or object.
+					</p>
+					<hr />
 					<ol style="font-size: 80%">
 						<li>
 							<b>Reference Variables:</b><br />
@@ -666,7 +673,6 @@
 						}
 					</code>
 				</pre>
-
 				<div style="color: red; border: 1px grey solid;">
 					Assignment of null to a primitive type is not possible. This code will not compile:
 					<pre>
@@ -677,7 +683,6 @@
 				</div>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Operators</h2>
@@ -691,13 +696,18 @@
 					<li>Logical operators</li>
 					<li>Bitwise operators</li>
 				</ul>
-
 			</section>
 			<section>
 				<h3>Assignment Operators</h3>
-				<p>Their purpose is to assign value to <b>variable</b> or <b>constant</b>.</p>
-				<p><b>Variable</b> is container (memory allocation) for storing data, which can be changed during program execution.</p>
-				<p><b>Constant</b> is also container for storing data, but it's value cannot be changed during program execution.</p>
+				<hr />
+				<p>
+					Their purpose is to assign value to <b>variable</b> or <b>constant</b>.
+				</p>
+				<hr />
+				<ul style="font-size: 80%">
+					<li><b>Variable</b> is container (memory allocation) for storing data, which can be changed during program execution.</li>
+					<li><b>Constant</b> is also container for storing data, but it's value cannot be changed during program execution.</li>
+				</ul>
 				<pre>Examples:
 					<code data-trim data-noescape class="hljs java">
 						// Variables
@@ -844,7 +854,6 @@
 					</pre>
 				</blockquote>
 			</section>
-
 			<section>
 				<h3>Comparison Operators</h3>
 				<p>
@@ -1051,7 +1060,6 @@
 					</div>
 				</blockquote>
 			</section>
-
 			<section>
 				<h3>Bitwise Operators</h3>
 				<table style="font-size: 60%">
@@ -1264,7 +1272,6 @@
 					</pre>
 				</blockquote>
 			</section>
-
 			<section>
 				<h3>Addition Assignment</h3>
 				<p>Combines assignment operators with arithmetic, shift and bitwise operators</p>
@@ -1293,48 +1300,50 @@
 				</pre>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Arrays</h2>
 			</section>
 			<section>
 				<h3>Arrays</h3>
-				<div style="text-align: left;">
-					<p>Arrays are used to store multiple values of the same type in one variable.</p>
-					<p>You can declare arrays of both primitive and non-primitive types.</p>
-					<p>Arrays have a fixed size, which must be set during declaration.</p>
-					<pre>
-						<code data-line-numbers data-trim data-noescape class="hljs java">
-							String[] languages = new String[4]; // will create array of 4 elements
-						</code>
-					</pre>
-					<p>You can change value of an array by its index (zero-based). If you try to assign value outside of array bound, you will get an error.</p>
-					<pre>
-						<code data-line-numbers data-trim data-noescape class="hljs java">
-							String[] languages = new String[4];
-							languages[0] = "Java";
-							languages[1] = "Python";
-							languages[2] = "C++";
-							languages[3] = "JavaScript";
+				<hr />
+				<p>
+					Arrays are used to store multiple values of the same type in one variable.
+					You can declare arrays of both primitive and non-primitive types.
+				</p>
+				<hr />
+				<p>
+					Arrays have a fixed size, which must be set during declaration.
+				</p>
+				<pre>
+					<code data-line-numbers data-trim data-noescape class="hljs java">
+						String[] languages = new String[4]; // will create array of 4 elements
+					</code>
+				</pre>
+				<p>You can change value of an array by its index (zero-based). If you try to assign value outside of array bound, you will get an error.</p>
+				<pre>
+					<code data-line-numbers data-trim data-noescape class="hljs java">
+						String[] languages = new String[4];
+						languages[0] = "Java";
+						languages[1] = "Python";
+						languages[2] = "C++";
+						languages[3] = "JavaScript";
 
-							// this will cause a runtime exception: Index 4 out of bounds for length 4
-							languages[4] = "Kotlin";
-						</code>
-					</pre>
-					<p>You can also declare an initialize array in one step</p>
-					<pre>
-						<code data-line-numbers data-trim data-noescape class="hljs java">
-							String[] languages = new String[] {"Java", "Python", "C++", "JavaScript"};
+						// this will cause a runtime exception: Index 4 out of bounds for length 4
+						languages[4] = "Kotlin";
+					</code>
+				</pre>
+				<p>You can also declare an initialize array in one step</p>
+				<pre>
+					<code data-line-numbers data-trim data-noescape class="hljs java">
+						String[] languages = new String[] {"Java", "Python", "C++", "JavaScript"};
 
-							// or just
-							String[] languages = {"Java", "Python", "C++", "JavaScript"};
-						</code>
-					</pre>
-				</div>
+						// or just
+						String[] languages = {"Java", "Python", "C++", "JavaScript"};
+					</code>
+				</pre>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Conditions</h2>
@@ -1386,7 +1395,6 @@
 				</pre>
 				</div>
 			</section>
-
 			<section>
 				<h3>Ternary Operator</h3>
 				<div style="text-align: left;">
@@ -1634,7 +1642,6 @@
 					</pre>
 				</div>
 			</section>
-
 			<section>
 				<h4>Break / Continue</h4>
 				<blockquote>
@@ -1677,9 +1684,7 @@
 				</pre>
 				</blockquote>
 			</section>
-
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Integrated Development Environment (IDE)</h2>
@@ -1731,7 +1736,6 @@
 			<!--				<p>Eclipse</p>-->
 			<!--			</section>-->
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h3>Your first Java program</h3>
