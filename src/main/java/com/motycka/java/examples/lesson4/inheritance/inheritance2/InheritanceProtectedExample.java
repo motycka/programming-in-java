@@ -1,4 +1,4 @@
-package com.motycka.java.practice.lesson4.inheritance.inheritance2;
+package com.motycka.java.examples.lesson4.inheritance.inheritance2;
 
 public class InheritanceProtectedExample {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.motycka.java.practice.lesson4.polymorphism.compiletime;
+package com.motycka.java.examples.lesson4.polymorphism.compiletime;
 
 public class CompileTimePolymorphismExample {
     public static void main(String[] args) {

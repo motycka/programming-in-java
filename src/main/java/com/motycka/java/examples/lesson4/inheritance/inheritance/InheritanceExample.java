@@ -1,4 +1,4 @@
-package com.motycka.java.practice.lesson4.inheritance.inheritance;
+package com.motycka.java.examples.lesson4.inheritance.inheritance;
 
 public class InheritanceExample {
     public static void main(String[] args) {

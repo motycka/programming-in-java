@@ -70,7 +70,6 @@
 				</ul>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Object-oriented Programming</h2>
@@ -89,22 +88,21 @@
 				<p>We will go more into detail of each of how these are handle in Java on the following slides.</p>
 			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Encapsulation</h2>
 			</section>
 			<section>
 				<h3>What is Encapsulation</h3>
+				<hr />
+				<strong>Encapsulation</strong> is a concept of controlling access to the internal state of an object, protecting it from unauthorized access and ensuring data integrity.
+				<hr />
 				<ul style="font-size: 80%">
-					<li>
-						<strong>Encapsulation</strong> is a principle concerned with hiding the internal state of an object and protecting it from unauthorized access.
-					</li>
 					<li>
 						In Java, this is typically achieved using access modifiers (private, protected, public) and getter/setter methods.
 					</li>
 					<li>
-						By using getter/setter methods, the class can enforce it's own data validation rules to ensure it's internal state remains valid and consistent.
+						By using getter/setter methods, the class can enforce its own data validation rules to ensure it's internal state remains valid and consistent.
 					</li>
 				</ul>
 				<pre>Example:
@@ -363,19 +361,19 @@
 					<li>It can result in bloated classes if overused, and requires more code setup than inheritance.</li>
 					<li>it can be more difficult to use when requests must be delegated to the appropriate class.</li>
 				</ul>
-<!--				<p>-->
-<!--					Results in loose coupling and improves encapsulation, because the contained objects can be easily swapped without changing the code that uses them.-->
-<!--					&lt;!&ndash;					It's easier to change behavior on the fly with composition. &ndash;&gt;-->
-<!--					&lt;!&ndash;					Also, it provides a more flexible way to reuse code and is a viable solution to the lack of multiple inheritance.&ndash;&gt;-->
-<!--					Also, it can be used to overcome lack of multiple inheritance in Java.-->
-<!--				</p>-->
-<!--				<p>-->
-<!--					Usually allows for better testability as well.-->
-<!--				</p>-->
-<!--				<p>-->
-<!--					However, it can result in bloated classes if overused, and requires more code setup than inheritance.-->
-<!--					Also, it can be more difficult to use when requests must be delegated to the appropriate class.-->
-<!--				</p>-->
+				<!--				<p>-->
+				<!--					Results in loose coupling and improves encapsulation, because the contained objects can be easily swapped without changing the code that uses them.-->
+				<!--					&lt;!&ndash;					It's easier to change behavior on the fly with composition. &ndash;&gt;-->
+				<!--					&lt;!&ndash;					Also, it provides a more flexible way to reuse code and is a viable solution to the lack of multiple inheritance.&ndash;&gt;-->
+				<!--					Also, it can be used to overcome lack of multiple inheritance in Java.-->
+				<!--				</p>-->
+				<!--				<p>-->
+				<!--					Usually allows for better testability as well.-->
+				<!--				</p>-->
+				<!--				<p>-->
+				<!--					However, it can result in bloated classes if overused, and requires more code setup than inheritance.-->
+				<!--					Also, it can be more difficult to use when requests must be delegated to the appropriate class.-->
+				<!--				</p>-->
 			</section>
 			<section>
 				<h4>Composition</h4>
@@ -439,49 +437,49 @@
 					</tr>
 					</tbody>
 				</table>
-<!--				<pre>-->
-<!--					<code data-trim data-noescape data-line-numbers class="hljs java">-->
-<!--						public class CompositionExample {-->
-<!--							public static void main(String[] args) {-->
-<!--								Cat cat = new Cat("Garfield");-->
-<!--								cat.meow();-->
-<!--							}-->
-<!--						}-->
+				<!--				<pre>-->
+				<!--					<code data-trim data-noescape data-line-numbers class="hljs java">-->
+				<!--						public class CompositionExample {-->
+				<!--							public static void main(String[] args) {-->
+				<!--								Cat cat = new Cat("Garfield");-->
+				<!--								cat.meow();-->
+				<!--							}-->
+				<!--						}-->
 
-<!--						class Cat {-->
+				<!--						class Cat {-->
 
-<!--							private String name;-->
-<!--							private Sound sound = new Sound("meow");-->
+				<!--							private String name;-->
+				<!--							private Sound sound = new Sound("meow");-->
 
-<!--							public Cat(String name){-->
-<!--								this.name = name;-->
-<!--							}-->
+				<!--							public Cat(String name){-->
+				<!--								this.name = name;-->
+				<!--							}-->
 
-<!--							public String getName() {-->
-<!--								return name;-->
-<!--							}-->
+				<!--							public String getName() {-->
+				<!--								return name;-->
+				<!--							}-->
 
-<!--							public void meow() {-->
-<!--								sound.makeSound();-->
-<!--							}-->
-<!--						}-->
+				<!--							public void meow() {-->
+				<!--								sound.makeSound();-->
+				<!--							}-->
+				<!--						}-->
 
-<!--						// Composition class-->
-<!--						class Sound {-->
+				<!--						// Composition class-->
+				<!--						class Sound {-->
 
-<!--							private String sound;-->
+				<!--							private String sound;-->
 
-<!--							public Sound(String sound){-->
-<!--								this.sound = sound;-->
-<!--							}-->
+				<!--							public Sound(String sound){-->
+				<!--								this.sound = sound;-->
+				<!--							}-->
 
-<!--							public void makeSound() {-->
-<!--								System.out.println(sound);-->
-<!--							}-->
-<!--						}-->
+				<!--							public void makeSound() {-->
+				<!--								System.out.println(sound);-->
+				<!--							}-->
+				<!--						}-->
 
-<!--					</code>-->
-<!--				</pre>-->
+				<!--					</code>-->
+				<!--				</pre>-->
 			</section>
 			<section>
 				<h4>Inheritance vs. Composition</h4>
@@ -607,6 +605,7 @@
 
 			<section>
 				<h4>Compile-time polymorphism</h4>
+				<hr />
 				<em>Also known as static polymorphism</em>
 				<hr />
 				<p>
@@ -652,9 +651,10 @@
 
 			<section>
 				<h4>Runtime polymorphism</h4>
+				<hr />
 				<em>Also known as dynamic method dispatch</em>
 				<hr />
-				<p>
+				<p style="font-size: 90%">
 					Runtime polymorphism is a process in which a call to an overridden method is resolved at runtime rather than at compile-time.
 					This mechanism allows the Java Virtual Machine (JVM) to decide which method to invoke from the class hierarchy at runtime,
 					based on the type of object.
@@ -666,7 +666,6 @@
 								Animal animal0 = new Animal();
 								Animal animal1 = new Cat(); // Animal reference but Dog object
 								Animal animal2 = new Dog(); // Animal reference but Cat object
-
 								animal0.makeSound(); // prints "(silence)"
 								animal1.makeSound(); // prints "woof"
 								animal2.makeSound(); // prints "meow"
@@ -720,8 +719,34 @@
 				<h3>Abstract classes and Interfaces</h3>
 			</section>
 			<section>
-				<h3>Abstract classes</h3>
+				<h3>Abstract class</h3>
+				<hr />
+				<p>
+					<strong>Abstract class</strong> is a class with defined with the <code><strong>abstract</strong></code> modifier,
+					which by its own cannot be used cannot be used to create objects.
+					<br />
+					<br />
+					You can only instantiate class that inherits form abstract class and is not abstract itself.
+				</p>
+				<hr />
+				<p>
+					<strong>Abstract method</strong> is a method defined with the <code><strong>abstract</strong></code> modifier
+					that can only exist in an abstract class.
+					<br />
+					<br />
+					It does not have a body. Instead, it expects that a subclass will implement the body.
+				</p>
 			</section>
+
+			<section>
+				<h4>Abstract class</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// TODO
+					</code>
+				</pre>
+			</section>
+
 			<section>
 				<h3>Interfaces</h3>
 				<p>
@@ -732,7 +757,7 @@
 				</p>
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-
+						// TODO
 					</code>
 				</pre>
 			</section>
@@ -743,6 +768,7 @@
 			</section>
 			<section>
 				<h3>What is an Exception</h3>
+				<hr />
 				<p>
 					Exceptions are events that disrupt the normal flow of program execution. <br />
 					They can arise due to various types of errors such as IO errors, arithmetic errors, null pointer access, etc.
@@ -768,27 +794,36 @@
 			</section>
 
 			<section>
-				<h4>Checked Exceptions</h4>
+				<h3>Checked Exceptions</h3>
 				<p>
-					<br />
 					Checked exceptions are the classes that extend Throwable class except RuntimeException and Error.
+				</p>
+				<p>
 					These are exceptional conditions that a well-written application should anticipate and recover from.
-					For example, FileNotFoundException will be thrown when a file that needs to be opened cannot be found.
-					<br />
-					<br />
-					Checked exceptions are checked at compile-time, hence the name.
+				</p>
+				<p>
+					Checked exceptions are checked at compile-time.
 					The compiler forces the programmer to catch these exceptions, i.e., the programmer needs to provide an exception handling mechanism through a try-catch block or throws keyword for checked exceptions.
 					If not, the code will not compile.
 				</p>
-				<h4>Unchecked Exceptions</h4>
 				<p>
-					<br />
+					For example, FileNotFoundException will be thrown when a file that needs to be opened cannot be found.
+				</p>
+			</section>
+
+			<section>
+				<h3>Unchecked Exceptions</h3>
+				<p>
 					Unchecked exceptions are the classes that extend RuntimeException class and the Error class.
-					Examples are ArrayIndexOutOfBoundsException, ArithmeticException, NullPointerException, NumberFormatException etc.
-					<br />
-					<br />
+				</p>
+				<p>
 					These represent defects in the program (bugs), often invalid arguments passed to a non-private method.
+				</p>
+				<p>
 					Unchecked exceptions are not checked at compile-time, but at runtime.
+				</p>
+				<p>
+					Examples are ArrayIndexOutOfBoundsException, ArithmeticException, NullPointerException, NumberFormatException etc.
 				</p>
 			</section>
 
@@ -820,26 +855,149 @@
 					</li>
 				</ul>
 			</section>
-
-			<section>
-				<h4>Handling exceptions</h4>
-				<pre>Example
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO
-					</code>
-				</pre>
-			</section>
-
 			<section>
 				<h3>Throwing exceptions</h3>
+				<hr />
 				<p>
-					The <code><strong>throw</strong></code> keyword is used to explicitly throw an exception any block of code. We can throw either checked or unchecked exceptions.
+					In Java, <em>"throwing an exception"</em> refers to the process of creating an instance of an Exception (or its subclass) and handing it off to the runtime system to handle.
+					<br />
+					It's a way of signaling that a method cannot complete its normal computation due to some kind of exceptional condition.
 				</p>
+				<hr />
 				<p>
-					The <code><strong>throws</strong></code> keyword is used to declare exceptions.
-					It doesn’t throw an exception but specifies that there may occur an exception in the method.
-					<!--					It is always used with a method signature.-->
+					There are two keywords associated with throwing exceptions:
 				</p>
+				<ul>
+					<li>
+						The <code><strong>throw</strong></code> keyword is used to explicitly throw an exception any block of code. We can throw either checked or unchecked exceptions.
+					</li>
+					<li>
+						The <code><strong>throws</strong></code> keyword is used to declare exceptions.
+						It doesn't throw an exception but specifies that there may occur an exception in the method.
+						<!--					It is always used with a method signature.-->
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Throwing and handling exceptions</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class CheckedExceptionExample {
+
+							public static void main(String[] args) {
+
+								Car car = new Car(3);
+
+								try {
+									car.drive(4);
+								} catch (NoFuelException e) { // compiler will force catch block here
+									System.out.println(e.getMessage());
+									// somehow handle car out of fuel situation
+								}
+							}
+
+						}
+					</code>
+				</pre>
+				<table style="width: 100%">
+					<tbody>
+					<tr>
+						<td>
+							<pre>Class that throws exception:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class Car {
+
+										private int fuelKm;
+
+										Car(int fuelKm) { this.fuelKm = fuelKm; }
+
+										void drive(int driveKm) throws NoFuelException {
+											while (driveKm > 0) {
+												if (fuelKm <= 0) {
+													// exception in thrown on car out of fuel event
+													throw new NoFuelException();
+												} else {
+													System.out.println("drove 1 km");
+													fuelKm--; driveKm--;
+												}
+											}
+										}
+									}
+								</code>
+							</pre>
+						</td>
+						<td>
+							<pre>NoFuelException exception definition:
+								<code data-trim data-noescape data-line-numbers class="hljs java">
+									class NoFuelException extends Throwable {
+
+										NoFuelException() {
+											super("The car is out of fuel!");
+										}
+
+									}
+								</code>
+							</pre>
+							<p>
+								Running this code will print
+							<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								drove 1 km
+								drove 1 km
+								drove 1 km
+								The car is out of fuel!
+							</code>
+							</pre>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h4>Throwing and handling exceptions</h4>
+				<p>
+					In this example we try to devide number by 0, which is illegal.
+					The compiler will let us compile this code, because there is no checked exception.
+					When executed, the program will end with:
+					<br />
+					<br />
+					<code style="font-size: 80%">Exception in thread "main" java.lang.ArithmeticException: / by zero</code>
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class UncheckedExceptionExample {
+
+							public static void main(String[] args) {
+
+								int number = 100 / 0; // will end with java.lang.ArithmeticException
+
+							}
+
+						}
+					</code>
+				</pre>
+				<p>
+					However, we can still handle the unchecked exception too, we are just nut warned by the compiler.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class UncheckedExceptionExample {
+
+							public static void main(String[] args) {
+
+								int dividend = 100;
+								int divisor = 0;
+
+								try {
+									int quotient = dividend / divisor;
+								} catch (Exception e) {
+									System.out.println(e.getMessage());
+								}
+							}
+
+						}
+					</code>
+				</pre>
 			</section>
 		</section>
 		<section>

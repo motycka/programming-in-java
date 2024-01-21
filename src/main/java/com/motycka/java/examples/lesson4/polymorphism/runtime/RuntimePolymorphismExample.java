@@ -1,4 +1,4 @@
-package com.motycka.java.practice.lesson4.polymorphism.runtime;
+package com.motycka.java.examples.lesson4.polymorphism.runtime;
 
 public class RuntimePolymorphismExample {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.motycka.java.practice.lesson4;
+package com.motycka.java.examples.lesson4.encapsulation;
 
 import java.time.LocalDate;
 import java.util.Date;
