@@ -19,25 +19,287 @@
 		<section data-background-color="#523996">
 			<i>Week 1 | Lesson 5</i>
 			<h1>Collections</h1>
+			<em>Wrapper Classes</em><br />
 			<em>Lists, Stacks, Sets, Maps, Queues, Utility Classes</em><br />
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Wrapper Classes</h2>
+			</section>
+			<section>
+				<h3>Wrapper Classes</h3>
+				<hr />
+				<p>
+					The purpose of Java wrapper classes is to convert Java primitive types to reference types (objects).
+					<br />
+					<br />
+					All wrapper classes support auto-boxing and auto-unboxing = automatic conversion of primitive types to the object of their corresponding wrapper classes and vice versa.
+				</p>
+				<hr />
+				<p>
+					<strong>Wrapper classes were introduced in Java for several reasons:</strong>
+					<br />
+					<ul style="font-size: 80%">
+						<li><strong>Object-Oriented Programming</strong> - primitives are not objects in Java</li>
+						<li><strong>Null handling</strong> - wrapper classes can hold null value, unlike primitive types</li>
+						<li><strong>Data structures</strong> - Java Collection Framework can only hold objects, not primitive types</li>
+						<li><strong>Member functions</strong> - wrapper classes come with a number of useful methods for parsing, converting, comparing values, etc.</li>
+						<li><strong>Immutability</strong> - objects these wrapper classes are immutable (meaning their state can’t be changed once created). <br />
+							<sub>This is a useful property, especially when dealing with multi-threaded environments as it eliminates synchronization for object's state manipulation.</sub>
+						</li>
+					</ul>
+				</p>
+			</section>
+			<section>
+				<h4>Wrapper Classes</h4>
+				<p>
+					Here is primitive to wrapper class mapping:
+				</p>
+				<div class="row">
+					<div class="column">
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								public class WrapperClassesExample {
+
+									public static void main(String[] args) {
+
+										byte bytePrimitive = 127;
+										Byte byteObject = bytePrimitive; // auto-boxing
+
+										System.out.println(bytePrimitive);
+										System.out.println(byteObject);
+
+
+										Integer intObject = 2147483647;
+										int intPrimitive = intObject; // auto-unboxing
+
+										System.out.println(intObject);
+										System.out.println(intPrimitive);
+									}
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<ul>
+							<li>byte: Byte</li>
+							<li>short: Short</li>
+							<li>int: Integer</li>
+							<li>long: Long</li>
+							<li>float: Float</li>
+							<li>double: Double</li>
+							<li>boolean: Boolean</li>
+							<li>char: Character</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h4>Wrapper Classes</h4>
+				<p>
+					Some of the claims about wrapper classes are not immediately visible from the code,
+					such as the fact that they ar ein fact object and immutable. So let's prove it by example ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class WrapperClassesExample {
+
+							public static void main(String[] args) {
+
+								/*
+								 Claim: wrapper classes are objects
+								 */
+								Integer number = 42;
+
+								if (number instanceof Object) {
+									System.out.println("number is Object");
+								} else {
+									System.out.println("number is primitive");
+								}
+
+								/*
+								 Claim: wrapper classes are immutable
+								 */
+								Long longNumber = 42L; // this is in fact object instantiation equivalent to calling `new Long(42)`;
+								System.out.println(System.identityHashCode(longNumber)); // memory address, something like 2120828836
+
+								longNumber = 24L; // and this is actually equivalent to `number = new Long(24)`
+								System.out.println(System.identityHashCode(longNumber)); // the memory address has changed, proving it is a new object
+
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>Member functions</h4>
+				<p>
+					Wrapper classes in Java have a number of useful methods that can be used for various operations such as parsing, comparing values, converting to different types, and more.
+				</p>
+				<p>
+					Here is an example with Integer wrapper class.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class WrapperClassesMemberFunctionsExample {
+
+							public static void main(String[] args) {
+
+								Integer i = 10;
+
+								int x = Integer.parseInt("10");
+
+								String str = Integer.toString(10);
+
+								int max = Integer.max(5, 10);
+
+								int min = Integer.min(5, 10);
+
+								int compare = Integer.compare(5, 10);
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
 		</section>
 		<section>
 			<section data-background-color="#523996">
 				<h2>Collections</h2>
 			</section>
 			<section>
-				<h3>Collections</h3>
-				<blockquote>
-					What is the difference between arrays and collections?
-				</blockquote>
+				<h3>Arrays vs. Collections</h3>
+				<hr />
+				<p>
+					Both arrays and collections are used to store data.
+					There are however some notable differences that make them suitable for different use cases.
+				</p>
+				<hr />
+				<table>
+					<thead>
+					<tr>
+						<td></td>
+						<td>Arrays</td>
+						<td>Collections</td>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>Size</td>
+						<td>Arrays have fixed size. This may lead to memory wastage, but is also inconvenient.</td>
+						<td>Collections can grow or shrink dynamically to accommodate the data.</td>
+					</tr>
+					<tr>
+						<td>Type Safety</td>
+						<td>Arrays are type-safe</td>
+						<td>Collections are type-safe *</td>
+					</tr>
+					<tr>
+						<td>Performance</td>
+						<td>Arrays can perform better than collections for some operations because of their simpler memory layout, lower overhead, and ability to employ direct indexing.</td>
+						<td>Collections have more overhead than arrays, and certain operations may be slower as a result. However, the built-in utilities in collections make them more convenient for complex data manipulation.</td>
+					</tr>
+					<tr>
+						<td>Functionality</td>
+						<td>Arrays offer basic functionality such as adding elements, getting elements, and modifying existing elements.</td>
+						<td>Collections provide a wide variety of functionalities. They can be sorted, reversed, shuffled. They support operations like addition, inspection, modification, deletion of elements; they include methods for searching and other utilities.</td>
+					</tr>
+					<tr>
+						<td>Convenience</td>
+						<td></td>
+						<td></td>
+					</tr>
+					</tbody>
+				</table>
+			</section>
+			<section>
+				<h4>Arrays vs. Collections</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class ArraysVsCollectionsExample {
+
+							public static void main(String[] args) {
+
+								String[] stringArray = new String[5]; // array of 5 Strings
+								stringArray[0] = "A";
+								stringArray[1] = "B";
+								stringArray[2] = "C";
+								stringArray[3] = "D";
+								stringArray[4] = "E";
+								// no more elements can be added, the array size is fixex
+
+
+								List<String> stringList = new ArrayList<String>();
+								stringList.add("A");
+								stringList.add("B");
+								stringList.add("C");
+								stringList.add("D");
+								stringList.add("E");
+								stringList.add("F");
+								// we can as many elements as we want
+							}
+
+						}
+					</code>
+				</pre>
 			</section>
 		</section>
 		<section>
 			<section data-background-color="#523996">
-				<h2>Topic</h2>
+				<h2>Lists</h2>
 			</section>
 			<section>
-				<h3>Subtopic</h3>
+				<h3>Lists</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Stacks</h2>
+			</section>
+			<section>
+				<h3>Stacks</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Sets</h2>
+			</section>
+			<section>
+				<h3>Sets</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Maps</h2>
+			</section>
+			<section>
+				<h3>Maps</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Queues</h2>
+			</section>
+			<section>
+				<h3>Queues</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Utility classes</h2>
+			</section>
+			<section>
+				<h3>Utility classes</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Functional Interfaces and Stream API</h2>
+			</section>
+			<section>
+				<h3>Functional Interfaces and Stream API</h3>
 			</section>
 		</section>
 	</div>
