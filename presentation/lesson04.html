@@ -722,7 +722,7 @@
 				<h3>Abstract class</h3>
 				<hr />
 				<p>
-					<strong>Abstract class</strong> is a class with defined with the <code><strong>abstract</strong></code> modifier,
+					<strong>Abstract class</strong> is a class defined with the <code><strong>abstract</strong></code> modifier,
 					which by its own cannot be used cannot be used to create objects.
 					<br />
 					<br />
@@ -740,27 +740,354 @@
 
 			<section>
 				<h4>Abstract class</h4>
-				<pre>
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO
-					</code>
-				</pre>
+				<div class="row">
+					<pre>Example:
+						<code data-trim data-noescape data-line-numbers class="hljs java">
+							public class AbstractClassExample {
+
+								public static void main(String[] args) {
+									Animal cat = new Cat("meow"); // Animal reference but Cat object
+									cat.makeSound();
+								}
+
+							}
+						</code>
+					</pre>
+					<div class="column">
+						<pre>Abstract class:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								abstract class Animal {
+
+									// notice the protected modifier
+									protected final String sound;
+
+									public Animal(String sound){
+										this.sound = sound;
+									}
+
+									/*
+									 Abstract method definition, which a subclass must implement.
+									 */
+									abstract void makeSound();
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<pre>Abstract class implementation:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class Cat extends Animal {
+
+									/*
+									Compiler will force us to call superclass constructor!
+									 */
+									public Cat(String sound) {
+										super(sound);
+									}
+
+									/*
+									 Compiler will force us to use @Override annotation!
+									 */
+									@Override
+									void makeSound() {
+										// referencing sound in 'this' instance
+										System.out.println(this.sound);
+									}
+
+								}
+							</code>
+						</pre>
+					</div>
+				</div>
 			</section>
 
 			<section>
 				<h3>Interfaces</h3>
+				<hr />
 				<p>
-					Interfaces are the keystone of polymorphism in Java.
+					<strong>Interface</strong> is a reference type (like calss) defined with the <code><strong>interfaces</strong></code> modifier.
+					You could say, that interface is a completely abstract class, only containing methods with empty bodies or nested types.
+					<br />
+					<br />
+					It cannot contain constructors or fields other than static final fields (which are constant values).
+					Therefore, interface cannot be directly instantiated, just like abstract class.
 				</p>
-				<p>
-					TODO
-				</p>
-				<pre>
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO
-					</code>
-				</pre>
+				<hr />
+				<ul>
+					<li>All the methods in an interface are implicitly abstract, unless they are static or default methods</li>
+					<li>Since Java 8, interfaces can also have default and static methods</li>
+					<li>Interfaces are used to implement polymorphism</li>
+					<li>Interfaces must be implemented from using the <code><strong>implements</strong></code>keyword</li>
+					<li>A class can implement multiple interfaces - concept called <em>multiple inheritance</em></li>
+					<li>Interfaces may inherit from other interfaces, but not from classes or abstract classes</li>
+				</ul>
 			</section>
+
+			<section>
+				<h4>Interfaces</h4>
+				<div class="row">
+					<pre>Example:
+						<code data-trim data-noescape data-line-numbers class="hljs java">
+							public class InterfaceExample {
+
+								public static void main(String[] args) {
+									Animal cat = new Cat();
+
+									cat.makeSound();
+
+									double distance = 3.2;
+									double movementTime = cat.move(distance);
+
+									System.out.println("Cat move " + distance + "m in " + movementTime + "s");
+								}
+
+							}
+						</code>
+					</pre>
+					<div class="column">
+						<pre>Interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Animal {
+
+									void makeSound();
+
+									double move(double distance);
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<pre>Implementation:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class Cat implements Animal {
+
+									@Override
+									public void makeSound() {
+										System.out.println("meow");
+									}
+
+									@Override
+									public double move(double distance) {
+										double speed = 2.0;
+										return distance / speed;
+									}
+								}
+							</code>
+						</pre>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>Interfaces</h4>
+				<p>
+					You can also implement multiple interfaces at once.
+				</p>
+				<div class="row">
+						<pre>Example:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								public class InterfaceExample {
+
+									public static void main(String[] args) {
+										Cat cat = new Cat(); // this time, the type must be Cat
+
+										cat.makeSound();
+
+										double distance = 3.2;
+										double movementTime = cat.move(distance);
+
+										System.out.println("Cat move " + distance + "m in " + movementTime + "s");
+									}
+
+								}
+							</code>
+						</pre>
+
+					<div class="column">
+						<pre>Moving interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Moving {
+
+									double move(double distance);
+
+								}
+							</code>
+						</pre>
+						<pre>Vocalizing interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Vocalizing {
+
+									void makeSound();
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<pre>Implementation of both Moving and Vocalizing:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class Cat implements Moving, Vocalizing {
+
+									@Override
+									public void makeSound() {
+										System.out.println("meow");
+									}
+
+									@Override
+									public double move(double distance) {
+										double speed = 2.0;
+										return distance / speed;
+									}
+								}
+							</code>
+						</pre>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>Interfaces</h4>
+				<p>
+					You can also extend interface with other interfaces.
+					The concrete class that implements such interface will be required to implement all abstract methods.
+				</p>
+				<div class="row">
+					<div class="column">
+						<pre>Animal interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Animal extends Moving, Vocalizing {
+
+									void eat(String food);
+
+								}
+							</code>
+						</pre>
+						<pre>Moving interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Moving {
+
+									double move(double distance);
+
+								}
+							</code>
+						</pre>
+						<pre>Vocalizing interface:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Vocalizing {
+
+									void makeSound();
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<pre>Implementation of Animal:
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class Cat implements Animal {
+
+									@Override
+									public void makeSound() {
+										System.out.println("meow");
+									}
+
+									@Override
+									public double move(double distance) {
+										double speed = 2.0;
+										return distance / speed;
+									}
+
+									@Override
+									public void eat(String food) {
+										System.out.println("eats " + food);
+									}
+								}
+							</code>
+						</pre>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>Interfaces</h4>
+				<p>
+					And finally, since Java 8, interfaces can have default and static methods.
+				</p>
+				<div class="row">
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								public class InterfaceExample {
+									public static void main(String[] args) {
+										Cat cat = new Cat();
+										cat.makeSound();
+										cat.move(3.2);
+										Animal.describe(); // static method must be called on the reference type
+									}
+								}
+							</code>
+						</pre>
+					<div class="column">
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Moving {
+									double move(double distance);
+								}
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Vocalizing {
+									void makeSound();
+								}
+							</code>
+						</pre>
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								interface Animal extends Moving, Vocalizing {
+
+									void eat(String food);
+
+									default void sleep(int minutes) {
+										System.out.println("sleeps for " + minutes + "minutes");
+									}
+
+									static void describe() {
+										System.out.println("Generic animal");
+									}
+
+								}
+							</code>
+						</pre>
+					</div>
+					<div class="column">
+						<pre>
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class Cat implements Animal {
+
+									@Override
+									public void makeSound() {
+										System.out.println("meow");
+									}
+
+									@Override
+									public double move(double distance) {
+										double speed = 2.0;
+										return distance / speed;
+									}
+
+									@Override
+									public void eat(String food) {
+										System.out.println("eats " + food);
+									}
+								}
+							</code>
+						</pre>
+					</div>
+				</div>
+			</section>
+
 		</section>
 		<section>
 			<section data-background-color="#523996">

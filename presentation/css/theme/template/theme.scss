@@ -349,7 +349,30 @@
     }
 }
 
+// CUSTOM STYLES !!!
 .reveal .subheader {
 	font-size: 120%;
 	font-style: italic;
 }
+
+//.row {
+//	display: flex;
+//}
+//
+//.column {
+//	flex: 50%;
+//}
+
+.reveal .column {
+	float: left;
+	width: 50%;
+}
+
+/* Clear floats after the columns */
+.reveal .row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+

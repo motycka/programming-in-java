@@ -381,6 +381,18 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-style: italic;
 }
 
+.reveal .column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.reveal .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 .reveal p {
   font-weight: 300;
   text-shadow: 1px 1px #222;

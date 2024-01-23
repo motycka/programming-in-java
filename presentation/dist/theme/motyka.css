@@ -370,3 +370,19 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
     background-color: var(--r-background-color);
   }
 }
+.reveal .subheader {
+  font-size: 120%;
+  font-style: italic;
+}
+
+.reveal .column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.reveal .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
