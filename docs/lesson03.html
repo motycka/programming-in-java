@@ -48,43 +48,52 @@
 			</section>
 			<section>
 				<h3>What is Quality</h3>
-				<p>What is quality, and how does it relate to testing and the product?</p>
+<!--				<hr />-->
 				<blockquote>
+					What is quality, and how does it relate to testing and the product?
+					<br />
+					<br />
 					Is a product considered good quality if it contains no errors?
 				</blockquote>
-				<p>A product is something someone desires because it satisfies certain needs.</p>
-				<p>We can view the quality of a product from two perspectives:</p>
-				<ul>
-					<li><strong>What the product does</strong> = external quality.</li>
-					<li><strong>How it does it</strong> = internal quality.</li>
-				</ul>
+				<div class="fragment fade-in">
+					<p><strong>A product is something someone desires because it satisfies their needs.</strong></p>
+					<br />
+					<p>
+						We can view the quality of a product from two perspectives:
+						<br />
+						<br />
+						<em><strong>What the product does</strong> = external quality.</em><br />
+						or<br />
+						<em><strong>How it does it</strong> = internal quality.</em>
+					</p>
+
+				</div>
 			</section>
 			<section>
 				<h3>External and Internal Quality</h3>
-				<table>
-					<tbody>
-					<tr>
-						<td>
-							<strong>External Quality</strong><br />
-							<ul>
-								<li>Does the product fulfill user's needs?</li>
-								<li>Does it operate in a way that is usable for the user?</li>
-							</ul>
-						</td>
-						<td>
-							<strong>Internal Quality</strong><br />
-							<ul>
-								<li>Is the software well written?</li>
-								<li>Is the code readable and understandable?</li>
-								<li>Is the code designed well?</li>
-								<li>Is the code testable? Is the test coverage sufficient?</li>
-								<li>Is there sufficient documentation?</li>
-								<li>Is there sufficient logging?</li>
-							</ul>
-						</td>
-					</tr>
-					</tbody>
-				</table>
+				<div class="row">
+					<div class="column">
+						<strong>External Quality</strong><br />
+						<hr />
+						<ul>
+							<li>Does the product fulfill user's needs?</li>
+							<li>Does it operate in a way that is usable for the user?</li>
+						</ul>
+					</div>
+					<div class="column">
+						<strong>Internal Quality</strong><br />
+						<hr />
+						<ul>
+							<li>Is the software well written?</li>
+							<li>Is the code readable and understandable?</li>
+							<li>Is the code designed well?</li>
+							<li>Is the code testable? Is the test coverage sufficient?</li>
+							<li>Is there sufficient documentation?</li>
+							<li>Is there sufficient logging?</li>
+						</ul>
+					</div>
+				</div>
+				<hr />
 				<div style="font-size: 80%">
 					<p>
 						While it is possible for product with relatively low internal quality to have high external quality,
@@ -97,15 +106,24 @@
 				</div>
 			</section>
 			<section>
+				<h3>7 principles of testing</h3>
+				<ul>
+					<li>Testing shows the presence of defects, not their absence</li>
+					<li>Exhaustive testing is not possible</li>
+					<li>Early testing saves time and money</li>
+					<li>Defect have a tendency to cluster</li>
+					<li>The Pesticide Paradox</li>
+					<li>Testing is context dependent</li>
+					<li>Absence-of-errors fallacy</li>
+				</ul>
+			</section>
+			<section>
 				<h3>The Testing Pyramid</h3>
 				<img src="./img/testing_pyramid.png">
 			</section>
 			<section>
 				<h3>The Cost of Defects</h3>
-<!--				<img src="./img/testing_pyramid.png">-->
-			</section>
-			<section>
-				<h3>7 principles of testing</h3>
+				<!--				<img src="./img/testing_pyramid.png">-->
 			</section>
 		</section>
 
@@ -113,60 +131,114 @@
 			<section data-background-color="#523996">
 				<h2>Types of testing</h2>
 			</section>
+
 			<section>
 				<h3>Types of testing</h3>
-				<ul>
+				<em>Testing based on the internal knowledge of the system</em>
+				<hr />
+				<p>
+					There are two types of testing based on the testers knowledge of the system internal structure/design/implementation.
+				</p>
+				<hr />
+				<ol>
 					<li>
-						Based on the internal knowledge of the system
-						<ul>
-							<li>Blackbox</li>
-							<li>Whitebox</li>
-						</ul>
+						<strong>Blackbox Testing</strong><br />
+						Internal structure of the system is <strong>not known</strong> to the tester.
 					</li>
 					<li>
-						Testing based on code execution
+						<strong>Whitebox Testing</strong><br />
+						Internal structure of the system is <strong> known</strong> to the tester.
+					</li>
+					<li style="color: grey">
+						<strong>Greybox Testing</strong><br />
+						Sometimes, this term is used when the internal structure of the system is <strong>partially known</strong> to the tester.
+					</li>
+				</ol>
+			</section>
+
+			<section>
+				<h3>Types of testing</h3>
+				<em>Testing based on code execution</em>
+				<hr />
+				<div class="row">
+					<div class="column">
+						<strong>Dynamic</strong>
 						<ul>
+							<li>The tested system code is executed during testing</li>
 							<li>
-								Dynamic
+								Dynamic testing can further be divided into
 								<ul>
-									<li>The tested system code is executed during testing</li>
-									<li>
-										Dynamic testing can further be divided into
-										<ul>
-											<li>Functional</li>
-											<li>Non-functional</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								Static
-								<ul>
-									<li>Code is not executed during testing</li>
-									<li>Static analysis usually involves the use of tools</li>
-									<li>Code review</li>
-									<li>Document reviews - specifications, requirement lists, tests, etc</li>
-									<li>Best practices</li>
+									<li>Functional</li>
+									<li>Non-functional</li>
 								</ul>
 							</li>
 						</ul>
-					</li>
-				</ul>
+					</div>
+					<div class="column">
+						<strong>Static</strong>
+						<ul>
+							<li>Code is not executed during testing</li>
+							<li>Static analysis usually involves the use of tools</li>
+							<li>Code review</li>
+							<li>Document reviews - specifications, requirement lists, tests, etc</li>
+							<li>Best practices</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h3>Functional vs. Non-Functional Testing</h3>
+				<em>We can also distinguish between functional and non-functional testing.</em>
+				<hr>
+				<p>
+					<strong>Functional testing</strong><br />
+					is testing of the functionality of the system, meaning testing of functions of the system as a real user would use it.
+					<br />
+					<br />
+					During functional testing, system functions and features are exercised by providing appropriate inputs and verifying that the outputs are as expected.
+				</p>
+				<hr>
+				<p>
+					<strong>Non-functional testing</strong><br />
+					is testing of the non-functional aspects of the system.
+					<br />
+					<br />
+					Some examples of non-functional testing include: <br />
+					<em>Performance, Security, Usability, Interoperability, Compatibility, Compliance, etc.</em>
+				</p>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
+				<h2>Test Case</h2>
 			</section>
 			<section>
-				<h4>Functional vs. Non-Functional Testing</h4>
+				<h3>What is a Test Case</h3>
+				<hr />
+				<p>
+					<strong>Test conditon</strong><br />
+					is a testable aspect of a component or system identified as a basis for testing.
+					<br />
+					<br />
+					<em>In other words, some behavior we expect from the system.</em>
+				</p>
+				<hr />
+				<p>
+					<strong>Test conditon</strong><br />
+					is a sequence of pre-conditions, inputs, actions steps with expected results and post-conditions, developed based on test conditions.
+					<br />
+					<br />
+					<em>In other words, a scenario describing how to test a particular test condition.</em>
+				</p>
+			</section>
 
-
-<!--				Funkcionální-->
-<!--				Program pro dané vstupy produkuje očekávané výstupy - dělá to co má-->
-<!--				zminit urvne testovani-->
-<!--				Nefunkcionální-->
-<!--				Security-->
-<!--				Performance, load, stress, volume ..-->
-<!--				Install, recovery-->
-<!--				Usability, compliance, lokalizace-->
-<!--				Interoperability, compatibility-->
-
+			<section>
+				<h4>Test Case</h4>
+				<p>
+					Example
+				</p>
 			</section>
 		</section>
 
@@ -175,20 +247,63 @@
 				<h2>Test design techniques</h2>
 			</section>
 			<section>
-				<h4>Test design techniques</h4>
-				<p>What are they and why should developers care?</p>
-
-<!--				Techniky návrhu testů: Proč používat?-->
-
-<!--				Exhaustivní testování je nemožné!-->
-<!--				Optimalizace množství testů-->
-<!--				Maximalizace efektivity testů-->
-<!--				Risk management-->
-
+				<h3>Test design techniques</h3>
+				<em>What are they and why should developers care?</em>
+				<hr />
+				<p>
+					<strong>Test design techniques</strong> are techniques used to design tests.
+					<br />
+					<br />
+					They are used to ensure adequate <strong>test coverage</strong>, optimize the number of tests, maximize the effectiveness of tests and manage risks.
+				</p>
+				<hr />
+				<p>
+					<strong>Test coverage</strong><br />
+					is a measure of the degree to which the source code of a program has been tested.
+				</p>
+				<p>
+					It is usually expressed as a percentage of code that has been executed by the test suite.
+					<br />
+					Different metrics are used to measure test coverage, such as <em>function coverage, statement coverage, branch coverage, etc.</em>
+				</p>
+				<hr />
+				<blockquote>
+					<strong>Remember that exhaustive testing is impossible!</strong>
+				</blockquote>
 			</section>
 			<section>
-				<h4>Test design techniques</h4>
-				<p>What are they and why should developers care?</p>
+				<h3>Equivalence Partitioning</h3>
+				<p>
+					Equivalence partitioning is a technique used to reduce the number of test cases by dividing the input data of a software unit into partitions of equivalent data from which test cases can be derived.
+				</p>
+			</section>
+			<section>
+				<h3>Boundary Value Analysis</h3>
+				<p>
+					Boundary value analysis is a software testing technique in which tests are designed to include representatives of boundary values in a range.
+				</p>
+			</section>
+			<section>
+				<h3>State Transition Analysis</h3>
+				<p>
+					State transition testing is a testing technique in which outputs are triggered by changes to the input conditions or changes to state of the system.
+				</p>
+			</section>
+			<section>
+				<h3>Decision Tables</h3>
+				<p>
+					Decision table testing is a testing technique in which test cases are designed to execute the combinations of inputs and/or stimuli (causes) shown in a decision table.
+				</p>
+			</section>
+			<section>
+				<h3>All-Pairs Testing</h3>
+				<p>
+					All-pairs testing is a combinatorial software testing method that, for each pair of input parameters to a system (typically, a software algorithm), tests all possible discrete combinations of those parameters.
+
+					It is based on the observation that most faults are caused by interactions of at most two factors.
+
+					There are techniques that extend all-pairs testing to more than two factors, such as all-tuples testing, but these techniques are not widely used, because they generate very large number of test cases with insignificant added benefit.
+				</p>
 			</section>
 		</section>
 
@@ -198,13 +313,17 @@
 			</section>
 			<section>
 				<h3>Unit Testing</h3>
+				<hr />
 				<p>
 					The purpose of unit testing is to verify individual units of the code base work as intended by the author.
 					It is an essential tool in maintaining <strong>internal quality</strong> of a software.
 				</p>
+				<hr />
 				<p>
-					Units == smallest testable parts of the software, such as individual methods, functions or objects.
+					<strong>Unit</strong><br />
+					is the smallest testable parts of the software, such as individual method, function or objects.
 				</p>
+				<hr />
 				<p>
 					Another important role of unit testing is documentation. By writing unit tests, we document the behavior
 					we intended, so that when we, or someone else wants to make changes in the software, they will understand
@@ -213,40 +332,31 @@
 			</section>
 
 			<section>
-				<h3>Test Case</h3>
-				<p>
-					Test conditon =
-					A testable aspect of a component or system identified as a basis for testing.
-
-					In other words, some behavior we expect from the code.
-				</p>
-				<p>
-					Test case =
-					A set of preconditions, inputs, actions (where applicable), expected results and postconditions, developed based on test conditions.
-
-					In other words, test case is a sequence of action steps with preconditons, inputs and expected results.
-				</p>
-			</section>
-
-			<section>
 				<h3>Assertion</h3>
+				<hr />
 				<p>
-					Assertion is a term used form mechanism of verifying if test expected outcomes match actual outcomes.
+					<strong>Assertion</strong> is a term used form mechanism of verifying if test expected outcomes match actual outcomes.
 				</p>
+				<hr />
 				<p>
 					Assertion itself is usually a function (method) that we call in our tests which evaluates actual value with expected value.
-					Based on result of this evaluation, the assertion ends in one of two states
+					<br />
+					<br />
+					Based on result of this evaluation, the assertion ends in one of two states:
+					<br />
+					<br />
+					<em style="color: green; font-weight: bold">PASSED</em> or <em style="color: red; font-weight: bold">FAILED</em>
 				</p>
+				<hr />
 				<ul>
-					<li>passed</li>
-					<li>failed</li>
+					<li>Test may contain any number of assertions, anywhere within the test.</li>
+					<li>When a test is run, and no assertion fails, the test is marked as passed.</li>
+					<li>When a test is run, and any assertion fails, the test is marked as failed.</li>
+					<li>
+						Generally, when assertion fails, test is ended immediately.<br />
+						Any code following the assertion is not executed.
+					</li>
 				</ul>
-
-				<p>Test may contain any number of assertions, anywhere within the test.</p>
-
-				<p>When a test is run, and no assertion fails, the test is marked as passed.</p>
-				<p>When a test is run, and any assertion fails, the test is marked as failed.</p>
-				<p>Generally, when assertion fails, test is ended immediately. Any code following the assertion is not executed.</p>
 			</section>
 
 <!--			<section>-->
@@ -260,16 +370,19 @@
 
 			<section>
 				<h3>Test Driven Development</h3>
+				<hr />
 				<p>
 					You may encounter the term <strong>Test Driven Development</strong> (TDD).
 					Know that, although the term suggest it might be testing technique, it really is not.
 					Rather it is a software design technique.
 				</p>
+				<hr />
 				<ol>
 					<li>In TDD, you write a tests first, they will initially be failing.</li>
 					<li>Then you start implement the functionality.</li>
 					<li>When all the tests finally pass, your implementation is complete.</li>
 				</ol>
+				<hr />
 				<p>
 					The reason TDD is development technique and not a test technique is because by writing tests
 					first, you are making code testable by design. Well-testable code usually directly correlates with
@@ -284,29 +397,173 @@
 			</section>
 			<section>
 				<h3>Integration Testing</h3>
+				<p>
+<!--					Integration testing is a level of testing where individual units are combined and tested as a group.-->
+				</p>
 			</section>
 		</section>
 
 		<section>
-			<h3>JUnit</h3>
-			<p>
-				There are number of unit testing frameworks available in Java. One of the commonly used is JUnit.
-				The concepts that we will learn with JUnit generally apply to all unit testng frameworks.
-			</p>
-		</section>
+			<section data-background-color="#523996">
+				<h2>JUnit</h2>
+			</section>
+			<section>
+				<h3>JUnit</h3>
+				<p>
+					There are number of unit testing frameworks available in Java.
+					<br />
+					One of the most commonly used is <strong>JUnit</strong>.
+					<br />
+					The concepts that we will learn with JUnit generally apply to all unit testing frameworks.
+				</p>
+			</section>
 
-		<section>
-			<h3>JUnit Test</h3>
-			<pre>
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO example
+			<section>
+				<h3>JUnit Test</h3>
+				<ul>
+					<li>JUnit test, generally, is a class that contains one or more test methods.</li>
+					<li>Each test method is a method annotated with <code class="inline">@Test</code> annotation.</li>
+					<li>
+						Besides being annotated with <code class="inline">@Test</code> annotation, in order for a method considered a test,
+						<strong>it must contain at least one assertion</strong>.
+					</li>
+					<li>By convention, test classes are usually suffixed with <code class="inline">Test</code></li>
+					<li>
+						It is important, that the test code is as readable as possible.
+						Therefore, good naming conventions are essential.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>JUnit Test</h3>
+				<p>
+					JUnit tests are just regular Java classes, where methods annotated with <code class="inline">@Test</code>
+					are treated little different from regular methods by the testing framework.
+				</p>
+				<p>
+					Assertions are just regular method calls, where the testing framework evaluates the result of the assertion.
+					In JUnit, we can use <code class="inline">Assertions</code> class to make assertions.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers="|1-2|7-16|18-25|4-5|" class="hljs java">
+						// By convention the name of the test class should be the name of the class under test + "Test"
+						public class UniversityCourseTest {
+
+							// create new LocalDate object with current date which can be reused in tests
+							private final LocalDate dateNow = LocalDate.now();
+
+							@Test // annotation to mark the method as a test
+							public void testGetDaysToStartNotStarted() {
+								int expected = 10; // expected result
+
+								// create new course with start date in the future
+								UniversityCourse course = new UniversityCourse("Java", dateNow.plusDays(expected), 10);
+
+								// assert that the result of getDaysToStart() is equal to expected
+								Assertions.assertEquals(expected, course.getDaysToStart());
+							}
+
+							@Test
+							public void testGetDaysToStartAlreadyStarted() {
+								// create new course with start date in the past
+								UniversityCourse course = new UniversityCourse("Java", dateNow.minusDays(10), 10);
+
+								//assert that the result of getDaysToStart() is equal to 0
+								Assertions.assertEquals(0, course.getDaysToStart());
+							}
+						}
 					</code>
 				</pre>
+			</section>
+
+			<section>
+				<h3>Clean tests <=> clean code</h3>
+				<hr />
+				<p>
+					<strong>Writing testable code matters!</strong>
+					<br />
+					<br />
+					I can say through my own experience, that the more testable the code unit is, the better it usually is.
+					This is because testability is an indicator of good design and therefore indicator of <strong>internal quality</strong>.
+				</p>
+				<hr />
+				<p>
+					<strong>Writing clean tests matters!</strong>
+					<br />
+					<br />
+					During real-world development, you will often be dealing with code you didn't write yourself.
+					You will come to appreciate well written tests, because they will help you understand the code you are working with.
+					<br />
+					<br />
+					Same goes also in the other direction, your colleagues will appreciate good tests you write, because they will help them understand your code.
+				</p>
+
+			</section>
+
+			<section>
+				<h4>JUnit Test</h4>
+				<p>
+					One of the ways you can make your test code easier to understand is using descriptive names and well-designed assertions.
+				</p>
+				<p>
+					Remember, you will not only be reading the test code, but also the test output.
+					It is very helpful if the test output is descriptive and easy to understand.
+				</p>
+				<p>
+					With <strong>JUnit</strong>, we can use <code class="inline">@DisplayName</code> annotation to give our tests descriptive name.
+					Notice that the test names express state of the SUT, but also what we expect from the SUT.
+				</p>
+				<p>
+					Another way to make our tests more descriptive is to use <code class="inline">Assertions</code> class methods in a way that when they fail, the output is as descriptive of the problem as possible.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class UniversityCourseTest2 {
+
+							private final LocalDate dateNow = LocalDate.now();
+
+							@Test
+							@DisplayName("getDaysToStart() should return positive number when course is not started")
+							public void testGetDaysToStartNotStarted() {
+								int expected = 10;
+
+								UniversityCourse course = new UniversityCourse("Java", dateNow.plusDays(expected), 10);
+
+								Assertions.assertEquals(expected, course.getDaysToStart());
+							}
+
+							@Test
+							@DisplayName("getDaysToStart() should return 0 when course is already started")
+							public void testGetDaysToStartAlreadyStarted() {
+								UniversityCourse course = new UniversityCourse("Java", dateNow.minusDays(10), 10);
+
+								Assertions.assertEquals(0, course.getDaysToStart());
+							}
+						}
+					</code>
+				</pre>
+			</section>
+
+			<section>
+				<h3>Test Lifecycle</h3>
+				<p>
+					Test lifecycle is the sequence of events that happen during the execution of a test.
+					TODO
+				</p>
+			</section>
+
+
+			<section>
+				<h3>Test Lifecycle</h3>
+				<p>
+					It is often necessary to perform some actions before or after each test.
+					To avoid duplicating code in each test, we can use <code class="inline">@BeforeAll</code>, <code class="inline">@BeforeEach</code>, <code class="inline">@AfterEach</code> and <code class="inline">@AfterAll</code> annotations.
+				</p>
+			</section>
 		</section>
 
-		<section>
-			<h3>Before, After ...</h3>
-		</section>
+
 
 		<section>
 			<section data-background-color="#523996">
@@ -314,6 +571,9 @@
 			</section>
 			<section>
 				<h3>Logging</h3>
+				<p>
+					TODO
+				</p>
 			</section>
 		</section>
 
@@ -323,6 +583,9 @@
 			</section>
 			<section>
 				<h3>Debugging</h3>
+				<p>
+					TODO
+				</p>
 			</section>
 		</section>
 
@@ -339,7 +602,7 @@
 		</section>
 
 		<section>
-			<section>
+			<section data-background-color="#523996">
 				<h2>Dependency Management</h2>
 			</section>
 			<section>

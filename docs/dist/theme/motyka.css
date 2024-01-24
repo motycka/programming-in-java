@@ -203,6 +203,7 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   width: 70%;
   margin: var(--r-block-margin) auto;
   padding: 20px;
+  width: 100%;
   font-style: italic;
   background: lightgreen;
   border-radius: 8px;
@@ -385,4 +386,9 @@ section.has-dark-background, section.has-dark-background h1, section.has-dark-ba
   content: "";
   display: table;
   clear: both;
+}
+
+.reveal code.inline {
+  color: darkblue;
+  font-weight: bold;
 }

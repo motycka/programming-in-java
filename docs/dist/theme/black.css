@@ -203,6 +203,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
   width: 70%;
   margin: var(--r-block-margin) auto;
   padding: 20px;
+  width: 100%;
   font-style: italic;
   background: lightgreen;
   border-radius: 8px;
@@ -385,4 +386,9 @@ section.has-light-background, section.has-light-background h1, section.has-light
   content: "";
   display: table;
   clear: both;
+}
+
+.reveal code.inline {
+  color: darkblue;
+  font-weight: bold;
 }

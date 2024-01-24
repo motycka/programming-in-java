@@ -13,7 +13,11 @@ public class ArraysVsCollectionsExample {
         stringArray[2] = "C";
         stringArray[3] = "D";
         stringArray[4] = "E";
-        // no more elements can be added, the array size is fixex
+        // no more elements can be added, the array size is fixed
+
+        for (int i = 0; i < stringArray.length; i++) {
+            System.out.println(stringArray[i]);
+        }
 
 
         List<String> stringList = new ArrayList<String>();
@@ -24,6 +28,10 @@ public class ArraysVsCollectionsExample {
         stringList.add("E");
         stringList.add("F");
         // we can as many elements as we want
+
+        for (int i = 0; i < stringList.size(); i++) {
+            System.out.println(stringList.get(i));
+        }
     }
 
 }

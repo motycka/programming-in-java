@@ -33,7 +33,7 @@
 					The purpose of Java wrapper classes is to convert Java primitive types to reference types (objects).
 					<br />
 					<br />
-					All wrapper classes support auto-boxing and auto-unboxing = automatic conversion of primitive types to the object of their corresponding wrapper classes and vice versa.
+					All wrapper classes support auto-boxing and auto-unboxing: automatic conversion of primitive types to the object of their corresponding wrapper classes and vice versa.
 				</p>
 				<hr />
 				<p>
@@ -43,7 +43,7 @@
 						<li><strong>Object-Oriented Programming</strong> - primitives are not objects in Java</li>
 						<li><strong>Null handling</strong> - wrapper classes can hold null value, unlike primitive types</li>
 						<li><strong>Data structures</strong> - Java Collection Framework can only hold objects, not primitive types</li>
-						<li><strong>Member functions</strong> - wrapper classes come with a number of useful methods for parsing, converting, comparing values, etc.</li>
+						<li><strong>Convenience</strong> - wrapper classes come with a number of useful methods for parsing, converting, comparing values, etc.</li>
 						<li><strong>Immutability</strong> - objects these wrapper classes are immutable (meaning their state can’t be changed once created). <br />
 							<sub>This is a useful property, especially when dealing with multi-threaded environments as it eliminates synchronization for object's state manipulation.</sub>
 						</li>
@@ -53,10 +53,10 @@
 			<section>
 				<h4>Wrapper Classes</h4>
 				<p>
-					Here is primitive to wrapper class mapping:
+					Here is an exmaple primitive to wrapper class mapping.
 				</p>
 				<div class="row">
-					<div class="column">
+					<div class="column" style="width: 70%">
 						<pre>
 							<code data-trim data-noescape data-line-numbers class="hljs java">
 								public class WrapperClassesExample {
@@ -81,17 +81,16 @@
 							</code>
 						</pre>
 					</div>
-					<div class="column">
-						<ul>
-							<li>byte: Byte</li>
-							<li>short: Short</li>
-							<li>int: Integer</li>
-							<li>long: Long</li>
-							<li>float: Float</li>
-							<li>double: Double</li>
-							<li>boolean: Boolean</li>
-							<li>char: Character</li>
-						</ul>
+					<div class="column" style="width: 30%; font-size: 90%; text-align: left;">
+						<br />
+						<code>byte = Byte</code><br />
+						<code>short = Short</code><br />
+						<code>int = Integer</code><br />
+						<code>long = Long</code><br />
+						<code>float = Float</code><br />
+						<code>double = Double</code><br />
+						<code>boolean = Boolean</code><br />
+						<code>char = Character</code>
 					</div>
 				</div>
 			</section>
@@ -167,19 +166,50 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
-				<h2>Collections</h2>
+				<h2>Java Collections Framework</h2>
+			</section>
+			<section>
+				<h3>Java Collections Framework</h3>
+				<hr />
+				<p>
+					The Java Collections Framework is a set of classes and interfaces that implement common
+					collection data structures and operations on them, such as searching, sorting, insertion, manipulation, and deletion.
+					<br />
+					<br />
+					It is part of the <code><strong>java.util</strong></code> package.
+				</p>
+				<hr />
+				<p>Java Collections Framework has these main components:</p>
+				<ul style="font-size: 80%">
+					<li>
+						<strong>Interfaces</strong><br />
+						Abstract data types representing collections, they allow collections to be manipulated independently of the details of their representation.
+						<br />
+						<em>Collection, List, Set, Queue, Deque, Map, and SortedMap ...</em>
+					</li>
+					<li>
+						<strong>Implementations</strong><br />
+						Concrete implementations of the collection interfaces.
+						<br />
+						<em>ArrayList, LinkedList, HashSet, TreeSet, PriorityQueue, HashMap, and TreeMap ...</em>
+					</li>
+					<li>
+						<strong>Algorithms</strong><br />
+						Methods that perform useful computations, such as searching and sorting, on objects that implement collection interfaces.
+					</li>
+				</ul>
 			</section>
 			<section>
 				<h3>Arrays vs. Collections</h3>
 				<hr />
 				<p>
-					Both arrays and collections are used to store data.
+					Both arrays and Collections are used to store data.
 					There are however some notable differences that make them suitable for different use cases.
 				</p>
 				<hr />
-				<table>
+				<table style="font-size: 80%">
 					<thead>
-					<tr>
+					<tr style="font-weight: bold">
 						<td></td>
 						<td>Arrays</td>
 						<td>Collections</td>
@@ -187,29 +217,26 @@
 					</thead>
 					<tbody>
 					<tr>
-						<td>Size</td>
-						<td>Arrays have fixed size. This may lead to memory wastage, but is also inconvenient.</td>
+						<td style="font-weight: bold">Size</td>
+						<td>Arrays have fixed size. This may lead to memory wastage, but is also inconvenient to work with.</td>
 						<td>Collections can grow or shrink dynamically to accommodate the data.</td>
 					</tr>
 					<tr>
-						<td>Type Safety</td>
+						<td style="font-weight: bold">Type Safety</td>
 						<td>Arrays are type-safe</td>
-						<td>Collections are type-safe *</td>
+						<td>Collections are type-safe (through generic typing)</td>
 					</tr>
 					<tr>
-						<td>Performance</td>
+						<td style="font-weight: bold">Performance</td>
 						<td>Arrays can perform better than collections for some operations because of their simpler memory layout, lower overhead, and ability to employ direct indexing.</td>
 						<td>Collections have more overhead than arrays, and certain operations may be slower as a result. However, the built-in utilities in collections make them more convenient for complex data manipulation.</td>
 					</tr>
 					<tr>
-						<td>Functionality</td>
+						<td style="font-weight: bold">Functionality</td>
 						<td>Arrays offer basic functionality such as adding elements, getting elements, and modifying existing elements.</td>
-						<td>Collections provide a wide variety of functionalities. They can be sorted, reversed, shuffled. They support operations like addition, inspection, modification, deletion of elements; they include methods for searching and other utilities.</td>
-					</tr>
-					<tr>
-						<td>Convenience</td>
-						<td></td>
-						<td></td>
+						<td>
+							Collections provide a wide variety of functionalities.
+							They can be sorted, reversed, shuffled. They support operations like addition, inspection, modification, deletion, searching and other.</td>
 					</tr>
 					</tbody>
 				</table>
@@ -228,8 +255,11 @@
 								stringArray[2] = "C";
 								stringArray[3] = "D";
 								stringArray[4] = "E";
-								// no more elements can be added, the array size is fixex
+								// no more elements can be added, the array size is fixed
 
+								for (int i = 0; i < stringArray.length; i++) {
+									System.out.println(stringArray[i]);
+								}
 
 								List<String> stringList = new ArrayList<String>();
 								stringList.add("A");
@@ -239,8 +269,11 @@
 								stringList.add("E");
 								stringList.add("F");
 								// we can as many elements as we want
-							}
 
+								for (int i = 0; i < stringList.size(); i++) {
+									System.out.println(stringList.get(i));
+								}
+							}
 						}
 					</code>
 				</pre>
@@ -251,7 +284,67 @@
 				<h2>Lists</h2>
 			</section>
 			<section>
-				<h3>Lists</h3>
+				<h3>List</h3>
+				<em>Interface</em>
+				<hr />
+				<p>
+					List is an <strong>ordered</strong> collection of elements, similar to an array where every element has its own position starting from 0.
+					<br />
+					<br />
+					However, unlike arrays, Lists can grow dynamically and provide additional, convenient methods for operations like add, remove, and search.
+				</p>
+				<hr />
+				<p>
+					There are three main implementations of the List interface:
+				</p>
+				<ul>
+					<li>ArrayList</li>
+					<li>LinkedList</li>
+					<li>Vector</li>
+				</ul>
+				<blockquote>
+					List is an interface that extends the Collection interface.<br />
+					As such, it itself, does not provide any concrete implementation.<br />
+					This is true for all interfaces in the Java Collections Framework, which we will discuss.
+				</blockquote>
+			</section>
+			<section>
+				<h3>ArrayList</h3>
+				<p>
+					ArrayList is a resizable array implementation of the List interface.
+					It is not thread-safe, therefore it is not suitable for use in a concurrent multi-threaded environment without proper synchronization.
+					It allows random access because it works at the array index level.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h3>LinkedList</h3>
+				<p>
+					LinkedList is a doubly linked list implementation of the List and Deque interfaces.
+					It allows element addition and removal at both ends (either start or end of the list).
+					It is not synchronised and hence, like ArrayList, not suitable for use in a concurrent multi-threaded environment unless properly synchronized.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h3>Vector</h3>
+				<p>
+					Vector is similar to ArrayList, but Vector methods are synchronized for thread safety.
+					Therefore, it is safe to use in a multi-threaded environment, but it brings an overhead of synchronization which makes it slower than ArrayList and LinkedList
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+
+					</code>
+				</pre>
 			</section>
 		</section>
 		<section>
@@ -259,7 +352,11 @@
 				<h2>Stacks</h2>
 			</section>
 			<section>
-				<h3>Stacks</h3>
+				<h3>Stack</h3>
+				<em>Interface</em>
+				<p>
+					A Stack is a data structure which follows the LIFO (Last In First Out) principle. That means the elements inserted last are the ones that are removed first.
+				</p>
 			</section>
 		</section>
 		<section>
@@ -267,7 +364,8 @@
 				<h2>Sets</h2>
 			</section>
 			<section>
-				<h3>Sets</h3>
+				<h3>Set</h3>
+				<em>Interface</em>
 			</section>
 		</section>
 		<section>
@@ -275,7 +373,8 @@
 				<h2>Maps</h2>
 			</section>
 			<section>
-				<h3>Maps</h3>
+				<h3>Map</h3>
+				<em>Interface</em>
 			</section>
 		</section>
 		<section>
@@ -283,7 +382,8 @@
 				<h2>Queues</h2>
 			</section>
 			<section>
-				<h3>Queues</h3>
+				<h3>Queue</h3>
+				<em>Interface</em>
 			</section>
 		</section>
 		<section>
@@ -292,6 +392,14 @@
 			</section>
 			<section>
 				<h3>Utility classes</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Collections class</h2>
+			</section>
+			<section>
+				<h3>Collections class</h3>
 			</section>
 		</section>
 		<section>

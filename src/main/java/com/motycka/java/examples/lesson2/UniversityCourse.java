@@ -13,7 +13,7 @@ public class UniversityCourse {
     private String teacher = null;
     private ArrayList<String> students = new ArrayList<>();
 
-    UniversityCourse(String subject, LocalDate startDate, int length, int capacity, String teacher) {
+    public UniversityCourse(String subject, LocalDate startDate, int length, int capacity, String teacher) {
         this.subject = subject;
         this.startDate = startDate;
         this.length = length;
@@ -21,10 +21,10 @@ public class UniversityCourse {
         this.teacher = teacher;
     }
 
-    UniversityCourse(String subject, int capacity, LocalDate startDate) {
+    public UniversityCourse(String subject, LocalDate startDate, int capacity) {
         this.subject = subject;
-        this.capacity = capacity;
         this.startDate = startDate;
+        this.capacity = capacity;
         this.length = 1;
     }
 
@@ -64,7 +64,7 @@ public class UniversityCourse {
         return teacher;
     }
 
-    int getDaysRemaining() {
+    public int getDaysRemaining() {
         LocalDate today = LocalDate.now();
 
         if (today.isBefore(startDate)) {
@@ -74,7 +74,7 @@ public class UniversityCourse {
         }
     }
 
-    int getDaysToStart() {
+    public int getDaysToStart() {
         LocalDate today = LocalDate.now();
 
         if (today.isBefore(startDate)) {
