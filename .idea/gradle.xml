@@ -9,6 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/m1-java-basics" />
+            <option value="$PROJECT_DIR$/m2-java-basics" />
+            <option value="$PROJECT_DIR$/m3-spring-application" />
           </set>
         </option>
       </GradleProjectSettings>

@@ -31,18 +31,13 @@
 			<section>
 				<h3>Communication of intent</h3>
 				<hr />
-				<!--				<p>Programming <b>language</b> is a way of communication to a computer what we want it to do.</p>-->
-				<!--				<p>It is also a way of communicating our intent to other programmers or even to ourselves when we look at our code later.</p>-->
-				<!--				<p>It is therefore very important that our code is clean and easy to understand, and that it communicates our intentions well.</p>-->
 				<p>
 					Programming <b>language</b> provides means of expressing programmer's intent to a computer system.
 				</p>
 				<p>
 					But programming it is not just a way of giving instructions to a computer.
-					It can also be a means of communication between humans,
-					particularly in the context of team development,
-					code reviews, and future maintenance of the software.
-					Here are few points to keep in mind ...
+					It can also be a means of communication between humans, particularly in the context of team development,
+					code reviews, and future maintenance of the software. Here are few points to keep in mind ...
 				</p>
 				<hr />
 				<ul>
@@ -80,8 +75,8 @@
 				<p>Remember, there are four main OOP principles:</p>
 				<ol>
 					<li>Encapsulation</li>
-					<li>Polymorphism</li>
 					<li>Inheritance</li>
+					<li>Polymorphism</li>
 					<li>Abstraction</li>
 				</ol>
 
@@ -94,6 +89,7 @@
 			</section>
 			<section>
 				<h3>What is Encapsulation</h3>
+				<code style="font-size: smaller">lesson04.encapsulation</code>
 				<hr />
 				<strong>Encapsulation</strong> is a concept of controlling access to the internal state of an object, protecting it from unauthorized access and ensuring data integrity.
 				<hr />
@@ -105,28 +101,24 @@
 						By using getter/setter methods, the class can enforce its own data validation rules to ensure it's internal state remains valid and consistent.
 					</li>
 				</ul>
-				<pre>Example:
+				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-						class UniversityCourse {
+						public class Animal {
 
-							private String subject;
-							private LocalDate startDate;
+							// birthDate holds internal state, and is not accessible from outside the class
+							private LocalDate birthDate;
 
-							public UniversityCourse(String subject, LocalDate startDate) {
-								this.subject = subject;
-								this.startDate = startDate;
+							// birthDate is only read through a getter
+							public LocalDate getBirthDate() {
+								return birthDate;
 							}
 
-							public String getSubject() { return subject; }
-
-							public LocalDate getStartDate() { return startDate; }
-
-							// state validation
-							public void setStartDate(LocalDate startDate) {
-								if (startDate.isBefore(LocalDate.now())) {
-									throw new IllegalArgumentException("Course cannot start in the past");
+							// birthDate is only changed through a setter, which ensures validation
+							public void setBirthDate(LocalDate birthDate) {
+								if (birthDate.isAfter(LocalDate.now())) {
+									throw new IllegalArgumentException("Birth date cannot be in the future");
 								} else {
-									this.startDate = startDate;
+									this.birthDate = birthDate;
 								}
 							}
 						}
@@ -148,10 +140,6 @@
 					<br />
 					<br />
 					The class that inherits is called <strong>subclass</strong> and the class inherited from is called <strong>superclass</strong>.
-					<!--					Inheritance enhances code re-usability and reduces code duplication-->
-					<!--					subclass (child) - the class that inherits from another class-->
-					<!--					superclass (parent) - the class being inherited from-->
-					<!--					To inherit from a class, use the extends keyword.-->
 				</p>
 				<hr />
 				<ul>
@@ -159,7 +147,7 @@
 					<li>If a superclass has a <em>non-default</em> constructor, you must call <strong><code>super();</code></strong> method in the subclass constructior.</li>
 					<li>
 						You can mark methods and attributes of a superclass as <strong><code>protected</code></strong>.
-						This will make them only accessible within subclass.
+						This will make them only accessible within the same package or within subclass.
 					</li>
 					<li>You can reference fields and methods in the superclass class using the <strong><code>super</code></strong> keyword.</li>
 					<li>To prevent inheritance, you can mark the class with <strong><code>final</code></strong> modifier.</li>
@@ -171,22 +159,16 @@
 
 			<section>
 				<h4>Inheritance</h4>
-				<em>
-					Creating a superclass - subclass relationship
-				</em>
 				<pre>Main:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-						public class InheritanceExample {
+							Cat cat = new Cat("meow");
+							cat.makeSound();
 
-							public static void main(String[] args) {
+							Dog dog = new Dog();
+							dog.makeSound();
 
-								Cat cat = new Cat("meow");
-								cat.makeSound();
-
-								Dog dog = new Dog();
-								dog.makeSound();
-							}
-						}
+							// this would not compile, because makeRawSound is protected
+							// dog.makeRawSound();
 					</code>
 				</pre>
 				<table style="width: 100%">
@@ -203,6 +185,10 @@
 										}
 
 										public void makeSound() {
+											System.out.println(sound);
+										}
+
+										protected void makeRawSound() {
 											System.out.println(sound);
 										}
 									}
@@ -244,17 +230,6 @@
 					</tr>
 					</tbody>
 				</table>
-			</section>
-			<section>
-				<h4>Inheritance</h4>
-				<em>
-					Setting field/method visibility with <code>protected</code> modifier.
-				</em>
-				<pre>Example:
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO
-					</code>
-				</pre>
 			</section>
 
 			<section>
@@ -307,7 +282,6 @@
 			</section>
 			<section>
 				<h4>Cons of inheritance</h4>
-				<!--				Can lead to tight coupling and a lack of encapsulation, because changes in the parent class can break code in the child classes. Java and Kotlin does not support multiple inheritance (a class can't extend multiple classes), which can limit its usefulness.-->
 				<ol>
 					<li>
 						<strong>Tight coupling</strong><br />
@@ -319,10 +293,6 @@
 							Inheritance often leads to long chains which could make tracking down errors in the code difficult.
 						</p>
 					</li>
-					<!--					<li>-->
-					<!--						<strong>Hidden Parent Class Dependencies</strong><br />-->
-					<!--						<p>Sometimes, superclass dependencies might not be entirely clear to developers who are using subclassing which can lead to erroneous code.</p>-->
-					<!--					</li>-->
 					<li>
 						<strong>Issues with multiple inheritance</strong><br />
 						<p>
@@ -346,7 +316,6 @@
 				<p>
 					<strong>Composition</strong> provides a <strong><em>"has-a"</em></strong> relationship.
 					It allows you to use object instances as fields within the other classes.
-					<!--					resulting in classes having the intended functionality.-->
 				</p>
 				<hr />
 				<strong class="subheader">Pros</strong>
@@ -574,13 +543,7 @@
 					</tbody>
 				</table>
 			</section>
-			<section>
-				<h4>Composition and Inheritance</h4>
-				<em>Opposite direction of inheritance and composition</em>
-				<p>TODO</p>
-			</section>
 		</section>
-
 		<section>
 			<section data-background-color="#523996">
 				<h2>Polymorphism</h2>
@@ -818,7 +781,7 @@
 					<li>All the methods in an interface are implicitly abstract, unless they are static or default methods</li>
 					<li>Since Java 8, interfaces can also have default and static methods</li>
 					<li>Interfaces are used to implement polymorphism</li>
-					<li>Interfaces must be implemented from using the <code><strong>implements</strong></code>keyword</li>
+					<li>Interfaces must be implemented from using the <code><strong>implements</strong></code> keyword</li>
 					<li>A class can implement multiple interfaces - concept called <em>multiple inheritance</em></li>
 					<li>Interfaces may inherit from other interfaces, but not from classes or abstract classes</li>
 				</ul>
@@ -1091,7 +1054,8 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
-				<h2>Errors and Exception handling</h2>
+				<h2>Exceptions</h2>
+				<em>and error handling</em>
 			</section>
 			<section>
 				<h3>What is an Exception</h3>
@@ -1196,12 +1160,12 @@
 				</p>
 				<ul>
 					<li>
-						The <code><strong>throw</strong></code> keyword is used to explicitly throw an exception any block of code. We can throw either checked or unchecked exceptions.
+						The <code><strong>throw</strong></code> keyword is used to "emit" an exception from any block of code.
+						We can throw either checked or unchecked exceptions.
 					</li>
 					<li>
 						The <code><strong>throws</strong></code> keyword is used to declare exceptions.
 						It doesn't throw an exception but specifies that there may occur an exception in the method.
-						<!--					It is always used with a method signature.-->
 					</li>
 				</ul>
 			</section>

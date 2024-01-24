@@ -37,58 +37,51 @@
 					What is a class?
 				</blockquote>
 				<div class="fragment fade-in">
-					<b>Object</b> = is a data structure in memory<br />
-					<b>Class</b> = a template for how to create an object
+					<strong>Object</strong> = is a data structure in memory<br />
+					<strong>Class</strong> = a template for how to create an object
 				</div>
 			</section>
 			<section>
 				<h3>Class Definition</h3>
-				<p>A Java class is defined by the following components:</p>
 				<ul>
 					<li>
-						<b>Name</b>
+						<strong>Name</strong>
 						<div>The name should begin with an initial letter (capitalized by convention).</div>
 					</li>
 					<li>
-						<b>Modifiers</b>
+						<strong>Modifiers</strong>
 						<div>Optional. Special keywords that define class visibility and other aspects.</div>
 					</li>
 					<li>
-						<b>Superclass</b>
-						<div>Optional. Parent class being extended following the <code><b>extends</b></code> keyword.</div>
+						<strong>Superclass</strong>
+						<div>Optional. Parent class being extended following the <code><strong>extends</strong></code> keyword.</div>
 					</li>
 					<li>
-						<b>Interfaces</b>
-						<div>Optional. Comma-separated list of interfaces the class extends following the <code><b>implements</b></code> keyword.</div>
+						<strong>Interfaces</strong>
+						<div>Optional. Comma-separated list of interfaces the class extends following the <code><strong>implements</strong></code> keyword.</div>
 					</li>
 					<li>
-						<b>Body</b>
+						<strong>Body</strong>
 						<div>
 							Enclosed between curly-braces, class body may contain:
 							<ul>
 								<li>
-									<b>Fields</b>
-									<div>Variables that hold state of the class and its objects.</div>
+									<strong>Fields</strong> - variables that hold state of the class and its objects
 								</li>
 								<li>
-									<b>Methods</b>
-									<div>Contain the executable code.</div>
+									<strong>Methods</strong> - contain the executable code
 								</li>
 								<li>
-									<b>Constructors</b>
-									<div>Special methods used to initialize the state of an object.</div>
+									<strong>Constructors</strong> - special methods used to initialize the state of an object
 								</li>
 								<li>
-									<b>Initializer Blocks</b>
-									<div>Not named code blocks used for initializing shared variables and executing a code that needs to run every time an instance of the class is created.</div>
+									<strong>Initializer Blocks</strong> - unnamed code blocks used for initializing shared variables and executing a code that needs to run every time an instance of the class is created
 								</li>
 								<li>
-									<b>Inner Classes and Interfaces</b>
-									<div>Class or interface definitions nested within the outer class body.</div>
+									<strong>Inner Classes and Interfaces</strong> - class or interface definitions nested within the outer class body
 								</li>
 								<li>
-									<b>Enumerations</b>
-									<div>Special classes that have fields which consist only of a fixed set of constants.</div>
+									<strong>Enumerations</strong> - special classes that have fields which consist only of a fixed set of constants
 								</li>
 							</ul>
 						</div>
@@ -98,7 +91,7 @@
 			<section>
 				<h4>Class Definition</h4>
 				<div>
-					Minimal class definition:
+					Minimal class definition ...
 					<pre>
 						<code data-line-numbers data-trim data-noescape class="hljs java">
 							class UniversityCourse {
@@ -107,20 +100,22 @@
 						</code>
 					</pre>
 				</div>
-				<div style="text-align: left;">
-					More realistic class definition
-					<pre>
+				<div>
+					More realistic class definition ...
+					<pre>UniversityCourseExample.java
 						<code data-trim data-noescape data-line-numbers="|1,24|3-5|7-12|14-18|19-22|" class="hljs java">
 							public class UniversityCourse { // access modifier, class keyword, class name
 
 								// class fields
 								private String subject; // access modifier, data type, variable name
-								private int lengthDays;
+								private final LocalDate startDate;
+								private final int lengthDays;
 
-								// class constructor - access modifier, name, arguments
-								public UniversityCourse(String subject, int lengthDays) {
+								// primary constructor - access modifier, LocalDate startDate, name, arguments
+								public UniversityCourse(String subject, LocalDate startDate, int lengthDays) {
 									// code that will be executed during class instantiation
 									this.subject = subject;
+									this.startDate = startDate;
 									this.lengthDays = lengthDays;
 								}
 
@@ -141,17 +136,17 @@
 			</section>
 			<section>
 				<h3>Class Instantiation</h3>
-				<p style="text-align: left;">
+				<p>
 					You do not directly work with classes in Java, you work with objects that are created from classes - so called class instances.
 				</p>
 				<blockquote>
 					object == instance of a class
 				</blockquote>
 				<ul>
-					<li>The process that creates an object from class is called <b>instantiation</b></li>
-					<li>Instantiation is done by calling a special <b>constructor</b> method</li>
-					<li>Class may have <b>one or more</b> constructors</li>
-					<li>If constructor is not explicitly defined, then the class will <b>default constructor with no arguments</b></li>
+					<li>The process that creates an object from class is called <strong>instantiation</strong></li>
+					<li>Instantiation is done by calling a special <strong>constructor</strong> method</li>
+					<li>Class may have <strong>one or more</strong> constructors</li>
+					<li>If constructor is not explicitly defined, then the class will <strong>default constructor with no arguments</strong></li>
 					<li>Instantiation can be used to set initial values for the object</li>
 				</ul>
 			</section>
@@ -194,34 +189,38 @@
 			<section>
 				<h4>Class Constructors</h4>
 				Example of class definition, class with 2 constructors ...
-				<pre>
-					<code data-trim data-noescape data-line-numbers= "|6-10|13-16|" class="hljs java">
+				<pre>UniversityCourseExample.java
+					<code data-trim data-noescape data-line-numbers= "|7-13|16-20|" class="hljs java">
 						public class UniversityCourse {
 
-							private final String subject;
+							private String subject; // access modifier, data type, variable name
 							private final LocalDate startDate;
+							private final int lengthDays;
 
-							// constructor 1
-							UniversityCourse(String subject, LocalDate startDate) {
+							// primary constructor - access modifier, LocalDate startDate, name, arguments
+							public UniversityCourse(String subject, LocalDate startDate, int lengthDays) {
+								// code that will be executed during class instantiation
 								this.subject = subject;
 								this.startDate = startDate;
+								this.lengthDays = lengthDays;
 							}
 
-							// constructor 2
-							UniversityCourse(String subject) {
+							// secondary constructor
+							public UniversityCourse(String subject) {
 								this.subject = subject;
 								this.startDate = LocalDate.now();
+								this.lengthDays = 1;
 							}
 
 						}
 					</code>
 				</pre>
 				Class instantiation ...
-				<pre>
+				<pre>UniversityCourseExample.java
 					<code data-trim data-noescape data-line-numbers= "|1|3|" class="hljs java">
-						UniversityCourse course1 = new UniversityCourse("Java", LocalDate.of("2024-02-09"));
+						UniversityCourse javaCourse = new UniversityCourse("Java", LocalDate.parse("2024-02-19"), 15);
 
-						UniversityCourse course2 = new UniversityCourse("Java");
+						UniversityCourse pythonCourse = new UniversityCourse("Python");
 					</code>
 				</pre>
 			</section>
@@ -262,7 +261,7 @@
 				<h3>Class destruction</h3>
 				<p>
 					Java has no class destructor, because freeing up memory is entirely delegated to Java through
-					a process called <b>garbage collection</b>, which we will talk about in later in the course.
+					a process called <strong>garbage collection</strong>, which we will talk about in later in the course.
 				</p>
 				<p>
 					Some Java classes may have a special methods that should be called after we are done using
@@ -270,7 +269,69 @@
 					later in the course.
 				</p>
 			</section>
+			<section>
+				<h3>Records</h3>
+				<p>
+					Record is a special kind of class introduced in Java 16. It is essentially a class that is used to store data.
+					It has limited functionality compared to regular class, but it is convenient for classes that are used to store data.
+				</p>
+				<p>
+					As a minimum, a record class must have a name and a list of fields.
+					It automatically has a default constructor, getters, equals, hashCode, and toString methods.
+				</p>
+				<pre>
+					UniversityCourseRecordExample.java
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						record UniversityCourseRecord(
+								String subject,
+								LocalDate startDate,
+								int lengthDays
+						) {}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>Records</h4>
+				<pre>
+					UniversityCourseRecordExample.java
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						record UniversityCourseRecord(
+								String subject,
+								LocalDate startDate,
+								int lengthDays
+						) {
 
+							// alternative (secondary) constructor
+							public UniversityCourseRecord(String subject) {
+								this(subject, LocalDate.now(), 1);
+							}
+
+						}
+					</code>
+				</pre>
+				<pre>
+					UniversityCourseRecordExample.java
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// primary constructor call
+						UniversityCourseRecord javaCourse = new UniversityCourseRecord("Java", LocalDate.parse("2024-02-19"), 15);
+
+						// secondary constructor call
+						UniversityCourseRecord pythonCourse = new UniversityCourseRecord("Python");
+
+						/*
+						This will print:
+						 UniversityCourseRecord[subject=Java, startDate=2024-02-19, lengthDays=15]
+
+						 because the record class has a default toString method
+						 */
+						System.out.println(javaCourse);
+
+						System.out.println(javaCourse.subject());
+						System.out.println(javaCourse.startDate());
+						System.out.println(javaCourse.lengthDays());
+					</code>
+				</pre>
+			</section>
 			<section>
 				<h3>Inner classes</h3>
 				<p>Inner class (also called nested class), is a class defind within a body of another class.</p>
@@ -291,7 +352,7 @@
 				<pre>
 					Usage:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-						public class Main {
+						public class UniversityCourseExample {
 
 							public static void main(String[] args) {
 
@@ -306,21 +367,19 @@
 						}
 					</code>
 				</pre>
-
 			</section>
-
 			<section>
 				<h4>Use case for nested classes</h4>
 				<ul>
 					<li>
-						<b>Logical Grouping</b>
+						<strong>Logical Grouping</strong>
 						<div>
 							Nested classes can help us keep our code organized by having related code together.
 							For example, you may want to create an internal data class (record).
 						</div>
 					</li>
 					<!--					<li>-->
-					<!--						<b>Access Control</b>-->
+					<!--						<strong>Access Control</strong>-->
 					<!--						<div>-->
 					<!--							Inner classes can access members of the outer class, including those marked as private.-->
 					<!--							This feature is helpful when you need to create a helper class that needs access to an outer-->
@@ -328,7 +387,7 @@
 					<!--						</div>-->
 					<!--					</li>-->
 					<li>
-						<b>Encapsulation & Access Control</b>
+						<strong>Encapsulation & Access Control</strong>
 						<div>
 							Inner classes can access members of the outer class, including those marked as private.
 							This can benefit us in multiple scenarios, such us when creating helper classes without exposing
@@ -339,16 +398,14 @@
 						</div>
 					</li>
 					<li>
-						<b>Increased Readability and Maintainability</b>
+						<strong>Increased Readability and Maintainability</strong>
 						<div>
 							Inner classes are used for code that is relevant to a small part of the outer class.
 							Grouping them together improves code readability and maintainability.
 						</div>
 					</li>
 				</ul>
-
 			</section>
-
 			<section>
 				<h3>Static Objects</h3>
 				<p>Static object is object of which only one instance in memory exists.</p>
@@ -387,28 +444,26 @@
 						}
 					</code>
 				</pre>
-
 			</section>
-
 			<section>
 				<h4>Use case for static objects</h4>
 				<ul>
 					<li>
-						<b>Utility or Helper Classes</b>
+						<strong>Utility or Helper Classes</strong>
 						<div>
 							Sometimes we need some methods to be globally available in the application without needing to create class instance every time.
-							Example of such is utility classs with static methods is <code><b>String.valueOf()</b></code>
-							or <code><b>Integer.toBinaryString()</b></code>.
+							Example of such is utility classs with static methods is <code><strong>String.valueOf()</strong></code>
+							or <code><strong>Integer.toBinaryString()</strong></code>.
 						</div>
 					</li>
 					<li>
-						<b>Global Constants and Variables</b>
+						<strong>Global Constants and Variables</strong>
 						<div>
 							Static keyword can be used to define class level variables hat are accessible throughout our application.
 						</div>
 					</li>
 					<li>
-						<b>Singleton Pattern</b>
+						<strong>Singleton Pattern</strong>
 						<div>
 							Singleton class is a design pattern that restricts the instantiation of a class to a single instance.
 						</div>
@@ -416,7 +471,6 @@
 
 				</ul>
 			</section>
-
 			<section>
 				<h3>Anonymous Classes</h3>
 				<p>
@@ -452,14 +506,14 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
-				<h2>Packages and Modifiers</h2>
+				<h2>Packages, Imports and Modifiers</h2>
 			</section>
 			<section>
 				<h2>Packages</h2>
 				<ul>
 					<li>Packages are a way of organizing code. They are basically directories.</li>
 					<li>Package statement is usually the first line of code in any *.java file (line 1).</li>
-					<li>If you want to use class from another package, you must import it (line 3).</li>
+					<li>If you want to use class from another package, you must <code style="font-weight: bold">import</code> it (line 3).</li>
 				</ul>
 				<pre>
 					<code data-trim data-noescape data-line-numbers="1|3" class="hljs java">
@@ -467,12 +521,14 @@
 
 						import java.time.LocalDate; // <- import of class LocalDate from java.time package
 
-						public class UniversityClass {
+						public class User {
 
-							private final LocalDate startDate;
+							private final String name;
+							private final LocalDate dateOfBirth;
 
-							public UniversityClass(LocalDate startDate) {
-								this.startDate = startDate;
+							public User(String name, LocalDate dateOfBirth) {
+								this.name = name;
+								this.dateOfBirth = dateOfBirth;
 							}
 
 						}
@@ -485,16 +541,15 @@
 					You already encountered them in the previous examples. <br />
 					There are two types of modifiers in Java:
 				</p>
-
 				<ul>
 					<li>
-						<b>Access Modifiers</b>
+						<strong>Access Modifiers</strong>
 						<div>
 							Usable on classes, methods and field, they determine visibility form other parts of the code.
 						</div>
 					</li>
 					<li>
-						<b>Non-Access Modifiers</b>
+						<strong>Non-Access Modifiers</strong>
 						<div>
 							Define other characteristics of classes, methods and attributes.
 						</div>
@@ -506,33 +561,33 @@
 				<table>
 					<thead>
 					<tr>
-						<td><b>modifier</b></td>
-						<td><b>on class</b></td>
-						<td><b>on method</b></td>
-						<td><b>on field</b></td>
+						<td><strong>modifier</strong></td>
+						<td><strong>on class</strong></td>
+						<td><strong>on method</strong></td>
+						<td><strong>on field</strong></td>
 					</tr>
 					</thead>
 					<tbody style="font-size: 80%">
 					<tr>
-						<td><b><code>public</code></b></td>
+						<td><strong><code>public</code></strong></td>
 						<td>accessible from anywhere</td>
 						<td>accessible from anywhere</td>
 						<td>accessible from anywhere</td>
 					</tr>
 					<tr>
-						<td><b><code>private</code></b></td>
+						<td><strong><code>private</code></strong></td>
 						<td>only accessible within the same package</td>
 						<td>only accessible within same class</td>
 						<td>only accessible within same class</td>
 					</tr>
 					<tr>
-						<td><b><code>protected</code></b></td>
+						<td><strong><code>protected</code></strong></td>
 						<td>accessible within the same package</td>
 						<td>only accessible within same class or it's subclass</td>
 						<td>only accessible within same class or it's subclass</td>
 					</tr>
 					<tr>
-						<td><b style="font-style: italic">default</b></td>
+						<td><strong style="font-style: italic">default</strong></td>
 						<td>same as private</td>
 						<td>same as private</td>
 						<td>same as private</td>
@@ -545,51 +600,51 @@
 				<table>
 					<thead>
 					<tr>
-						<td><b>modifier</b></td>
-						<td><b>on class</b></td>
-						<td><b>on method / block</b></td>
-						<td><b>on field</b></td>
+						<td><strong>modifier</strong></td>
+						<td><strong>on class</strong></td>
+						<td><strong>on method / block</strong></td>
+						<td><strong>on field</strong></td>
 					</tr>
 					</thead>
 					<tbody style="font-size: 70%">
 					<tr>
-						<td><b><code>static</code></b></td>
+						<td><strong><code>static</code></strong></td>
 						<td>N/A</td>
 						<td>accessible without need to create class instance</td>
 						<td>Make variable global, also called <em>class variable</em>, as opposed to <em>instance variable</em>.</td>
 					</tr>
 					<tr>
-						<td><b><code>final</code></b></td>
+						<td><strong><code>final</code></strong></td>
 						<td>prevents inheritance</td>
 						<td>prevents method overloading</td>
 						<td>Makes variable a constant = value cannot be changed after initialization.</td>
 					</tr>
 					<tr>
-						<td><b><code>abstract</code></b></td>
+						<td><strong><code>abstract</code></strong></td>
 						<td>Class marked as abstract cannot be directly instantiated.</td>
 						<td>Method marked as abstract does not provide implementation, but expects a <em>subclass</em> to implement it.</td>
 						<td>N/A</td>
 					</tr>
 					<tr>
-						<td><b><code>synchronized</code></b></td>
+						<td><strong><code>synchronized</code></strong></td>
 						<td>N/A</td>
 						<td>Used to control access to an object by multiple threads. It is primarily used to prevent thread interference.</td>
 						<td>N/A</td>
 					</tr>
 					<tr>
-						<td><b><code>volatile</code></b></td>
+						<td><strong><code>volatile</code></strong></td>
 						<td>N/A</td>
 						<td>N/A</td>
 						<td>Used in multi-threaded environment, ensures that changes made in one thread are immediately reflect in another thread.</td>
 					</tr>
 					<tr>
-						<td><b><code>native</code></b></td>
+						<td><strong><code>native</code></strong></td>
 						<td>N/A</td>
 						<td>Used to declare a method that is implemented in native code using JNI (Java Native Interface).</td>
 						<td>N/A</td>
 					</tr>
 					<tr>
-						<td><b><code>transient</code></b></td>
+						<td><strong><code>transient</code></strong></td>
 						<td>N/A</td>
 						<td>N/A</td>
 						<td>Used in object serialization, it indicates that a field should not be serialized.</td>
@@ -625,32 +680,32 @@
 				</p>
 				<ul style="font-size: 80%">
 					<li>
-						<b>Method Name</b>
+						<strong>Method Name</strong>
 						<ul>
 							<li>Method names should comply with Java method naming convention = verb, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized.</li>
 						</ul>
 					</li>
 
 					<li>
-						<b>Return Type</b>
+						<strong>Return Type</strong>
 						<ul>
 							<li>All methods most specify return type</li>
-							<li>If method does not return any value, it must define <b>void</b> as return type</li>
+							<li>If method does not return any value, it must define <strong>void</strong> as return type</li>
 						</ul>
 					</li>
 					<li>
-						<b>Argument(s) (optional)</b>
+						<strong>Argument(s) (optional)</strong>
 						<ul>
 							<li>Method may have zero or more arguments</li>
 							<li>Each arguments must have name and type</li>
 						</ul>
 					</li>
 					<li>
-						<b>Modifiers (optional)</b>
+						<strong>Modifiers (optional)</strong>
 						<ul>
 							<li>Access modifiers: private, protected, public</li>
 							<li>Non-access modifiers: static, abstract, synchronized</li>
-							<li>If method does not have an access modifier, then it is considered <b>private</b></li>
+							<li>If method does not have an access modifier, then it is considered <strong>private</strong></li>
 						</ul>
 					</li>
 					<li>Class constructor is a special kind of method.</li>
@@ -666,25 +721,22 @@
 					}
 					</code>
 				</pre>
-
 				<pre>
-					Public with no arguments, returning value - this type of method is also called <b>getter</b>:
+					Public with no arguments, returning value - this type of method is also called <strong>getter</strong>:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 					public int getCount() {
 						return this.counter;
 					}
 					</code>
 				</pre>
-
 				<pre>
-					Public method with one argument, no return value - this type of method is also called <b>setter</b>:
+					Public method with one argument, no return value - this type of method is also called <strong>setter</strong>:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 					public void setCount(int count) {
 						this.counter = count;
 					}
 					</code>
 				</pre>
-
 				<pre>
 					Protected method with multiple arguments and return value:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
@@ -693,13 +745,13 @@
 					}
 					</code>
 				</pre>
-
 				<pre>
 					Public constructor method:
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-					public UniversityClass(LocalDate startDate) {
-						this.startDate = startDate;
-					}
+						public User(String name, LocalDate dateOfBirth) {
+							this.name = name;
+							this.dateOfBirth = dateOfBirth;
+						}
 					</code>
 				</pre>
 			</section>
@@ -712,7 +764,7 @@
 				</p>
 				<hr />
 				<p>
-					<b>In simpler words:</b> <br />It's a way to write a temporary function without need to write a whole new method for it
+					<strong>In simpler words:</strong> <br />It's a way to write a temporary function without need to write a whole new method for it
 				</p>
 				<pre>
 					Example of lambda without arguments and no return value:
@@ -780,7 +832,7 @@
 				<p>
 					Since enum is a class, it may have <em>fields</em>, <em>constructors</em> and <em>methods</em>.
 				</p>
-				<pre>
+				<pre>EnumExample.java
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 						enum Days {
 							MONDAY(true),
@@ -803,7 +855,7 @@
 						}
 					</code>
 				</pre>
-				<pre>
+				<pre>EnumExample.java
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 						public class EnumExample {
 
@@ -825,7 +877,7 @@
 				<p>
 					Enums are very useful for evaluating finite number of states and also for
 				</p>
-				<pre>
+				<pre>EnumExample.java
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 						public class EnumExample {
 
@@ -855,332 +907,6 @@
 					</code>
 				</pre>
 			</section>
-		</section>
-		<section>
-			<section data-background-color="#523996">
-				<h2>Java Standard Libraries</h2>
-				<h3>java.time</h3>
-			</section>
-			<section>
-				<h3>Java Standard Libraries</h3>
-				<p>
-					Java comes with many built-in libraries to make our lives as developers easier.
-				</p>
-				<p>Some notable libraries:</p>
-				<ul style="font-size: 80%">
-					<li>
-						<b>java.lang</b>
-						<div>
-							Provides classes that are fundamental to the design of the Java programming language.
-							This is automatically imported into every Java program.
-						</div>
-					</li>
-					<li>
-						<b>java.util</b>
-						<div>Contains the collections framework, legacy collection classes, event model, date and time facilities, internationalization, and miscellaneous utility classes (a string tokenizer, a random-number generator, and a bit array).</div>
-					</li>
-					<li>
-						<b>java.math</b>
-						<div>The class Math contains methods for performing basic numeric operations.</div>
-					</li>
-					<li>
-						<b>java.io</b>
-						<div>Provides for system input and output through data streams, serialization and the file system.</div>
-					</li>
-					<li>
-						<b>java.net</b>
-						<div>Provides the classes for implementing networking applications.</div>
-					</li>
-					<li>
-						<b>java.sql</b>
-						<div>Provides the API for accessing and processing data stored in a data source (usually a relational database).</div>
-					</li>
-					<li>
-						<b>java.time</b>
-						<div>
-							Provides classes for working with dates, times, instants, and durations.
-							Introduced in Java 8 to replace the older (amd widely criticizes) date and time classes found in the java.util.
-						</div>
-					</li>
-				</ul>
-			</section>
-			<section>
-				<h3>java.time</h3>
-				<hr />
-				<p>
-					The <strong>java.time</strong> package provides us with tools to work with dates, time, intervals and durations.
-				</p>
-				<hr />
-				<p>
-					As already mentioned, it replaced date and time related tools from <strong>java.util</strong>, which was not well-designed,
-					was cumbersome to use, did not provide good way fo handling time zones and was not thread safe (!!!).
-					<br />
-					<br />
-					For these reasons, it was often substituted with 3rd party libraries such as <strong>joda.time</strong>.
-				</p>
-				<p>
-					The current <strong>java.time</strong> package, however, is generally considered to be good implementation
-					and you should be using it whenever you are working with Java 8 newer.
-				</p>
-				<blockquote>
-					Note that most classes in <strong>java.time</strong> are nice examples of implementations using static inner classes.
-				</blockquote>
-			</section>
-
-			<section>
-				<h4>java.time</h4>
-				<p>
-					Here are the tools you will find in <strong>java.time</strong>.
-				</p>
-				<table style="font-size: 70%">
-					<tbody>
-					<tr>
-						<td><code><b>Clock</b></code></td>
-						<td>A clock providing access to the current instant, date and time using a time-zone.</td>
-					</tr>
-					<tr>
-						<td><code><b>Duration</b></code></td>
-						<td>A time-based amount of time, such as '34.5 seconds'.</td>
-					</tr>
-					<tr>
-						<td><code><b>Instant</b></code></td>
-						<td>An instantaneous point on the time-line.</td>
-					</tr>
-					<tr>
-						<td><code><b>LocalDate</b></code></td>
-						<td>A date without a time-zone in the ISO-8601 calendar system, such as 2007-12-03.</td>
-					</tr>
-					<tr>
-						<td><code><b>LocalDateTime</b></code></td>
-						<td>A date-time without a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30.</td>
-					</tr>
-					<tr>
-						<td><code><b>LocalTime</b></code></td>
-						<td>A time without a time-zone in the ISO-8601 calendar system, such as 10:15:30.</td>
-					</tr>
-					<tr>
-						<td><code><b>MonthDay</b></code></td>
-						<td>A month-day in the ISO-8601 calendar system, such as --12-03.</td>
-					</tr>
-					<tr>
-						<td><code><b>OffsetDateTime</b></code></td>
-						<td>A date-time with an offset from UTC/Greenwich in the ISO-8601 calendar system, such as 2007-12-03T10:15:30+01:00.</td>
-					</tr>
-					<tr>
-						<td><code><b>OffsetTime</b></code></td>
-						<td>A time with an offset from UTC/Greenwich in the ISO-8601 calendar system, such as 10:15:30+01:00.</td>
-					</tr>
-					<tr>
-						<td><code><b>Period</b></code></td>
-						<td>A date-based amount of time in the ISO-8601 calendar system, such as '2 years, 3 months and 4 days'.</td>
-					</tr>
-					<tr>
-						<td><code><b>Year</b></code></td>
-						<td>A year in the ISO-8601 calendar system, such as 2007.</td>
-					</tr>
-					<tr>
-						<td><code><b>YearMonth</b></code></td>
-						<td>A year-month in the ISO-8601 calendar system, such as 2007-12.</td>
-					</tr>
-					<tr>
-						<td><code><b>ZonedDateTime</b></code></td>
-						<td>A date-time with a time-zone in the ISO-8601 calendar system, such as 2007-12-03T10:15:30+01:00 Europe/Paris.</td>
-					</tr>
-					<tr>
-						<td><code><b>ZoneId</b></code></td>
-						<td>A time-zone ID, such as Europe/Paris.</td>
-					</tr>
-					<tr>
-						<td><code><b>ZoneOffset</b></code></td>
-						<td>A time-zone offset from Greenwich/UTC, such as +02:00.</td>
-					</tr>
-					</tbody>
-				</table>
-				<div style="font-size: 60%; text-align: right;">
-					Source: <a href="https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html">Oracle Java SE 8 documentation</a>
-				</div>
-			</section>
-			<section>
-				<h4>java.time: LocalDate</h4>
-				<p>
-					<strong>LocalDate</strong> allows us to work with dates without time zone. Let's have a look ...
-				</p>
-				<pre>
-					Get today's date
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate dateNow = LocalDate.now();
-					</code>
-				</pre>
-
-				<pre>
-					Get a specific date
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate date = LocalDate.of(2024, 2, 20);
-					</code>
-				</pre>
-
-				<pre>
-					Parse an ISO-8601 format date
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate date = LocalDate.parse("2024-02-20");
-					</code>
-				</pre>
-
-				<pre>
-					Manipulate dates
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate tomorrow = LocalDate.now().plusDays(1);
-						LocalDate nextPeriod = LocalDate.now().plusMonths(3);
-						LocalDate lastYear = LocalDate.now().minusYears(1);
-					</code>
-				</pre>
-
-				<pre>
-					Extract information about date
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate dateNow = LocalDate.now();
-
-						// get parts of the date
-						int dayOfYear = dateNow.getDayOfYear();
-						int dayOfMonth = dateNow.getDayOfMonth();
-						DayOfWeek dayOfWeek = dateNow.getDayOfWeek();
-
-						// or even leap year
-						boolean leapYear = dateNow.isLeapYear();
-					</code>
-				</pre>
-
-				<pre>
-					Compare dates
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						boolean isBefore = LocalDate.now().isBefore(LocalDate.parse("2024-03-08"));
-						boolean isAfter = LocalDate.now().isAfter(LocalDate.parse("2024-02-19"));
-						boolean isEqual = LocalDate.now().isEqual(LocalDate.parse("2024-02-20"));
-					</code>
-				</pre>
-			</section>
-
-			<section>
-				<h4>java.time: LocalDateTime</h4>
-				<p>
-					<strong>LocalDateTime</strong> works the same way, but it also adds time component ...
-				</p>
-				<pre>
-					Examples
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDateTime dateTimeNow = LocalDateTime.now();
-						System.out.println(dateTimeNow); // prints local date and time, for example 2024-01-14T08:08:44.548746
-
-						int year = dateTimeNow.getYear();
-						Month month = dateTimeNow.getMonth();
-						int monthValue = dateTimeNow.getMonthValue();
-						DayOfWeek dayOfWeek = dateTimeNow.getDayOfWeek();
-						int day = dateTimeNow.getDayOfMonth();
-						int hour = dateTimeNow.getHour();
-						int minute = dateTimeNow.getMinute();
-						int second = dateTimeNow.getSecond();
-
-						LocalDateTime dateTime = LocalDateTime.parse("2024-01-14T08:08:44.548746");
-						boolean isAfter = dateTimeNow.isAfter(dateTime);
-					</code>
-				</pre>
-				<pre>
-					Convert LocalDate to LocalDateTime
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						LocalDate dateNow = LocalDate.now();
-						LocalDateTime dateTimeNow1 = dateNow.atTime(LocalTime.now());
-						LocalDateTime dateTimeNow2 = dateNow.atTime(LocalTime.parse("08:08:44"));
-					</code>
-				</pre>
-			</section>
-
-			<section>
-				<h4>java.time: ZonedDateTime</h4>
-				<p>
-					<strong>ZonedDateTime</strong> adds time zones ...
-				</p>
-				<pre>
-					Examples
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						ZonedDateTime zonedDateTimeNow = ZonedDateTime.now();
-						System.out.println(zonedDateTimeNow); // 2024-01-14T09:44:26.147022+01:00[Europe/Prague]
-						System.out.println(zonedDateTimeNow.toLocalDateTime()); // 2024-01-14T09:44:26.147022
-					</code>
-				</pre>
-				<pre>
-					Convert LocalDateTime to ZonedDateTime
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						ZonedDateTime zonedDateTime = LocalDateTime.now().atZone(ZoneId.of("Asia/Bangkok"));
-						System.out.println(zonedDateTime); // 2024-01-14T09:44:26.150263+07:00[Asia/Bangkok]
-					</code>
-				</pre>
-
-				<pre>
-					Convert between zones using instant
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						ZonedDateTime zonedDateTimeNow = ZonedDateTime.now();
-						System.out.println(zonedDateTimeNow); // 2024-01-14T09:44:26.147022+01:00[Europe/Prague]
-
-						ZonedDateTime zonedDateTime2 = zonedDateTimeNow.withZoneSameInstant(ZoneId.of("Asia/Bangkok"));
-						System.out.println(zonedDateTime2); // 2024-01-14T15:44:26.147022+07:00[Asia/Bangkok]
-					</code>
-				</pre>
-			</section>
-
-			<section>
-				<h4>java.time: Instant</h4>
-				<p>
-					To work with zoned date and time correctly, we need to understand the concept of an instant.<br />
-				</p>
-				<ul style="font-size: 80%">
-					<li>Instant represents an instantaneous point on the time-line.</li>
-					<li>Instant stores date and time information in UTC (Coordinated Universal Time) format.</li>
-					<li>Instant doesn't contain any information about time zones and doesn't take daylight saving time into account.</li>
-					<li>Instant is useful for applications requiring a high degree of time precision.</li>
-					<li>You can easily convert Instant to DateTime, LocalDateTime, ZonedDate ZonedDateTime, but to convert to Instant, you need to specify time zone. </li>
-				</ul>
-				<pre>
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						Instant instantNow = Instant.now();
-						System.out.println(instantNow); // 2024-01-14T09:01:00.878577Z
-
-						LocalDateTime localDateTime = LocalDateTime.now();
-						System.out.println(localDateTime); // 2024-01-14T10:01:00.896618
-
-						ZoneId zone = ZoneId.of("Asia/Bangkok");
-						ZoneOffset zoneOffset = zone.getRules().getOffset(localDateTime);
-
-						Instant instant = localDateTime.toInstant(zoneOffset);
-						System.out.println(instant); // 2024-01-14T03:01:00.896618Z
-					</code>
-				</pre>
-				<pre>
-					Or you can use hard-coded offset, which will however possibly not reflect daylight saving time.
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-        				System.out.println(localDateTime.toInstant(ZoneOffset.ofHours(6))); // 2024-01-14T04:01:00.896618Z
-					</code>
-				</pre>
-			</section>
-
-			<section>
-				<h4>java.time: Duration</h4>
-				<p>
-					Helps us measure time amount between instants.<br />
-				</p>
-				<pre>
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						ZonedDateTime from = ZonedDateTime.parse("2024-01-14T09:44:26.147022+01:00[Europe/Prague]");
-						ZonedDateTime to = ZonedDateTime.now();
-
-						Duration duration = Duration.between(from, to);
-
-						System.out.println(duration); // PT21M15.740325S
-						System.out.println(duration.getSeconds()); //1275
-						System.out.println(duration.getNano()); // 740325000
-					</code>
-				</pre>
-			</section>
-
 		</section>
 		<section>
 			<section data-background-color="#523996">

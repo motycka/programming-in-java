@@ -1,10 +1,3 @@
-# About Monika
-
-Monika is an experienced software developer with a background in testing. She has a total 15 years of experience, mostly Test Automation Engineer / Test Architect. Already having a strong background in Kotlin, Java and other JVM languages, she switched her focus on backend development, where her previous experience with testing APIs gives her advantage with test and quality focused approach to development.
-
-She also teaches about testing and test automation for a Czechitas non-profit organization, specializing in IT education for women.
-
-
 # Syllabus
 
 In this course, we will start from Java language fundamentals and work our way up from basic console based program to real world application with REST API.
@@ -13,12 +6,6 @@ Throughout the course, we will not only focus on how to write programmes, but al
 In week 1, you will learn Java programming language fundamentals.
 In week 2, you will learn how to create working Java programs and will be introduced to Spring Boot application framework.
 In week 3, you will apply skills acquired in previous weeks to build an actual application.
-
-
-## Foreword
-
-Programing language and communication of intent.
-
 
 ## Week 1
 Introduction to development in Java
@@ -31,7 +18,7 @@ Introduction to development in Java
   - Java Data Types
   - Operators
   - Conditionals 
-  - Arrays + Stream API part #1 ????
+  - Arrays
   - Scope
 - Introduction to IDE (30 min)
 - Running you first Java program (console) (10 min)
@@ -40,8 +27,6 @@ Introduction to development in Java
     - string concatenation
     - string builder
     - split
-    - regexp
-    - ...
   - learn to work with arrays
     - loops
 
@@ -53,11 +38,14 @@ Introduction to development in Java
    - Access modifiers
    - Errors and exception handling
    - Records and immutability
- - Java libraries: 
-   - LocalDate
  - How to read documentation (JavaDoc)
  - Practice:
    - prepare for next lessons
+
+TODO:
+- Type inference
+- Elipsis
+
 
 ### Lesson 3
 - Dependency management (Gradle, Maven) (30 min)
@@ -74,14 +62,13 @@ Introduction to development in Java
 - Logging
 - Debugging
 - Practice
-- Homework: Unit test homework from previous lesson
+- Homework: Unit test homework from previous lesson?
 
 ### Lesson 4
 - Java basics (continued) (1h)
   - Programming language and communication of intent
   - Polymorphism
   - Inheritance
-  - Generics ??? -- maybe later -- LATER !!!
 - Practice
 - Homework
 
@@ -92,8 +79,6 @@ Introduction to development in Java
 - Practice
 - Homework
 
-
-
 ## Week 2
 Application design
 
@@ -102,12 +87,21 @@ Probably some repetition in the beginning
 ### Lesson 6
 - Homework review
 - Java libraries
-  - java.time (continued)
-  - java.io.File, java.nio.Path, InputStream and OutputStream
-- Practice
-- Homework: implement simple console application
+  - java.time
+- Reading from command line
+- Java Optionals
+- Practice: 
+  - implement simple console application
+- Homework: working with Java Time
 
 ### Lesson 7
+- Homework review
+- Java libraries
+  - java.io.File, java.nio.Path, InputStream and OutputStream
+- Practice
+- Homework: read and write to file
+
+### Lesson 8
 - Homework review
 - JRE, JDK and JVM (30 min)
   - Java language, Java compiler and Java bytecode (quick overview)
@@ -117,47 +111,70 @@ Probably some repetition in the beginning
   - maybe some bad code optimization (memory, thread safety)
 
 
-### Lesson 8
-- The SOLID principle
-- Object Oriented Design patterns
-- Inversion of Control (IoC)
-- I/mutability, state and functional programming principles
-- Generics ???
-- Reflection
+### Lesson 9
+- The SOLID principle (20 min)
+- Object-Oriented Design patterns (20 min)
+- Inversion of Control (IoC) (20 min)
+- Generics (30 min)
+
+- I/mutability, state and functional programming principles, Functional Interfaces?
+- Lambda expressions
+- Optionals?
+
 - Practice
+  - Generics
+  - IoC
 - Homework
 
-### Lesson 9
-- Introduction to Spring Boot framework (30 min)
-  - Running first Spring Boot application (10 min)
-  - MVC and IoC in Spring Boot (20 min)
-- Basic MVC model (90 min)
-  - Controller
-  - Service
-  - Repository
-- Testing
-- Practice
-- Homework
 
 ### Lesson 10
-- Design of a REST API (90 min)
+- Application Programming Interface (API) (30 min)
+  - What is an API
+  - Types of APIs
+  - How to use an API
+- Design of a REST API (60 min)
   - Resources, methods, parameters
   - Request and response (Serialization)
   - Best practices
+- Reflection (60 min)
+  - What is reflection
+  - How to use reflection
+  - When to use reflection
 - Practice
-- Homework: design an API, we will implement it next lesson
+  - Reflection
+- Homework
+  - Try working with an API (PostMan or similar)
 
 ## Week 3
 Project: Working on an application
 
+Introduction to the project
+Split the project into smaller increments
+
+
 ### Lesson 11
+- Java Application Development and Frameworks (10 min)
+- Introduction to Spring Boot framework (30 min)
+  - Running first Spring Boot application (10 min)
+  - MVC and IoC in Spring Boot (20 min)
+- Basic MVC model overview (30 min)
+  - Controller
+  - Service
+  - Repository
+- Testing (20 min)
+- Practice
+  - Starting the Spring Boot application
+- Homework
+  - Design REST API for the project
+
+### Lesson 12
 - Homework review
 - Project work:
   - Implementing REST API
   - Implementing the service layer
   - Testing (60 min)
 
-### Lesson 12
+### Lesson 13
 - Project work:
   - Connecting to repositories (60 min)
 - Application configuration
@@ -166,14 +183,11 @@ Project: Working on an application
 
 ## Lesson 14
 - Microservice architecture (Spring Cloud)
-- Consuming to 3rd party APIs
-- Caching
-- Working on the project
-- 
-### Lesson 13
 - Asynchronous execution
 - Event based architecture
 - Reactive Streams (Spring WebFlux)
+- Consuming to 3rd party APIs
+- Caching
 - Working on the project
 
 ## Lesson 15
@@ -184,4 +198,7 @@ Project: Working on an application
 
 
 
-https://simplemaps.com/data/world-cities
+[//]: # (Resources:)
+[//]: # (https://simplemaps.com/data/world-cities)
+[//]: # (https://docs.oracle.com/)
+[//]: # (https://www.w3schools.com/java)

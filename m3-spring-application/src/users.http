@@ -1,0 +1,19 @@
+###
+GET http://localhost:8080/api/users
+Accept: application/json
+
+###
+GET http://localhost:8080/api/users/5
+Accept: application/json
+
+###
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+    "name": "Moni",
+    "weight": 80.0,
+    "dateOfBirth": "1985-09-20"
+}
+
+
