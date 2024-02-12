@@ -1,10 +1,3 @@
-# About Monika
-
-Monika is an experienced software developer with a background in testing. She has a total 15 years of experience, mostly Test Automation Engineer / Test Architect. Already having a strong background in Kotlin, Java and other JVM languages, she switched her focus on backend development, where her previous experience with testing APIs gives her advantage with test and quality focused approach to development.
-
-She also teaches about testing and test automation for a Czechitas non-profit organization, specializing in IT education for women.
-
-
 # Syllabus
 
 In this course, we will start from Java language fundamentals and work our way up from basic console based program to real world application with REST API.
@@ -180,8 +173,3 @@ Project: Working on an application
 - Project presentation and review
 - Running your application in production environment
 - Monitoring
-
-
-
-
-https://simplemaps.com/data/world-cities
