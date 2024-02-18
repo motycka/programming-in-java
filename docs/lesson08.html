@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/motyka.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+	<div class="slides">
+		<section data-background-color="#523996">
+			<i>Week 2 | Lesson 8</i>
+			<h1>Java Virtual Machine</h1>
+			<em>JRE, JDK, compiler</em><br />
+			<em>Memory management</em><br />
+			<em>Multithreading</em>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Java Virtual Machine</h2>
+				<em>JVM</em>
+			</section>
+			<section>
+				<h3>Java Virtual Machine</h3>
+				<em>"Write Once, Run Anywhere"</em>
+				<hr />
+				<p>
+					The main purpose of JVM is to provide a runtime environment for Java applications,
+					that is independent of the underlying hardware and operating system.
+				</p>
+				<hr />
+				<p>
+					JVM also provides tools for runtime performance optimization, memory management (garbage collection), monitoring, and other.
+				</p>
+				<p>
+					Java Virtual Machine is a part of the Java Runtime Environment (JRE).
+				</p>
+				<blockquote>
+					JVM is actually not used just by Java applications.
+					Other programming languages can run on JVM, such as <strong>Scala</strong>, <strong>Groovy</strong> and <strong>Kotlin</strong>.
+				</blockquote>
+			</section>
+			<section>
+				<h3>Java Virtual Machine</h3>
+				<em>
+					There are three ways to look at JVM implementations.
+				</em>
+				<hr />
+				<ul>
+					<li>
+						<strong>Specification</strong><br />
+						Defines how the JVM should be implemented.
+					</li>
+					<li>
+						<strong>Implementation</strong><br />
+						The actual JVM implememtation.
+					</li>
+					<li>
+						<strong>Instance</strong><br />
+						A running JVM process (create every time you start a Java program).
+					</li>
+				</ul>
+				<hr />
+				<p>
+					Since JVM is open source, it actually exists in more than one implementation.
+					They all follow the specification, but may differ in performance, memory management, and other aspects.
+				</p>
+				<p>
+					Some of the most popular JVM implementations are:
+				</p>
+				<ul>
+					<li>Oracle HotSpot JVM</li>
+					<li>Eclipse OpenJ9</li>
+					<li>GraalVM</li>
+				</ul>
+			</section>
+			<section>
+				<h3>Demo</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>JRE, JDK, compiler</h2>
+			</section>
+			<section>
+				<h3>JRE, JDK, compiler</h3>
+				<hr />
+				<p>
+					<strong>JRE - Java Runtime Environment</strong>
+					<br />
+					JRE is the part of Java required to run Java applications. It includes JVM, core libraries, and other components.
+					If you only want to run Java applications, you only need JRE.
+				</p>
+				<hr />
+				<p>
+					<strong>JDK - Java Development Kit</strong>
+					<br />
+					You need JDK if you want to develop Java applications. It includes JRE, compiler, and other development tools.
+				</p>
+				<hr />
+				<p>
+					<strong>Java Compiler</strong>
+					<br />
+					Java source code is compiled into <strong>bytecode</strong>, which is then executed by JVM. To do so, you need a Java compiler.
+				</p>
+				<hr />
+				<p>
+					<strong>Java Bytecode</strong>
+					<br />
+					Java bytecode is the instruction set for the Java Virtual Machine.
+				</p>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Java Memory Management</h2>
+			</section>
+			<section>
+				<h3>Java Memory Management</h3>
+				<p>TODO</p>
+			</section>
+			<section>
+				<h3>Demo</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Multithreading</h2>
+			</section>
+			<section>
+				<h3>Multithreading</h3>
+				<p>TODO</p>
+			</section>
+			<section>
+				<h3>Demo</h3>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Practice</h2>
+			</section>
+		</section>
+	</div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+	// More info about initialization & config:
+	// - https://revealjs.com/initialization/
+	// - https://revealjs.com/config/
+	Reveal.initialize({
+		hash: true,
+
+		// Learn about plugins: https://revealjs.com/plugins/
+		plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+	});
+</script>
+</body>
+</html>
