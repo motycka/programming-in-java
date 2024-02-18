@@ -6,12 +6,12 @@
 
 	<title>reveal.js</title>
 
-	<link rel="stylesheet" href="dist/reset.css">
-	<link rel="stylesheet" href="dist/reveal.css">
-	<link rel="stylesheet" href="dist/theme/motyka.css">
+	<link rel="stylesheet" href="./dist/reset.css">
+	<link rel="stylesheet" href="./dist/reveal.css">
+	<link rel="stylesheet" href="./dist/theme/motyka.css">
 
 	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="./plugin/highlight/monokai.css">
 </head>
 <body>
 <div class="reveal" >
@@ -37,7 +37,7 @@
 					<li>Sun Microsystems was acquired by Oracle in 2010</li>
 				</ul>
 				<br />
-				<img src="./img/java.png" style="width: 200px"/>
+				<img src="./img/java.png" alt="Java Logo" style="width: 200px"/>
 			</section>
 			<section>
 				<h3>Key features of Java</h3>
@@ -68,20 +68,37 @@
 					</p>
 					<p>
 						<b>High Performance</b><br/>
-						<i style="font-size: 80%">slower than compile languages, but fast for interpreted language due java byte code being close to native code</i>
+						<i style="font-size: 80%">slower than compiled languages, but fast for interpreted language due java byte code being close to native code</i>
 					</p>
 				</div>
 			</section>
 			<section>
 				<em>Java has two main components ...</em>
-				<p>
+				<br />
+				<br />
 				<h3>Java Runtime Environment (JRE)</h3><br/>
-				<i>The JRE provides the libraries, the Java Virtual Machine (JVM), and other components needed to run applications written in Java. It does not include developer tools such as compilers and debuggers. As a user, you would use the JRE to run Java programs on your system.</i>
+				<p>
+					The JRE provides the libraries, the Java Virtual Machine (JVM),
+					and other components needed to run applications written in Java.
+					It does not include developer tools such as compilers and debuggers.
+					<br />
+					<br />
+					<em>
+						As a user, you would use the JRE to run Java programs on your system.
+					</em>
 				</p>
 				<br />
 				<p>
 				<h3>Java Development Kit (JDK)</h3><br/>
-				<i>The JDK includes the JRE as well as a set of development tools for writing and running Java programs. These tools include the Java compiler (javac), an archiver (jar), a documentation generator (javadoc), and other tools needed in Java development. As a programmer, you would use the JDK to develop Java applications.</i>
+				<p>
+					The JDK includes the JRE as well as a set of development tools for writing and running Java programs.
+					These tools include the Java compiler (javac), an archiver (jar), a documentation generator (javadoc),
+					and other tools needed in Java development.
+					<br />
+					<br />
+					<em>
+						As a programmer, you would use the JDK to develop Java applications.
+					</em>
 				</p>
 			</section>
 			<section>
@@ -98,7 +115,7 @@
 					</p>
 					<p>
 						<b>Amazon Corretto</b><br />
-						<i style="font-size: 80%">free, acrive support, performance enhancements, security fixes</i>
+						<i style="font-size: 80%">free, active support, performance enhancements, security fixes</i>
 					</p>
 					<p>
 						<b>AdoptOpenJDK/Adoptium</b><br />
@@ -126,7 +143,7 @@
 				<h3>Java Releases: Major Versions</h3>
 				<ul style="font-size: 80%">
 					<li>1990s - project start</li>
-					<li>1995 - officialy named Java</li>
+					<li>1995 - officially named Java</li>
 					<li>1996 - Java Development Kit (JDK) 1.0</li>
 					<li>1997 - JDK 1.1</li>
 					<li>1998 - J2SE 1.2</li>
@@ -153,7 +170,7 @@
 			<section>
 				<h3>Use right tools for the job</h3>
 				<div>
-					<img src="./img/hammer.jpg" style="width: 600px"/>
+					<img src="./img/hammer.jpg" alt="Hammer" style="width: 600px"/>
 					<blockquote>
 						“If the only tool you have is a hammer, you tend to see every problem as a nail.”
 						(Abraham Maslow)
@@ -298,7 +315,7 @@
 					<li>Just like Scala, Kotlin is interoperable with Java.</li>
 				</ul>
 				<p>
-					<img src="./img/heart.jpg" style="width: 100px;" />
+					<img src="./img/heart.jpg" alt="I love Kotlin" style="width: 100px;" />
 					<br />
 					<em>My personal favorite :)</em>
 				</p>
@@ -321,7 +338,7 @@
 					</li>
 					<li>
 						<strong>Inheritance</strong><br />
-						enables class to have the same behavior as another class by inheriting it's properties and methods.
+						enables class to have the same behavior as another class by inheriting its properties and methods.
 					</li>
 					<li>
 						<strong>Polymorphism</strong><br />
@@ -349,7 +366,7 @@
 						class MyClass {
 
 							int myVariable = 42;
-							Foo dog = foo = new Foo();
+							Foo foo = new Foo();
 
 							/*
 							Block comment
@@ -588,8 +605,9 @@
 							This is also known as automatic type conversion.
 							This is done by the JVM when we assign a value of smaller data type to a variable of a bigger data type.
 						</span>
+					</p>
 					<pre>
-							<code data-trim data-noescape class="hljs java">
+						<code data-trim data-noescape class="hljs java">
 								int number = 100;
 								long bigNumber = number;          // Implicit type casting, no data loss
 								float floatNumber = bigNumber;    // Implicit type casting, no data loss
@@ -597,7 +615,6 @@
 								System.out.println(floatNumber);  // 100.0
 							</code>
 						</pre>
-					</p>
 					<p>
 						<strong>Explicit Casting</strong><br />
 						<span style="font-size: 80%">
@@ -605,8 +622,9 @@
 							<br />
 							<strong>Upcasting</strong> = assigning smaller data type to larger data type - generally doesn't result in data loss.
 							<br />
-							<strong>Downcasting</strong> = assigning larger data type to smaller data type - may result in data loss.
+							<strong>Down casting</strong> = assigning larger data type to smaller data type - may result in data loss.
 						</span>
+					</p>
 					<pre>
 							<code data-trim data-noescape class="hljs java">
 								double preciseNumber = 100.04;
@@ -615,7 +633,6 @@
 								System.out.println(wholeNumber);        // 100
 							</code>
 						</pre>
-					</p>
 				</div>
 			</section>
 			<section>
@@ -631,27 +648,22 @@
 							<b>Reference Variables:</b><br />
 							<i>In Java, you can assign null to any reference variable (non-primitive types: objects, array, interface, etc).</i>
 						</li>
-						<br />
 						<li>
 							<b>Default Value:</b><br />
 							<i>For object reference types, the default value is null when they are defined as class members and not explicitly initialized.</i>
 						</li>
-						<br />
 						<li>
 							<b>NullPointerException:</b><br />
 							<i>If you try to invoke a method or access a property on a reference variable with a null value, you will get a NullPointerException. This is a runtime exception in Java.</i>
 						</li>
-						<br />
 						<li>
 							<b>Comparison:</b><br />
 							<i>You can use null in comparison operations. For example, to check if an object is null, you can use if (object == null).</i>
 						</li>
-						<br />
 						<li>
 							<b>Assigning Null:</b><br />
 							<i>Assigning null to a variable makes it eligible for garbage collection if there are no other references to the object.</i>
 						</li>
-						<br />
 						<li>
 							<b>Method Argument:</b><br />
 							<i>null can be passed as an argument to a method and can also be returned from a method.</i>
@@ -828,14 +840,14 @@
 							int a = 0;
 							System.out.println(a++);
 						</code>
-						<div class="fragment fade-in">0, because a is incremented (by 1) after it is printed</div>
+						<span class="fragment fade-in">0, because is incremented (by 1) after it is printed</span>
 					</pre>
 					<pre>B)
 						<code data-trim data-noescape class="hljs java">
 							int a = 0;
 							System.out.println(++a);
 						</code>
-						<div class="fragment fade-in">1, because a is incremented (by 1) before it is printed</div>
+						<span class="fragment fade-in">1, because is incremented (by 1) before it is printed</span>
 					</pre>
 					<pre>C)
 						<code data-trim data-noescape class="hljs java">
@@ -843,9 +855,9 @@
 
 							System.out.println(a / b);
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							1, because 5 / 3 = 1.666666666666667, but since it is stored as integer, the decimal places are dropped
-						</div>
+						</span>
 					</pre>
 					<pre>D)
 						<code data-trim data-noescape class="hljs java">
@@ -853,9 +865,9 @@
 
 							System.out.println(a % b);
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							2, because remainder of integer 5 /3 is 2
-						</div>
+						</span>
 					</pre>
 				</blockquote>
 			</section>
@@ -1186,40 +1198,40 @@
 							byte number = 8;
 							int result = number << 1;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 16:<br />
 							In binary: 1000 <- 10000
-						</div>
+						</span>
 					</pre>
 					<pre>B)
 						<code data-line-numbers data-trim data-noescape class="hljs java">
 							byte number = 8;
 							int result = number << 3;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 64:<br />
 							In binary: 1000 <--- 1000000
-						</div>
+						</span>
 					</pre>
 					<pre>C)
 						<code data-line-numbers data-trim data-noescape class="hljs java">
 							byte number = -8;
 							int result = number >> 2;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is -2:<br />
 							In binary: 11111111111111111111111111111000 --> 11111111111111111111111111111110
-						</div>
+						</span>
 					</pre>
 					<pre>D)
 						<code data-line-numbers data-trim data-noescape class="hljs java">
 							byte number = -8;
 							int result = number >>> 2;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 1073741822:<br />
 							In binary: 11111111111111111111111111111000 --> __111111111111111111111111111110
-						</div>
+						</span>
 					</pre>
 				</blockquote>
 			</section>
@@ -1235,10 +1247,10 @@
 							byte b = 81; // 01010001
 							int result = a & b;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 17:<br />
 							In binary: 00010101 & 01010001 = 00010001
-						</div>
+						</span>
 					</pre>
 
 					<pre>B)
@@ -1247,10 +1259,10 @@
 							byte b = 81; // 01010001
 							int result = a | b;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 85:<br />
 							In binary: 00010101 & 01010001 = 01010101
-						</div>
+						</span>
 					</pre>
 
 					<pre>C)
@@ -1259,10 +1271,10 @@
 							byte b = 81; // 01010001
 							int result = a ^ b;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is 68:<br />
 							In binary: 00010101 & 01010001 = 01000001
-						</div>
+						</span>
 					</pre>
 
 					<pre>D)
@@ -1270,10 +1282,10 @@
 							byte a = 21; // 00010101
 							int result = ~a;
 						</code>
-						<div class="fragment fade-in">
+						<span class="fragment fade-in">
 							The result is -22:<br />
 							In binary: 00010101 -> 11101010
-						</div>
+						</span>
 					</pre>
 				</blockquote>
 			</section>
@@ -1284,23 +1296,23 @@
 					<code data-line-numbers data-trim data-noescape class="hljs java">
 						int number = 0;
 
-						number += 3; // equvalent: number = number + 3
+						number += 3; // equivalent: number = number + 3
 
-						number -= 3; // equvalent: number = number - 3
+						number -= 3; // equivalent: number = number - 3
 
-						number *= 3; // equvalent: number = number / 3
+						number *= 3; // equivalent: number = number / 3
 
-						number /= 3; // equvalent: number = number * 3
+						number /= 3; // equivalent: number = number * 3
 
-						number %= 3; // equvalent: number = number % 3
+						number %= 3; // equivalent: number = number % 3
 
-						number |= 3; // equvalent: number = number | 3
+						number |= 3; // equivalent: number = number | 3
 
-						number ^= 3; // equvalent: number = number ^ 3
+						number ^= 3; // equivalent: number = number ^ 3
 
-						number >>= 3; // equvalent: number = number >> 3
+						number >>= 3; // equivalent: number = number >> 3
 
-						number <<= 3; // equvalent: number = number << 3
+						number <<= 3; // equivalent: number = number << 3
 					</code>
 				</pre>
 			</section>
@@ -1393,7 +1405,7 @@
 							// execute if third condition is met
 
 						} else {
-							// execute if no contidion is NOT met
+							// execute if no condition is NOT met
 
 						}
 					</code>
@@ -1404,7 +1416,7 @@
 				<h3>Ternary Operator</h3>
 				<div style="text-align: left;">
 					<p>
-						Java supports tenary operator as a shorthand for if else, which can come in handy when conditionally assigning values.
+						Java supports ternary operator as a shorthand for if else, which can come in handy when conditionally assigning values.
 						<br />
 						It is less code, but it also helps us avoid variable mutation, thus limiting the chance of error.
 					</p>
@@ -1429,7 +1441,7 @@
 						if (temperature > 20) clothes = "T-Shirt"; clothes = "Sweater";
 					</code>
 				</pre>
-					Or it can be written using tenary operator like so:
+					Or it can be written using ternary operator like so:
 					<pre>
 					<code data-line-numbers data-trim data-noescape class="hljs java">
 						String clothes = temperature > 20 ? "T-Shirt" : "Sweater";
@@ -1545,7 +1557,7 @@
 								counter++;
 							}
 						</code>
-						<div class="fragment fade-in">0 - it will never be printed</div>
+						<span class="fragment fade-in">0 - it will never be printed</span>
 					</pre>
 					<pre>B)
 						<code data-line-numbers data-trim data-noescape class="hljs java">
@@ -1556,14 +1568,14 @@
 								counter++;
 							} while (counter < 10);
 						</code>
-						<div class="fragment fade-in">1 - once</div>
+						<span class="fragment fade-in">1 - once</span>
 					</pre>
 				</blockquote>
 			</section>
 			<section>
 				<h3>For Loop</h3>
 				<div style="text-align: left;">
-					<p>For loop executes a block for a given number of iterations. The evaluation of for loop is devided into 3 statements:</p>
+					<p>For loop executes a block for a given number of iterations. The evaluation of for loop is decided into 3 statements:</p>
 					<ul>
 						<li><b>init</b> statement is executed once before the execution of the code block</li>
 						<li><b>condition</b> statement defines the condition for executing the code block</li>
@@ -1655,12 +1667,12 @@
 						<code data-line-numbers data-trim data-noescape class="hljs java">
 							for (int i = 0; i < x; i++) {
 
-								if (breakConditon) {
+								if (breakCondition) {
 									break;
 								}
 
 							}
-							// if breakConditon was met, the loop will end
+							// if breakCondition was met, the loop will end
 						</code>
 					</pre>
 					<p>The <b>continue</b> statement is end current iteration, but the loop will continue with next iteration.</p>
@@ -1696,9 +1708,9 @@
 							System.out.println(i);
 						}
 					</code>
-					<div class="fragment fade-in">
+					<span class="fragment fade-in">
 						1, 2, 3, 4, 5, 6, 7
-					</div>
+					</span>
 				</pre>
 					<pre>
 					<code data-line-numbers data-trim data-noescape class="hljs java">
@@ -1714,9 +1726,9 @@
 							System.out.println(i);
 						}
 					</code>
-					<div class="fragment fade-in">
+					<span class="fragment fade-in">
 						1, 2, 3, 4, 5, 6, 8, 9
-					</div>
+					</span>
 				</pre>
 				</blockquote>
 			</section>
@@ -1839,14 +1851,13 @@
 				<h2>Let's write some code!</h2>
 			</section>
 		</section>
-		</section>
 	</div>
 </div>
 
-<script src="dist/reveal.js"></script>
-<script src="plugin/notes/notes.js"></script>
-<script src="plugin/markdown/markdown.js"></script>
-<script src="plugin/highlight/highlight.js"></script>
+<script src="./dist/reveal.js"></script>
+<script src="./plugin/notes/notes.js"></script>
+<script src="./plugin/markdown/markdown.js"></script>
+<script src="./plugin/highlight/highlight.js"></script>
 <script>
 	// More info about initialization & config:
 	// - https://revealjs.com/initialization/
