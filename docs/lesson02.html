@@ -24,6 +24,49 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
+				<h2>Types (continued)</h2>
+			</section>
+			<section>
+				<h3>Types</h3>
+				<p>
+					As already mentioned in the previous lesson, there are two groups of data types in Java:
+				</p>
+				<ul>
+					<li>primitive types</li>
+					<li>reference types</li>
+				</ul>
+				<p>
+					The reference types are any types that have a class backing them, including String and Arrays.
+				</p>
+				<hr />
+				<p>
+					When you define a variable in Java, you must tell the compile what type it is.<br />
+					However, since <strong>Java 10</strong>, you can use the <code class="inline">var</code> keyword
+					and type will be automatically inferred from the surrounding context (if possible).
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// explicit typing
+						int number1 = 10;
+						String str1 = "A";
+
+						// inferred typing using var
+						var str2 = "A";
+						var number2 = 10;
+					</code>
+				</pre>
+				<p>
+					This may be convenient, but keep in mind that explicit typing is still useful when you want to
+					clearly communicate (to other developers) what type of data is expected.
+					<br />
+					<br />
+					Therefore, it is mostly useful for local (inner) variables within classes etc ...
+				</p>
+			</section>
+		</section>
+
+		<section>
+			<section data-background-color="#523996">
 				<h2>Objects and Classes</h2>
 			</section>
 			<section>
@@ -697,7 +740,7 @@
 						<strong>Argument(s) (optional)</strong>
 						<ul>
 							<li>Method may have zero or more arguments</li>
-							<li>Each arguments must have name and type</li>
+							<li>Each argument must have name and type</li>
 						</ul>
 					</li>
 					<li>
@@ -754,6 +797,80 @@
 						}
 					</code>
 				</pre>
+			</section>
+			<section>
+				<h3>Variable arguments</h3>
+				<p>
+					There are cases where it is impractical to specify a fix set of parameters.
+					The's imagine en example ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						message("Hello from Bangkok!", "Gabi");
+						message("Hello from Bangkok!", "Gabi", "Jane");
+						message("Hello from Bangkok!", "Gabi", "Jane", "Tyna");
+					</code>
+				</pre>
+				<p>
+					We can implement this example by 3 methods ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+					 	void message(String text, String recipient) {
+							// some code
+						}
+
+						void message(String text, String recipient1, String recipient2) {
+							// some code
+						}
+
+						void message(String text, String recipient1, String recipient2, String recipient3) {
+							// some code
+						}
+					</code>
+				</pre>
+				<p>
+					Or we can pass an array as the argument ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						void message(String text, String[] recipients) {
+							// some code
+						}
+					</code>
+				</pre>
+				<p>
+					But there is a better way ...
+				</p>
+			</section>
+			<section>
+				<h4>Variable arguments</h4>
+				<p>
+					Instead of implementing multiple methods or passing an array, we can use <strong>vararg</strong> argument.
+					This is done using the ellipsis operator <code class="inline">...</code>
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						static void message(String text, String... recipient) {
+							// some code
+						}
+					</code>
+				</pre>
+				<p>
+					And we can then call it with as many arguments as we like.
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						message("Hello from Bangkok!", "Gabi");
+						message("Hello from Bangkok!", "Gabi", "Jane");
+						message("Hello from Bangkok!", "Gabi", "Jane", "Tyna");
+						message("Hello from Bangkok!", "Gabi", "Jane", "Tyna", "Jim");
+					</code>
+				</pre>
+				<p>
+					The only rule is that there must be only one <strong>vararg</strong> argument,
+					and it <strong>must be the last argument!</strong>
+				</p>
 			</section>
 			<section>
 				<h3>Lambda Expression</h3>

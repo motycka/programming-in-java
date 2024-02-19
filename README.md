@@ -42,11 +42,6 @@ Introduction to development in Java
  - Practice:
    - prepare for next lessons
 
-TODO:
-- Type inference
-- Elipsis
-
-
 ### Lesson 3
 - Dependency management (Gradle, Maven) (30 min)
 - Testing your code (1h)
