@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="dist/theme/motyka.css">
 
 	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	<link rel="stylesheet" href="plugin/highlight/vs.css">
 </head>
 <body>
 <div class="reveal">
@@ -922,7 +922,7 @@
 					<code data-trim data-noescape data-line-numbers="|3,6,11|" class="hljs java">
 						public class TemperatureConverter {
 
-							private static final Logger logger = Logger.getLogger(TemperatureConverter.class.getName());
+							private static final Logger logger = LoggerFactory.getLogger(TemperatureConverter.class);
 
 							public static Double toCelsius(Double fahrenheit) {
 								logger.info("Converting " + fahrenheit + " Fahrenheit to Celsius");
@@ -1007,23 +1007,74 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
+				<h2>Dependency Management</h2>
+			</section>
+			<section>
+				<h3>Dependency Management in Java</h3>
+				<p>
+					Java (JDK) comes with a set of libraries that allow us to do some basic development tasks.
+					However, Java programmes often require more.
+				</p>
+				<hr />
+				<p>
+					As with any modern language, you can extend your code by using libraries, in Java, they are called
+					dependencies.
+				</p>
+				<p>
+					You could manage your dependencies manually, by adding their <strong>jar</strong> files to the project.
+					Or you can use a tool to help you do that.
+				</p>
+				<hr />
+				<p>
+					There are two major tools for project and dependency management:
+				</p>
+				<p>
+					<strong>
+						<a href="https://maven.apache.org/">Maven</a> and <a href="https://gradle.org/">Gradle</a>
+					</strong>
+				</p>
+			</section>
+			<section>
+				<h3>Dependency Management in Java</h3>
+				<p>
+					Besides managing dependencies, these tools also take care of setting up your <strong>project</strong>,
+					<strong>modules</strong>, <strong>plugins</strong> and more.
+				</p>
+				<hr />
+				<ol>
+					<li>Java version management</li>
+					<li>
+						Dependency and version management (in scope)
+						<ul>
+							<li>development, test, runtime</li>
+						</ul>
+					</li>
+					<li>Project structure</li>
+					<li>
+						Task configurations
+						<ul>
+							<li>build, publishing, testing</li>
+							<li>documentation, code generation, data migrations</li>
+						</ul>
+					</li>
+					<li>
+						Plugins
+						<ul>
+							<li>developer tools, code quality, ...</li>
+						</ul>
+					</li>
+				</ol>
+				<hr />
+				<p>
+					Our project is using <a href="https://gradle.org/">Gradle</a>.
+				</p>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
 				<h2>Practice</h2>
 			</section>
 		</section>
-
-		<!--		<section>-->
-		<!--			<section data-background-color="#523996">-->
-		<!--				<h2>Dependency Management</h2>-->
-		<!--			</section>-->
-		<!--			<section>-->
-		<!--				<h3>Dependency Management in Java</h3>-->
-		<!--				<p>TODO</p>-->
-		<!--				<ul>-->
-		<!--					<li>Maven</li>-->
-		<!--					<li>Gradle</li>-->
-		<!--				</ul>-->
-		<!--			</section>-->
-		<!--		</section>-->
 	</div>
 </div>
 

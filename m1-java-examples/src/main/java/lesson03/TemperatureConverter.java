@@ -1,10 +1,11 @@
 package lesson03;
 
-import java.util.logging.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TemperatureConverter {
 
-    private static final Logger logger = Logger.getLogger(TemperatureConverter.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(TemperatureConverter.class);
 
     /**
      * Converts temperature value given in Fahrenheit to Celsius
