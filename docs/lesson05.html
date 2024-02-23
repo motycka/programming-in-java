@@ -1386,7 +1386,7 @@
 
 						// custom comparator by occurrence of letter 'a'
 						Comparator<String> byOccurrenceOfLetterA = Comparator.comparingLong((str) ->
-								str.chars().filter(ch -> ch == 'a').count()
+							str.chars().filter(ch -> ch == 'a').count()
 						);
 
 						// passing comparator to sort method as an argument
@@ -1456,11 +1456,14 @@
 				<h3>Stream API</h3>
 				<em>Sorting</em>
 				<p>
-					TODO
+					You can use Stream API to sort collection using predefined comparators or create your own comparators.
 				</p>
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-
+						List&lt;String&gt; sortedCities = data
+							.stream() // creates Stream
+							.sorted(Comparator.reverseOrder()) // compares using the comparator
+							.toList(); // converts Stream to List
 					</code>
 				</pre>
 			</section>
@@ -1468,23 +1471,35 @@
 				<h3>Stream API</h3>
 				<em>Mapping / Reducing</em>
 				<p>
-					TODO
+					Map and reduce is used for transforming collections.
+				</p>
+				<p>
+					Reducing allows us to collect data.
 				</p>
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-
+						List&lt;String&gt; mappedCities = data
+							.stream() // creates Stream
+							.map(item -> {
+								// converts to upper case and removes all vowels
+								return item.toUpperCase().replaceAll("[AEIOUY]", "");
+							}) // compares using the comparator
+							.toList(); // converts Stream to List
 					</code>
 				</pre>
 			</section>
 			<section>
 				<h3>Stream API</h3>
-				<em>Grouping</em>
+				<em>Collecting</em>
 				<p>
-					TODO
+					You can collect your collection into another collection.
+					For example, you can group items in collection by some characteristics.
 				</p>
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-
+						Map&lt;String, List&lt;String&gt;&gt; groupedCities = data
+                			.stream() // creates Stream
+                			.collect(Collectors.groupingBy(s -> String.valueOf(s.charAt(0))));
 					</code>
 				</pre>
 			</section>
@@ -1492,11 +1507,18 @@
 				<h3>Stream API</h3>
 				<em>Other operations</em>
 				<p>
-					TODO
+					There are many more operations you can do using Stream API.
+					Try to explore them using documentations.
 				</p>
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
+						var allMatch = data.stream().allMatch(item -> item.length() == 5);
 
+						var anyMatch = data.stream().anyMatch(item -> item.length() == 5);
+
+						var stream = data.stream().peek(System.out::println);
+
+						var stream3 = data.stream().limit(3);
 					</code>
 				</pre>
 			</section>
