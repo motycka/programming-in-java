@@ -1,0 +1,27 @@
+UTC-12: Baker Island, Howland Island (uninhabited)
+UTC-11: Pago Pago, American Samoa
+UTC-10: Honolulu, Hawaii, United States
+UTC-9: Anchorage, Alaska, United States
+UTC-8: Los Angeles, California, United States
+UTC-7: Denver, Colorado, United States
+UTC-6: Mexico City, Mexico
+UTC-5: New York City, New York, United States
+UTC-4: São Paulo, Brazil
+UTC-3: Buenos Aires, Argentina
+UTC-2: Fernando de Noronha, Brazil
+UTC-1: Praia, Cape Verde
+UTC+0: London, United Kingdom
+UTC+1: Prague, Czech Republic
+UTC+2: Athens, Greece
+UTC+3: Moscow, Russia
+UTC+4: Dubai, United Arab Emirates
+UTC+5: Islamabad, Pakistan
+UTC+6: Dhaka, Bangladesh
+UTC+7: Bangkok, Thailand
+UTC+8: Beijing, China
+UTC+9: Tokyo, Japan
+UTC+10: Sydney, Australia
+UTC+11: Solomon Islands, Noumea (New Caledonia)
+UTC+12: Auckland, New Zealand
+
+
