@@ -116,6 +116,109 @@
 					</code>
 				</pre>
 			</section>
+			<section>
+				<h3>BigDecimal</h3>
+				<p>
+					Part of the <strong>java.math</strong> package,
+					<strong>BigDecimal</strong> is a class that provides arbitrary-precision signed decimal numbers.
+				</p>
+				<p>
+					So far we used <strong>double</strong> and <strong>float</strong> to represent floating point numbers,
+					but these types have limitations in terms of precision and rounding errors.
+				</p>
+				<p>
+					<code>BigDecimal</code> is better choice when we need to represent numbers with high precision, such as when working with very large or very small numbers.
+				</p>
+				<p>
+					It's use, however, comes with a cost of performance and memory consumption.
+				</p>
+				<p>
+					It has methods such as <code>add()</code>, <code>subtract()</code>, <code>multiply()</code>, <code>divide()</code>, <code>pow()</code>, <code>sqrt()</code>, <code>cbrt()</code>,
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						// parse big decimal from string
+						BigDecimal radius = new BigDecimal("987654321.12345678901234567890");
+
+						// get big decimal value from other types
+						BigDecimal two = BigDecimal.valueOf(2);
+
+						// get big decimal representation of pi
+						BigDecimal pi = BigDecimal.valueOf(Math.PI);
+
+						var circleCircumference = two.multiply(pi).multiply(radius);
+
+						System.out.println(circleCircumference); // 6205615119.05533231868504652218099103339093540
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Java Optional</h2>
+				<em>java.util</em>
+			</section>
+			<section>
+				<h3>Java Optional</h3>
+				<em>
+					<strong>Optional</strong> is a container object which may or may not contain a non-null value.
+				</em>
+				<hr />
+				<p>
+					Its purpose is to provide a type-level solution for representing optional values instead of using <strong>null</strong>.
+
+				</p>
+				<p>
+					It forces the user to think about the possibility of a value being absent by requiring the user to explicitly unwrap the value.
+				</p>
+				<p>
+					This in contrast, null values can be accessed without any checks and therefore can lead to <strong>NullPointerException</strong>.
+				</p>
+				<hr />
+				<p>
+					It was introduced in <strong>Java 8</strong> and resides in <code>java.util</code> package.
+				</p>
+			</section>
+			<section>
+				<h4>Java Optional</h4>
+				<pre>OptionalExample.java
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class OptionalExample {
+
+							public static void main(String[] args) {
+
+								// create an instance of Optional
+								Optional&lt;String&gt; optional = Optional.ofNullable(getRandomValue());
+
+								// check if the value is present
+								boolean isPresent = optional.isPresent();
+								System.out.println("Value is present: " + isPresent);
+
+								// you can also use orElse method to provide a default value
+								String result = optional.orElse("Optional is cool!");
+								System.out.println("Value: " + result);
+
+								// or in a functional way
+								String result2 = optional.orElseGet(() -> "Optional is cool!");
+								System.out.println("Value: " + result2);
+
+								try {
+									// or to throw an exception if the value is not present
+									optional.orElseThrow(() -> new RuntimeException("Value was not present"));
+								} catch (RuntimeException e) {
+									System.out.println(e.getMessage());
+								}
+							}
+
+							private static String getRandomValue() {
+								List&lt;String&gt; values = Arrays.asList(null, "Java is fun!");
+								return values.get(new Random().nextInt(values.size()));
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
 		</section>
 		<section>
 			<section data-background-color="#523996">
@@ -419,73 +522,6 @@
 						System.out.println(duration); // PT21M15.740325S
 						System.out.println(duration.getSeconds()); //1275
 						System.out.println(duration.getNano()); // 740325000
-					</code>
-				</pre>
-			</section>
-		</section>
-		<section>
-			<section data-background-color="#523996">
-				<h2>Java Optional</h2>
-				<em>java.util</em>
-			</section>
-			<section>
-				<h3>Java Optional</h3>
-				<em>
-					<strong>Optional</strong> is a container object which may or may not contain a non-null value.
-				</em>
-				<hr />
-				<p>
-					Its purpose is to provide a type-level solution for representing optional values instead of using <strong>null</strong>.
-
-				</p>
-				<p>
-					It forces the user to think about the possibility of a value being absent by requiring the user to explicitly unwrap the value.
-				</p>
-				<p>
-					This in contrast, null values can be accessed without any checks and therefore can lead to <strong>NullPointerException</strong>.
-				</p>
-				<hr />
-				<p>
-					It was introduced in <strong>Java 8</strong> and resides in <code>java.util</code> package.
-				</p>
-			</section>
-			<section>
-				<h4>Java Optional</h4>
-				<pre>OptionalExample.java
-					<code data-trim data-noescape data-line-numbers class="hljs java">
-						public class OptionalExample {
-
-							public static void main(String[] args) {
-
-								// create an instance of Optional
-								Optional&lt;String&gt; optional = Optional.ofNullable(getRandomValue());
-
-								// check if the value is present
-								boolean isPresent = optional.isPresent();
-								System.out.println("Value is present: " + isPresent);
-
-								// you can also use orElse method to provide a default value
-								String result = optional.orElse("Optional is cool!");
-								System.out.println("Value: " + result);
-
-								// or in a functional way
-								String result2 = optional.orElseGet(() -> "Optional is cool!");
-								System.out.println("Value: " + result2);
-
-								try {
-									// or to throw an exception if the value is not present
-									optional.orElseThrow(() -> new RuntimeException("Value was not present"));
-								} catch (RuntimeException e) {
-									System.out.println(e.getMessage());
-								}
-							}
-
-							private static String getRandomValue() {
-								List&lt;String&gt; values = Arrays.asList(null, "Java is fun!");
-								return values.get(new Random().nextInt(values.size()));
-							}
-
-						}
 					</code>
 				</pre>
 			</section>
