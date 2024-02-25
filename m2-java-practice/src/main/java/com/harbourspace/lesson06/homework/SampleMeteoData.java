@@ -1,4 +1,4 @@
-package com.harbourspace.lesson06.data;
+package com.harbourspace.lesson06.homework;
 
 import java.time.ZonedDateTime;
 import java.util.List;
