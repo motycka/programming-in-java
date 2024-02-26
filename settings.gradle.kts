@@ -9,4 +9,3 @@ plugins {
 rootProject.name = "programming-in-java"
 include("m1-java-examples")
 include("m2-java-practice")
-include("m3-spring-application")
