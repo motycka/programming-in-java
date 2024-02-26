@@ -25,6 +25,44 @@
 		</section>
 		<section>
 			<section data-background-color="#523996">
+				<h2>The main method</h2>
+				<em>Reading from command line</em>
+			</section>
+			<section>
+				<h3>Command line arguments</h3>
+				<p>
+					We have been using main method with <code>String[] args</code> parameter,
+					but we have not explained what they are and how they are used.
+				</p>
+				<hr />
+				<p>
+					When you run a Java program from the command line, you can pass arguments to the program.
+					These arguments are treated as strings and are stored in the <code>String[] args</code> array.
+				</p>
+				<p>
+					We can also read input from console. Let's demonstrate both with very simple example.
+				</p>
+				<hr />
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class CommandLineExample {
+
+							public static void main(String[] args) {
+								for (String arg : args) {
+									System.out.println(arg);
+								}
+
+								System.out.println("What is your name?");
+								String name = System.console().readLine();
+								System.out.println("Hello, " + name + "!");
+							}
+						}
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
 				<h2>Paths and Resources</h2>
 				<em>Classpath</em>
 			</section>
