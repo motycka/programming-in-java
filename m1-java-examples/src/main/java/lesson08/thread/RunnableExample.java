@@ -1,4 +1,4 @@
-package lesson08;
+package lesson08.thread;
 
 public class RunnableExample {
 

@@ -1,4 +1,4 @@
-package lesson08;
+package lesson08.memory;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedDeque;

@@ -82,9 +82,6 @@
 					<li>GraalVM</li>
 				</ul>
 			</section>
-			<section>
-				<h3>Demo</h3>
-			</section>
 		</section>
 		<section>
 			<section data-background-color="#523996">
@@ -310,9 +307,6 @@
 					Each JVM implementation may implement GC differently, and may have its own GC strategies,
 					although they should all follow the JVM specification.
 				</p>
-			</section>
-			<section>
-				<h3>Demo</h3>
 			</section>
 		</section>
 		<section>
@@ -693,11 +687,18 @@
 							private static final Semaphore semaphore = new Semaphore(1);
 
 							public static void main(String[] args) {
-								new Thread(new MyRunnable()).start();
-								new Thread(new MyRunnable()).start();
+								new Thread(new MyRunnable(semaphore), "A").start();
+								new Thread(new MyRunnable(semaphore), "B").start();
 							}
 
 							static class MyRunnable implements Runnable {
+
+								private final Semaphore semaphore;
+
+								public MyRunnable(Semaphore semaphore) {
+									this.semaphore = semaphore;
+								}
+
 								@Override
 								public void run() {
 									try {
@@ -706,11 +707,171 @@
 									} catch (InterruptedException e) {
 										throw new RuntimeException(e);
 									} finally {
-										System.out.println("Thread '" + Thread.currentThread().getName() + "' releasing the semaphore");
+										System.out.println("Thread '" + Thread.currentThread().getName() + "' is releasing the semaphore");
 										semaphore.release();
 									}
 								}
 							}
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>CountDownLatch</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class CountDownLatchExample {
+
+							private static final CountDownLatch latch = new CountDownLatch(3);
+
+							public static void main(String[] args) {
+								var waitingThread = new Thread(() -> {
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' started");
+									try {
+										latch.await();
+									} catch (InterruptedException e) {
+										throw new RuntimeException(e);
+									}
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' finished");
+								}, "WAITING");
+
+
+								var countingThread = new Thread(() -> {
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' started");
+									while (latch.getCount() > 0) {
+										System.out.println("Thread '" + Thread.currentThread().getName() + "' counting down " + latch.getCount() + "...");
+										latch.countDown();
+									}
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' finished");
+								}, "COUNTING");
+
+								waitingThread.start();
+								countingThread.start();
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>CyclicBarrier</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class CyclicBarrierExample {
+
+							public static void main(String[] args) {
+								var barrier = new CyclicBarrier(3, () -> System.out.println("Barrier reached"));
+
+								new Thread(new MyRunnable(barrier), "A").start();
+								new Thread(new MyRunnable(barrier), "B").start();
+								new Thread(new MyRunnable(barrier), "C").start();
+							}
+
+							static class MyRunnable implements Runnable {
+								private final CyclicBarrier barrier;
+
+								public MyRunnable(CyclicBarrier barrier) {
+									this.barrier = barrier;
+								}
+
+								@Override
+								public void run() {
+									try {
+										System.out.println("Thread '" + Thread.currentThread().getName() + "' is waiting on the barrier");
+										barrier.await();
+										System.out.println("Thread '" + Thread.currentThread().getName() + "' has passed the barrier");
+									} catch (Exception e) {
+										throw new RuntimeException(e);
+									}
+								}
+							}
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>Phaser</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class PhaserExample {
+
+							private static final Phaser phaser = new Phaser(2);
+
+							public static void main(String[] args) {
+								new Thread(new PreProcessor(phaser), "PRE-PROCESSOR").start();
+								new Thread(new PostProcessor(phaser), "POST-PROCESSOR").start();
+							}
+
+							static class PostProcessor implements Runnable {
+								private final Phaser phaser;
+
+								public PostProcessor(Phaser phaser) {
+									this.phaser = phaser;
+								}
+
+								@Override
+								public void run() {
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' has arriver. Waiting for others...");
+									phaser.arriveAndAwaitAdvance();
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' has finished.");
+								}
+							}
+
+							static class PreProcessor implements Runnable {
+								private final Phaser phaser;
+
+								public PreProcessor(Phaser phaser) {
+									this.phaser = phaser;
+								}
+
+								@Override
+								public void run() {
+									try {
+										Thread.sleep(1000);
+									} catch (InterruptedException e) {
+										throw new RuntimeException(e);
+									}
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' has arrived.");
+									phaser.arriveAndDeregister();
+									System.out.println("Thread '" + Thread.currentThread().getName() + "' has finished.");
+								}
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>Exchanger</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class ExchangerExample {
+
+							private static final Exchanger&lt;String&gt; exchanger = new Exchanger<>();
+
+							public static void main(String[] args) {
+								new Thread(new MyRunnable(exchanger), "A").start();
+								new Thread(new MyRunnable(exchanger), "B").start();
+							}
+
+							static class MyRunnable implements Runnable {
+								private final Exchanger&lt;String&gt; exchanger;
+
+								public MyRunnable(Exchanger&lt;String&gt; exchanger) {
+									this.exchanger = exchanger;
+								}
+
+								@Override
+								public void run() {
+									try {
+										String message = exchanger.exchange("Hello from " + Thread.currentThread().getName());
+										System.out.println("Thread '" + Thread.currentThread().getName() + "' received message: " + message);
+									} catch (InterruptedException e) {
+										throw new RuntimeException(e);
+									}
+								}
+							}
+
 						}
 					</code>
 				</pre>
@@ -733,6 +894,49 @@
 					<strong>Executor Framework</strong><br />
 					This is a higher-level replacement for working with threads directly. Executors are capable of managing a pool of threads, so we do not need to manually create new threads and run tasks in an asynchronous fashion.
 				</p>
+			</section>
+			<section>
+				<h4>Future example</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class FutureExample {
+
+							public static void main(String[] args) {
+
+								Messenger messenger = new Messenger();
+
+								Future&lt;String&gt; message = messenger.receiveMessage();
+
+								while (!message.isDone()) {
+									System.out.println("Waiting for message...");
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException e) {
+										throw new RuntimeException(e);
+									}
+								}
+
+								try {
+									System.out.println("Received message: " + message.get());
+								} catch (Exception e) {
+									throw new RuntimeException(e);
+								}
+							}
+
+							static class Messenger {
+
+								private final ExecutorService executor = Executors.newSingleThreadExecutor();
+
+								public Future&lt;String&gt; receiveMessage() {
+									return executor.submit(() -> {
+										Thread.sleep(3000);
+										return "Hello from future!";
+									});
+								}
+							}
+						}
+					</code>
+				</pre>
 			</section>
 		</section>
 		<section>
