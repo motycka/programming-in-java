@@ -418,65 +418,48 @@
 			<section>
 				<h4>Interface Injection</h4>
 				<em>
-					This example is using interface injection.
+					This is just conceptual example fo interface injection.
+					For it to work you need to have some kind of an injector that will inject the dependency into the class that implements the interface.
+					<br />
+					<br />
+					Application frameworks usually provide such injector for us.
 				</em>
-				<div class="row">
-					<pre>
+				<pre>
+				<code data-trim data-noescape data-line-numbers class="hljs java">
+					@Component
+					public class MyApplication {
+
+						private MessageService service;
+
+						@Autowired
+						public void setService(MessageService service){
+							this.service = service;
+						}
+					}
+				</code>
+				</pre>
+				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
-						// TODO
-						// TODO
-						// TODO
-						// TODO
-						// TODO
+						public interface MessageService {
+
+							void sendMessage(String msg, String rec);
+
+						}
 					</code>
-					</pre>
-					<div class="column">
-						<pre>
-							<code data-trim data-noescape data-line-numbers class="hljs java">
-								interface Engine {
-									void on();
-									void off();
-								}
-							</code>
-						</pre>
-						<pre>
-							<code data-trim data-noescape data-line-numbers class="hljs java">
-								class ElectricEngine implements Engine {
+				</pre>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						@Service
+						public class EmailService implements MessageService {
 
-									@Override
-									public void on() {
-										System.out.println("Diesel engine started");
-									}
-
-									@Override
-									public void off() {
-										System.out.println("Diesel engine stopped");
-									}
-								}
-							</code>
-						</pre>
-					</div>
-					<div class="column">
-						<pre>
-							<code data-trim data-noescape data-line-numbers class="hljs java">
-								class Car {
-
-									// dependency is hardcoded
-									Engine engine = new ElectricEngine();
-
-									void start() {
-										engine.on();
-									}
-
-									void stop() {
-										engine.off();
-									}
-
-								}
-							</code>
-						</pre>
-					</div>
-				</div>
+							@Override
+							public void sendMessage(String msg, String rec) {
+								// Logic to send email
+								System.out.println("Email sent to " + rec + " with Message=" + msg);
+							}
+						}
+					</code>
+				</pre>
 			</section>
 		</section>
 
