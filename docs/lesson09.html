@@ -20,7 +20,7 @@
 			<i>Week 2 | Lesson 9</i>
 			<h1>The SOLID Principle</h1>
 			<em>Object Oriented Design Patterns</em><br />
-			<em>I/mutability, state and functional programming principles</em><br />
+			<em>Functional programming principles</em><br />
 			<em>Generics</em>
 		</section>
 		<section>
@@ -504,7 +504,7 @@
 					because it doesn't know what type of element is in the list.
 				</p>
 				<pre>
-					<code data-trim data-noescape data-line-numbers="|5|8|" class="hljs java">
+					<code data-trim data-noescape data-line-numbers class="hljs java">
 						public class GenericsExample {
 
 							public static void main(String[] args) {
@@ -522,7 +522,7 @@
 					To fix this, we can tell the compiler what type of elements are in the list.
 				</p>
 				<pre>
-					<code data-trim data-noescape data-line-numbers="|5|8|" class="hljs java">
+					<code data-trim data-noescape data-line-numbers class="hljs java">
 						public class GenericsExample {
 
 							public static void main(String[] args) {
@@ -549,12 +549,12 @@
 				<div class="row">
 					<div class="column">
 						<pre>
-							<code data-trim data-noescape data-line-numbers="|1|3,5,9|" class="hljs java">
-								class Sensor&lt;T&gt; {
+							<code data-trim data-noescape data-line-numbers class="hljs java">
+								class MyClass&lt;T&gt; {
 
-									private T id;
+									private final T id;
 
-									public Sensor(T id) {
+									public MyClass(T id) {
 										this.id = id;
 									}
 
@@ -568,16 +568,16 @@
 					</div>
 					<div class="column">
 						<pre>
-							<code data-trim data-noescape data-line-numbers="|5,8|" class="hljs java">
+							<code data-trim data-noescape data-line-numbers class="hljs java">
 								public class GenericsExample {
 
 									public static void main(String[] args) {
 
-										Sensor&lt;String&gt; sensor1 = new Sensor<>("ABC");
-										System.out.println(sensor1.getId());
+										MyClass&lt;String&gt; myClass1 = new MyClass<>("ABC");
+										System.out.println(myClass1.getId());
 
-										Sensor&lt;Integer&gt; sensor2 = new Sensor<>(123);
-										System.out.println(sensor2.getId());
+										MyClass&lt;Integer&gt; myClass2 = new MyClass<>(123);
+										System.out.println(myClass2.getId());
 
 									}
 
@@ -590,46 +590,213 @@
 					We can use any name for the type parameter, but it is common to use single uppercase letters.
 				</sub>
 			</section>
-		</section>
-<!--		<section>-->
-<!--			<section data-background-color="#523996">-->
-<!--				<h2>Java Design Patterns</h2>-->
-<!--			</section>-->
-<!--			<section>-->
-<!--				<h3>Java Design Patterns</h3>-->
-<!--			</section>-->
-<!--		</section>-->
-<!--		<section>-->
-<!--			<section data-background-color="#523996">-->
-<!--				<h2>Optionals</h2>-->
-<!--			</section>-->
-<!--			<section>-->
-<!--				<h3>Optionals</h3>-->
-<!--			</section>-->
-<!--		</section>-->
-<!--		<section>-->
-<!--			<section data-background-color="#523996">-->
-<!--				<h2>Lambda expressions</h2>-->
-<!--				<h2>Repetition</h2>-->
-<!--			</section>-->
-<!--			<section>-->
-<!--				<h3>Lambda expressions</h3>-->
-<!--			</section>-->
-<!--		</section>-->
-<!--		<section>-->
-<!--			<section data-background-color="#523996">-->
-<!--				<h2>Immutability, State, Functional Programming</h2>-->
-<!--			</section>-->
-<!--			<section>-->
-<!--				<h3>Subtopic</h3>-->
-<!--				<p>-->
-<!--					So far, we have been using <strong>imperative programming</strong> style for working with collections.-->
-<!--					The imperative style is characterized by explicit statements that change a program's state.-->
+			<section>
 
-<!--					Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.-->
-<!--				</p>-->
-<!--			</section>-->
-<!--		</section>-->
+				<h4>Generics</h4>
+				<p>
+					Here is an example with multiple types ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						class MyClassEnhanced&lt;T1, T2&gt; {
+
+							public Boolean equals(T1 value1, T2 value2) {
+								return value1 == value2;
+							}
+
+						}
+					</code>
+				</pre>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class GenericsExample {
+
+							public static void main(String[] args) {
+
+								MyClassEnhanced&lt;Integer, Double&gt; myClassEnhanced = new MyClassEnhanced<>();
+								System.out.println(myClassEnhanced.equals(123, 123.0));
+
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Functional Programming</h2>
+			</section>
+			<section>
+				<h3>Functional Programming</h3>
+				<em>In Java</em>
+				<hr />
+				<p>
+					So far, we have been using <strong>imperative programming</strong> style for working with collections.
+					The imperative style is characterized by explicit statements that change a program's state.
+				</p>
+				<hr />
+				<p>
+					<strong>Functional programming </strong> is a programming paradigm where programs are constructed by applying and composing functions.
+					It emphasizes the use of pure functions that avoid changing state and mutable data.
+				</p>
+				<p>
+					<strong>Pure function</strong> is a function where the return value is only determined by its input values, without observable side effects.
+				</p>
+				<p>
+					<strong>Side effects</strong> are changes in the state of the program that are observable outside the called function other than the return value.
+				</p>
+				<hr />
+				<p>
+					In Java, functional programming is supported starting from <strong>Java 8</strong> onwards with the
+					introduction of Lambda Expressions and the Stream API.
+				</p>
+			</section>
+			<section>
+				<h4>Functional Programming</h4>
+				<em>
+					Example of a pure function and a function with side effects.
+				</em>
+				<hr />
+				<br />
+				<p>
+					Function with side effects ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						private static int counter = 0;
+
+						public static int unPureFunction(int increment) {
+							return counter += increment;
+						}
+					</code>
+				</pre>
+				<br />
+				<p>
+					Pure function ...
+				</p>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public static int pureFunction(int counter, int increment) {
+							return counter + increment;
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h3>Function as an argument</h3>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class FunctionAsArgumentExample {
+
+							public static void main(String[] args) {
+
+								Integer result = execute("Hello Function!", (input) -> {
+									// your code
+									System.out.println("Got input: " + input);
+									return input.length();
+								});
+
+								System.out.println(result);
+
+								Boolean result2 = execute("12.34", 12.34, (p1, p2) -> {
+									// your code
+									return Double.parseDouble(p1) == p2;
+								});
+
+								System.out.println(result2);
+
+							}
+
+							private static Integer execute(String input, Function<String, Integer> function) {
+								return function.apply(input);
+							}
+
+							private static Boolean execute(String input1, Double input2, BiFunction<String, Double, Boolean> function) {
+								return function.apply(input1, input2);
+							}
+
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h3>Functional Interfaces</h3>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						public class FunctionalInterfaceExample {
+
+							public static void main(String[] args) {
+
+								Integer result = execute("Hello Function!", (input) -> {
+									System.out.println("Got input: " + input);
+									return input.length();
+								});
+
+								System.out.println(result);
+
+							}
+
+							private static Integer execute(String input, MyFunctionalInterface function) {
+								return function.execute(input);
+							}
+
+						}
+					</code>
+				</pre>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						@FunctionalInterface
+						interface MyFunctionalInterface {
+							Integer execute(String input);
+						}
+					</code>
+				</pre>
+			</section>
+		</section>
+		<section>
+			<section data-background-color="#523996">
+				<h2>Design Patterns</h2>
+			</section>
+			<section>
+				<h3>Design Patterns</h3>
+				<hr />
+				<p>
+					In software engineering, a design pattern is a general repeatable solution to a commonly occurring
+					problem in software design. They are best practices that the programmer can use to solve common problems when designing an application or system.
+				</p>
+				<hr />
+				<p>As a simplification, we can divide design patterns into 3 categories ...</p>
+				<ul style="font-size: 80%">
+					<li>
+						<strong>Creational Design Patterns</strong>
+						deal with object creation mechanisms, helping with complexities of object creation and providing convenient ways to do so.
+						<br />
+						<sub>Builder Pattern, Singleton Pattern, Factory Pattern, Abstract Factory Pattern, Prototype Pattern ...</sub>
+						<br />
+						<br />
+					</li>
+					<li>
+						<strong>Structural Design Patterns</strong>
+						concern with composition of classes and objects which form larger structures.
+						<br />
+						<sub>Decorator Pattern, Adapter Pattern, Proxy Pattern, Composite Pattern, Bridge Pattern ...</sub>
+						<br />
+						<br />
+					</li>
+					<li>
+						<strong>Behavioral Design Patterns</strong>
+						are specifically concerned with communication between objects, how they interact, and distribute the work.
+						<br />
+						<sub>Observer Pattern, Strategy Pattern, Iterator Pattern, Command Pattern, Template Method Pattern ...</sub>
+					</li>
+				</ul>
+				<hr />
+				<p>
+					I will not go into detail, but I encourage you <a href="https://en.wikipedia.org/wiki/Software_design_pattern">to read about them</a>.
+				</p>
+			</section>
+		</section>
 		<section>
 			<section data-background-color="#523996">
 				<h2>Practice</h2>

@@ -17,7 +17,7 @@ public class ConstructorInjectionExample {
 
     private static class Car {
 
-        private Engine engine;
+        private final Engine engine;
 
         // dependency is injected via constructor
         public Car(Engine engine) {
