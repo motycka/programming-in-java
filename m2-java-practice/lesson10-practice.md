@@ -9,11 +9,11 @@ Create a class `Student` (or record) with the following fields:
 - `fullName` of type `String`
 - `course` of type `Integer`
 - `isEnrolled` of type `Boolean`
-- `admissionDate` of type `LocalDate`
+- `admissionDate` of type `LocalDate` 
 - `graduationDate` of type `LocalDate` (optional, may be null)
 - `grade` of type `Double` (optional, may be null)
 
-Convert the class to JSON (String) using reflection.
+Convert the class to JSON (String) using reflection. 
 This means you will need to find all **declared** fields of the class, convert them to JSON keys and assign their values as JSON values.
 
 All values can be wrapped in double quotes, except for numbers and booleans.
@@ -31,8 +31,8 @@ To do so, you can install a tool called [PostMan](https://www.postman.com) and l
 I expect you to know how to do GET, POST, PUT and DELETE operations next week.
 
 See [PostMan documentation](https://learning.postman.com/docs/introduction/overview/)
-- [Sending requests](https://learning.postman.com/docs/sending-requests/requests/)
-- [Requests](https://learning.postman.com/docs/sending-requests/requests/)
+ - [Sending requests](https://learning.postman.com/docs/sending-requests/requests/)
+ - [Requests](https://learning.postman.com/docs/sending-requests/requests/)
 
 
 Here is a list of public REST APIs you can use to practice:
