@@ -89,7 +89,7 @@
 					<li>
 						<strong>Uniform interface</strong><br />
 						The API should be designed in a way that is consistent, predictable,
-						handles errors gracefully, is platform-agnotic, and is easy to understand and use.
+						handles errors gracefully, is platform-agnostic, and is easy to understand and use.
 					</li>
 				</ul>
 			</section>
@@ -129,8 +129,8 @@
 					<li>
 						<strong>URI</strong><br />
 						<em>
-						Identifies a unique <strong>resource</strong> on the server.
-						It is usually composed of <strong>path</strong> and optionally <strong>query parameters</strong>.
+							Identifies a unique <strong>resource</strong> on the server.
+							It is usually composed of <strong>path</strong> and optionally <strong>query parameters</strong>.
 						</em>
 						<br />
 						<code style="font-size: 80%; color: steelblue">
@@ -354,6 +354,97 @@
 					</div>
 				</div>
 			</section>
+			<section>
+				<h3>REST API design practices</h3>
+				<em>
+					When designing a REST API, it is important to follow some good practices.
+				</em>
+				<hr />
+				<p>
+					<strong>Naming conventions</strong>
+				</p>
+				<ul>
+					<li>Paths should be nouns and should be plural.</li>
+					<li>Paths should represent hierarchical relationships.</li>
+					<li>Paths should preferably be lowercase, and not case-sensitive.</li>
+					<li>Query parameters should be named in consistent matter, either using
+						<ul>
+							<li>camelCase</li>
+							<li>snake_case</li>
+							<li>kebab-case</li>
+							<li> ... but not combining them</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>REST API design practices</h3>
+				<em>
+					When designing a REST API, it is important to follow some good practices.
+				</em>
+				<hr />
+				<p>
+					<strong>Versioning</strong>
+				</p>
+				<ul>
+					<li>Once you publish a (public) API, you may not be able to control who uses it.</li>
+					<li>API versioning is thus important to ensure that any changes are backward compatible.</li>
+				</ul>
+			</section>
+			<section>
+				<h3>REST API design practices</h3>
+				<em>
+					When designing a REST API, it is important to follow some good practices.
+				</em>
+				<hr />
+				<p>
+					<strong>Request and response format</strong>
+				</p>
+				<ul>
+					<li>API should return data in a consistent format, such as JSON or XML.</li>
+					<li>Naming conventions should be consistent, for example, use <code>camelCase</code> or <code>snake_case</code> consistently throughout the API.</li>
+					<li>For services written in Java, it is more nature to use <code>camelCase</code>, because it matches class field naming conventions.</li>
+				</ul>
+			</section>
+			<section>
+				<h3>REST API design practices</h3>
+				<em>
+					When designing a REST API, it is important to follow some good practices.
+				</em>
+				<hr />
+				<p>
+					<strong>Response codes and error handling</strong>
+				</p>
+				<ul>
+					<li>Each method should respond with appropriate status code.</li>
+					<li>For example:
+						<ul>
+							<li>successful requests that do not modify resource should be either 200 or 204</li>
+							<li>successful requests that create a new resource should be 201</li>
+							<li>requests that fail due to user error should return 4xx</li>
+							<li>requests that fail due to user input error should fail with 400</li>
+							<li>requests tha fail due to authentication error should fail with 401</li>
+							<li>requests that fail due to authorization error should fail with 403</li>
+							<li>requests that fail due to resource not found should fail with 404</li>
+							<li>requests that fail due to server error should return 5xx</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<section>
+				<h3>REST API design practices</h3>
+				<em>
+					When designing a REST API, it is important to follow some good practices.
+				</em>
+				<hr />
+				<p>
+					<strong>Overall consistency</strong>
+				</p>
+				<ul>
+					<li>API should be consistent in its design and behavior.</li>
+					<li>For example, if POST method for one resource returns the newly created object, then POST method for another resource should also return the newly created object.</li>
+				</ul>
+			</section>
 		</section>
 
 		<section>
@@ -370,9 +461,10 @@
 				<p>
 					Reflection is part of the Java API, and is defined in the <code>java.lang.reflect</code> package.
 				</p>
-				<!--				<p>-->
-				<!--					Reflection is used by many frameworks, such as Spring, Hibernate, and JUnit.-->
-				<!--				</p>-->
+				<hr />
+				<p>
+					Reflection is used by many frameworks, such as Spring, Jackson, Hibernate, and JUnit.
+				</p>
 			</section>
 			<section>
 				<h3>Reflection</h3>
