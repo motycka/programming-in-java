@@ -4,13 +4,7 @@ import com.harbourspace.lesson06.MathTask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class DontForgetToTest {
-
-    @Test
-    public void test() {
-
-        Assertions.fail("Don't forget to test your code!");
-    }
+public class MathTaskTest {
 
     @Test
     public void testGenerateRandomNumber() {
@@ -41,5 +35,4 @@ public class DontForgetToTest {
             MathTask.generateRandomNumber(1.0, 2.0, -1);
         });
     }
-
 }
