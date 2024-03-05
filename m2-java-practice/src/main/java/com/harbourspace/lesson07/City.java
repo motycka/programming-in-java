@@ -6,4 +6,11 @@ public record City(
         long population
 ) {
 
+    public String getCountry() {
+        return country.toUpperCase();
+    }
+
+    public long getPopulation(Object o) {
+        return population;
+    }
 }
