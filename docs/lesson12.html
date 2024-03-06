@@ -173,7 +173,7 @@
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 						@GetMapping
-						public ResponseEntity&lt;User$gt; getUser(@PathVariable Long id) {
+						public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
 							// ...
 						}
 					</code>
@@ -184,7 +184,7 @@
 				<pre>
 					<code data-trim data-noescape data-line-numbers class="hljs java">
 						@PutMapping("/{id}")
-						public ResponseEntity&lt;User$gt; getUser(@PathVariable("id") Long id) {
+						public ResponseEntity&lt;User&gt; getUser(@PathVariable("id") Long id) {
 							// ...
 						}
 					</code>
