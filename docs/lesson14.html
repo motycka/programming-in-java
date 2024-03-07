@@ -75,60 +75,57 @@
 				<p>
 					Another option is to create configuration class
 				</p>
-				<div class="row">
-					<div class="column">
-						<pre>
-							<code data-trim data-noescape data-line-numbers class="hljs java">
-								@Configuration
-								@ConfigurationProperties(prefix = "hello")
-								public class HelloConfigurationProperties {
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						@Configuration
+						@ConfigurationProperties(prefix = "hello")
+						public class HelloConfigurationProperties {
 
-									private String defaultName;
-									private String defaultLocale;
+							private String defaultName;
+							private String defaultLocale;
 
-									public String getDefaultName() {
-										return defaultName;
-									}
+							public String getDefaultName() {
+								return defaultName;
+							}
 
-									public String getDefaultLocale() {
-										return defaultLocale;
-									}
+							public String getDefaultLocale() {
+								return defaultLocale;
+							}
 
-									public void setDefaultName(String defaultName) {
-										this.defaultName = defaultName;
-									}
+							public void setDefaultName(String defaultName) {
+								this.defaultName = defaultName;
+							}
 
-									public void setDefaultLocale(String defaultLocale) {
-										this.defaultLocale = defaultLocale;
-									}
-								}
-							</code>
-						</pre>
-					</div>
-					<div class="column">
-						<pre>
-							<code data-trim data-noescape data-line-numbers class="hljs java">
-								@Service
-								public class HelloService {
+							public void setDefaultLocale(String defaultLocale) {
+								this.defaultLocale = defaultLocale;
+							}
+						}
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h4>Configuration</h4>
+				<pre>
+					<code data-trim data-noescape data-line-numbers class="hljs java">
+						@Service
+						public class HelloService {
 
-									private final HelloRepository helloRepository;
-									private final HelloConfigurationProperties config;
+							private final HelloRepository helloRepository;
+							private final HelloConfigurationProperties config;
 
-									public HelloService(HelloRepository helloRepository, HelloConfigurationProperties config) {
-										this.helloRepository = helloRepository;
-										this.config = config;
-									}
+							public HelloService(HelloRepository helloRepository, HelloConfigurationProperties config) {
+								this.helloRepository = helloRepository;
+								this.config = config;
+							}
 
-									public String sayHello(String name, String locale) {
-										String hello = helloRepository.selectHelloInLanguage(locale != null ? locale : config.getDefaultLocale());
-										return String.format("%s %s!", hello, name != null ? name : config.getDefaultName());
-									}
+							public String sayHello(String name, String locale) {
+								String hello = helloRepository.selectHelloInLanguage(locale != null ? locale : config.getDefaultLocale());
+								return String.format("%s %s!", hello, name != null ? name : config.getDefaultName());
+							}
 
-								}
-							</code>
-						</pre>
-					</div>
-				</div>
+						}
+					</code>
+				</pre>
 			</section>
 		</section>
 		<section>
@@ -235,9 +232,9 @@
 			<section>
 				<h3>Event-Driven Architecture</h3>
 				<em>Synchronous vs. Asynchronous communication</em>
-<!--				<p>-->
-<!--					Another way to look at architecture is by how the application components interact with each other.-->
-<!--				</p>-->
+				<!--				<p>-->
+				<!--					Another way to look at architecture is by how the application components interact with each other.-->
+				<!--				</p>-->
 				<hr />
 				<p>
 					Traditional applications, like RESTful web services, are often built using a
