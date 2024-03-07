@@ -12,5 +12,7 @@ spring:
   h2:
     console.enabled: true
 
-hello.message: Hello from application.yaml
+hello:
+  default-name: Anonymous
+  default-locale: en
 
