@@ -50,17 +50,6 @@ public class ActivityJpaService implements ActivityService {
         } else throw unauthorized();
     }
 
-//    @Override
-//    public Activity getActivityByUserId(long userId) {
-//        if (authorizationService.isSystem()) {
-//            logger.debug("Getting activity " + userId);
-//            var entity =  activityRepository.findById(userId).orElseThrow(() ->
-//                    new NotFoundException("Activity " + userId + " not found")
-//            );
-//            return toActivity(entity);
-//        } else throw unauthorized();
-//    }
-
     @Override
     public List<Activity> getActivityByUserId(long userId) {
         if (authorizationService.isSystem()) {
@@ -140,7 +129,6 @@ public class ActivityJpaService implements ActivityService {
         // Apply updates, excluding userId
         existingActivity.setName(activityUpdate.name());
         existingActivity.setKcalPerMinute(activityUpdate.kcalPerMinute());
-        // Assume setType method exists if you're managing a 'type' field and it's allowed to be updated.
         existingActivity.setType(activityUpdate.type());
 
         ActivityEntity updatedEntity = activityRepository.save(existingActivity);
@@ -149,7 +137,6 @@ public class ActivityJpaService implements ActivityService {
 
     @Override
     public Activity updateActivity(Long id, Activity activityUpdateRequest) {
-        // Assuming authorizationService.isSystem() checks if the current user is authorized
         if (!authorizationService.isSystem()) {
             throw unauthorized();
         }
@@ -158,8 +145,6 @@ public class ActivityJpaService implements ActivityService {
         ActivityEntity existingActivity = activityRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Activity not found with id: " + id));
 
-        // Check if the current user is trying to update the userId (which should not be allowed)
-        // Note: This step might be redundant if you're ignoring userId from the update request anyway
         if (!existingActivity.getUserId().equals(activityUpdateRequest.getUserId())) {
             throw new IllegalArgumentException("Updating userId is not allowed.");
         }
@@ -167,8 +152,6 @@ public class ActivityJpaService implements ActivityService {
         // Update fields except userId
         existingActivity.setName(activityUpdateRequest.getName());
         existingActivity.setKcalPerMinute(activityUpdateRequest.getKcalPerMinute());
-        // Assume you have a setType method if type needs to be updated and it's valid to do so
-        // existingActivity.setType(activityUpdateRequest.getType());
 
         ActivityEntity updatedActivity = activityRepository.save(existingActivity);
 
@@ -176,21 +159,7 @@ public class ActivityJpaService implements ActivityService {
     }
 
 
-//    @Override
-//    public void deleteActivity(long id) {
-//        if (!authorizationService.isSystem()) {
-//            throw unauthorized();
-//        }
-//
-//        ActivityEntity activityEntity = activityRepository.findById(id)
-//                .orElseThrow(() -> new NotFoundException("Activity type not found."));
-//
-//        if (activityEntity.getUserId() == 0) {
-//            throw new IllegalStateException("SYSTEM activity types cannot be deleted.");
-//        }
-//
-//        activityRepository.delete(activityRepository.getReferenceById(id));
-//    }
+
 
     @Override
     public void deleteActivity(long id) {

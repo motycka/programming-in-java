@@ -87,22 +87,6 @@ public class ExerciseJpaService implements ExerciseService {
         } else throw unauthorized();
     }
 
-//    @Override
-//    public Exercise createExercise(NewExercise exercise) {
-//        Long currentUserId = exercise.userId(); // This needs to be implemented based on your current authentication context.
-//        if (currentUserId == null || !currentUserId.equals(exercise.userId())) {
-//            throw new AuthorizationException("User is not authorized or not authenticated.");
-//        }
-//
-//        Optional<ExerciseEntity> existingExercise = exerciseRepository.findByUserIdAndActivityIdAndStartTime(exercise.userId(), exercise.activityId(), exercise.startTime());
-//        if (existingExercise.isPresent()) {
-//            throw new IllegalStateException("An exercise for this activity and start time already exists for this user.");
-//        }
-//
-//        ExerciseEntity entity = fromExercise(exercise);
-//        ExerciseEntity savedEntity = exerciseRepository.save(entity);
-//        return toExercise(savedEntity);
-//    }
 
     @Override
     public Exercise createExercise(NewExercise exercise) {
