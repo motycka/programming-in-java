@@ -1,4 +1,4 @@
-package com.harbourspace.tracker.activity.jpa;
+package com.harbourspace.tracker.activity;
 
 import jakarta.persistence.*;
 
@@ -9,9 +9,11 @@ public class ActivityEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long user_id;
+    @Column(name = "userId")
+    private Long userId;
     private String name;
-    private Double kcal_per_minute;
+    @Column(name = "kcalPerMinute")
+    private Double kcalPerMinute;
 
 
     public void setId(Long id) {
@@ -22,12 +24,12 @@ public class ActivityEntity {
         return id;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
 
@@ -40,11 +42,11 @@ public class ActivityEntity {
     }
 
 
-    public Double getKcal_per_minute() {
-        return kcal_per_minute;
+    public Double getKcalPerMinute() {
+        return kcalPerMinute;
     }
 
-    public void setKcal_per_minute(Double kcal_per_minute) {
-        this.kcal_per_minute = kcal_per_minute;
+    public void setKcalPerMinute(Double kcalPerMinute) {
+        this.kcalPerMinute = kcalPerMinute;
     }
 }

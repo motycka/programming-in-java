@@ -1,13 +1,19 @@
 package com.harbourspace.tracker.activity.model;
 
-import com.harbourspace.tracker.user.model.User;
-
 public record NewActivity(
-        Long user_id,
+        Long userId,
         String name,
-        Double kcal_per_minute
+        Double kcalPerMinute
 ) {
     public Activity toActivity(long id) {
-        return new Activity(id, user_id, name, kcal_per_minute);
+        return new Activity(id, userId, name, kcalPerMinute);
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
     }
 }

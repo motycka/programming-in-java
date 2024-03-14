@@ -2,15 +2,31 @@ package com.harbourspace.tracker.activity.model;
 
 public record Activity(
     Long id,
-    Long user_id,
+    Long userId,
     String name,
-    Double kcal_per_minute
+    Double kcalPerMinute
 
 
 
 ) {
     public com.harbourspace.tracker.activity.model.Activity copyWithId(Long id) {
-        return new com.harbourspace.tracker.activity.model.Activity(id, user_id, name, kcal_per_minute);
+        return new com.harbourspace.tracker.activity.model.Activity(id, userId, name, kcalPerMinute);
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public Double getKcalPerMinute() {
+        return kcalPerMinute;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

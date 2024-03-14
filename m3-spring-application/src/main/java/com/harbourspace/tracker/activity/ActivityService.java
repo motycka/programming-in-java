@@ -9,7 +9,7 @@ public interface ActivityService {
 
     Activity getActivityById(long id);
 
-    Activity getActivityByUserId(long user_id);
+    List<Activity> getActivityByUserId(long user_id);
 
     Activity getActivityByName(String name);
 
