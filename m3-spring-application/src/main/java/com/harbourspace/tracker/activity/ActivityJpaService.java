@@ -77,7 +77,24 @@ public class ActivityJpaService implements ActivityService {
         } else throw unauthorized();
     }
 
-@Override
+    @Override
+    public List<Activity> getActivitiesByType(String type) {
+        if (authorizationService.isSystem()) {
+            logger.debug("Getting activities for " + type);
+            List<ActivityEntity> entities;
+            if("SYSTEM".equalsIgnoreCase(type)){
+                entities = activityRepository.findByUserId(0L);
+            }
+            else{
+                entities = activityRepository.findByUserIdNot(0L);
+            }
+
+            return entities.stream().map(ActivityJpaService::toActivity).collect(Collectors.toList());
+        } else throw unauthorized();
+    }
+
+
+    @Override
     public Activity createActivity(NewActivity newActivity) {
         if (authorizationService.isSystem()) {
             // Check if an activity with the same name for the user already exists
@@ -97,11 +114,11 @@ public class ActivityJpaService implements ActivityService {
     @Override
     public Activity updateActivity(Activity activity) {
         if (authorizationService.isSystem()) {
-            // Check if the activity with the same name and kcalPerMinute already exists
+
             Optional<ActivityEntity> existingActivity = activityRepository.findByUserIdAndNameAndKcalPerMinute(activity.getUserId(), activity.getName(), activity.getKcalPerMinute());
 
             if (existingActivity.isPresent() && !existingActivity.get().getId().equals(activity.getId())) {
-                // If found, and it's not the same activity being updated, do not update
+
                 throw new IllegalStateException("An identical activity already exists. No update will be performed.");
             }
 
@@ -125,13 +142,30 @@ public class ActivityJpaService implements ActivityService {
 //        } else throw unauthorized();
 //    }
 
+//    @Override
+//    public void deleteActivity(long id){
+//        if (authorizationService.isSystem()){
+//            logger.debug("Deleting activity " + id);
+//            activityRepository.delete(activityRepository.getReferenceById(id));
+//        } else throw unauthorized();
+//    }
+
     @Override
-    public void deleteActivity(long id){
-        if (authorizationService.isSystem()){
-            logger.debug("Deleting activity " + id);
-            activityRepository.delete(activityRepository.getReferenceById(id));
-        } else throw unauthorized();
+    public void deleteActivity(long id) {
+        if (!authorizationService.isSystem()) {
+            throw unauthorized();
+        }
+
+        ActivityEntity activityEntity = activityRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Activity type not found."));
+
+        if (activityEntity.getUserId() == 0) {
+            throw new IllegalStateException("SYSTEM activity types cannot be deleted.");
+        }
+
+        activityRepository.delete(activityRepository.getReferenceById(id));
     }
+
 
     private AuthorizationException unauthorized() {
         var authorizationException = new AuthorizationException("User is not authorized for this operation.");
@@ -145,6 +179,7 @@ public class ActivityJpaService implements ActivityService {
         entity.setId(activity.id());
         entity.setUserId(activity.userId());
         entity.setName(activity.name());
+        entity.setType(activity.type());
         entity.setKcalPerMinute(activity.kcalPerMinute());
         return entity;
     }
@@ -153,12 +188,13 @@ public class ActivityJpaService implements ActivityService {
         ActivityEntity entity = new ActivityEntity();
         entity.setUserId(activity.userId());
         entity.setName(activity.name());
+        entity.setType(activity.type());
         entity.setKcalPerMinute(activity.kcalPerMinute());
         return entity;
     }
 
 
     public static Activity toActivity(ActivityEntity entity) {
-        return new Activity(entity.getId(), entity.getUserId(), entity.getName(), entity.getKcalPerMinute());
+        return new Activity(entity.getId(), entity.getUserId(), entity.getName(), entity.getType(), entity.getKcalPerMinute());
     }
 }

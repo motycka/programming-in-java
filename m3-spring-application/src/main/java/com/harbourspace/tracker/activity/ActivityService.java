@@ -11,6 +11,8 @@ public interface ActivityService {
 
     List<Activity> getActivityByUserId(long user_id);
 
+    List<Activity> getActivitiesByType(String type);
+
     Activity getActivityByName(String name);
 
     Activity createActivity(NewActivity activity);

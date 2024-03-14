@@ -4,13 +4,15 @@ public record Activity(
     Long id,
     Long userId,
     String name,
+    String type,
+
     Double kcalPerMinute
 
 
 
 ) {
     public com.harbourspace.tracker.activity.model.Activity copyWithId(Long id) {
-        return new com.harbourspace.tracker.activity.model.Activity(id, userId, name, kcalPerMinute);
+        return new com.harbourspace.tracker.activity.model.Activity(id, userId, name, type, kcalPerMinute);
     }
 
     public Long getUserId() {

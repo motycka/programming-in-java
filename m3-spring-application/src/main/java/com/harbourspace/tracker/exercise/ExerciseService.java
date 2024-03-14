@@ -11,6 +11,10 @@ public interface ExerciseService {
 
 //    List<Exercise> getExerciseByFilter(Date date, Long activityId, Long duration);
 
+//    List<Exercise> getExerciseByFilter(Date startDate, Date endDate, Long activityId, Long duration);
+
+    List<Exercise> getExerciseByFilter(Date filterDate, Long activityId, Long duration);
+
     Exercise getExerciseById(long id);
 
     Exercise createExercise(NewExercise exercise);

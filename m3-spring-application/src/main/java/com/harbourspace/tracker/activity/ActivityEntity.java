@@ -12,6 +12,8 @@ public class ActivityEntity {
     @Column(name = "userId")
     private Long userId;
     private String name;
+
+    private String type;
     @Column(name = "kcalPerMinute")
     private Double kcalPerMinute;
 
@@ -48,5 +50,13 @@ public class ActivityEntity {
 
     public void setKcalPerMinute(Double kcalPerMinute) {
         this.kcalPerMinute = kcalPerMinute;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

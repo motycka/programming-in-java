@@ -31,6 +31,7 @@ public class ActivityController {
 //    ResponseEntity<Activity> getActivityByUserId(@PathVariable("id") Long id) {
 //        return ResponseEntity.ok(activityService.getActivityById(id));
 //    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Activity>> getActivitiesByUserId(@PathVariable("userId") Long userId) {
         List<Activity> activitiesByUser = activityService.getActivityByUserId(userId);
@@ -40,6 +41,10 @@ public class ActivityController {
         return ResponseEntity.ok(activitiesByUser);
     }
 
+    @GetMapping("/type/{type}")
+    ResponseEntity<List<Activity>> getActivitiesByType(@PathVariable("type") String type) {
+        return ResponseEntity.ok(activityService.getActivitiesByType(type));
+    }
 
     @PostMapping
     ResponseEntity<Activity> createActivity(@RequestBody NewActivity activity) {
