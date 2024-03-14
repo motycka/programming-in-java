@@ -17,7 +17,7 @@ public class ActivityFixtures {
 
 
     public static final List<Activity> activities = List.of(activity0, activity1, activity2, activity3, activity4, activity5, activity6);
-    public static final NewActivity newActivity = new NewActivity(0L, "Jumping Jack", "SYSTEM",50.0);
-    public static final Activity activity7 = new Activity(3L, newActivity.userId(), newActivity.name(), newActivity.type(),newActivity.kcalPerMinute());
-    public static  final Activity activity7Updated = new Activity(activity7.id(), activity7.userId(), "HIIT", "USER", activity7.kcalPerMinute());
+    public static final NewActivity newActivity = new NewActivity(1L, "Jumping Jack", "USER",50.0);
+    public static final Activity activity7 = new Activity(9L, newActivity.userId(), newActivity.name(), newActivity.type(),newActivity.kcalPerMinute());
+    public static  final Activity activity7Updated = new Activity(3L, 0L, "Working", "SYSTEM", 10.0);
 }

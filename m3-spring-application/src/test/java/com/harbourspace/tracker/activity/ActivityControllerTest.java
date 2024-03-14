@@ -123,11 +123,13 @@ public class ActivityControllerTest {
     @Test
     @DisplayName("POST /api/activity")
     void testCreateUser() throws Exception {
-        var expected = "[{\"id\":0,\"user_id\":0,\"name\":\"Walking\",\"kcal_per_minute\":5.0}," +
-                "{\"id\":1,\"user_id\":0,\"name\":\"Running\",\"kcal_per_minute\":10.0}," +
-                "{\"id\":2,\"user_id\":0,\"name\":\"Cycling\",\"kcal_per_minute\":8.0}," +
-                "{\"id\":3,\"user_id\":0,\"name\":\"Swimming\",\"kcal_per_minute\":7.0}," +
-                "{\"id\":4,\"user_id\":0,\"name\":\"Weight Training\",\"kcal_per_minute\":3.0}]";
+        var expected = "{\n" +
+                "    \"id\": 9,\n" +
+                "    \"userId\": 1,\n" +
+                "    \"name\": \"Jumping Jack\",\n" +
+                "    \"type\": \"USER\",\n" +
+                "    \"kcalPerMinute\": 50.0\n" +
+                "}";
         var post = MockMvcRequestBuilders.post(path)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(ActivityFixtures.newActivity))
@@ -142,9 +144,15 @@ public class ActivityControllerTest {
     @Test
     @DisplayName("PUT /api/activity/activity5Updated")
     void testUpdateUser() throws Exception {
-        var expected = "{\"id\":5,\"user_id\":0,\"name\":\"HIIT\",\"kcal_per_minute\":3.0}";
+        var expected = "{\n" +
+                "    \"id\": 3,\n" +
+                "    \"userId\": 0,\n" +
+                "    \"name\": \"Working\",\n" +
+                "    \"type\": \"SYSTEM\",\n" +
+                "    \"kcalPerMinute\": 10.0\n" +
+                "}";
 
-        var put = MockMvcRequestBuilders.put(path + "/5")
+        var put = MockMvcRequestBuilders.put(path + "/3")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(new ObjectMapper().writeValueAsString(ActivityFixtures.activity7Updated))
                 .header("Authorization", "Basic 0");
