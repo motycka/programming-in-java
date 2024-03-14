@@ -9,7 +9,7 @@ import java.util.List;
 public interface ExerciseService {
     List<Exercise> getExercises();
 
-    List<Exercise> getExerciseByFilter(Date date, Long activityId, Long duration);
+//    List<Exercise> getExerciseByFilter(Date date, Long activityId, Long duration);
 
     Exercise getExerciseById(long id);
 

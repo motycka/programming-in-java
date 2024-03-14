@@ -26,12 +26,12 @@ public class ExcerciseController {
         return ResponseEntity.ok(exerciseService.getExercises());
     }
 
-    @GetMapping("/filter/{date}/{activityId}/{duration}")
-    ResponseEntity<List<Exercise>> getExerciseByFilter(@PathVariable("date") String date, @PathVariable("activityId") Long activityId, @PathVariable("duration") Long duration) throws ParseException {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = dateFormat.parse(date);
-        return ResponseEntity.ok(exerciseService.getExerciseByFilter(date1, activityId, duration));
-    }
+//    @GetMapping("/filter/{date}/{activityId}/{duration}")
+//    ResponseEntity<List<Exercise>> getExerciseByFilter(@PathVariable("date") String date, @PathVariable("activityId") Long activityId, @PathVariable("duration") Long duration) throws ParseException {
+//        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        Date date1 = dateFormat.parse(date);
+//        return ResponseEntity.ok(exerciseService.getExerciseByFilter(date1, activityId, duration));
+//    }
 
     @GetMapping("{id}")
     ResponseEntity<Exercise> getExerciseById(@PathVariable("id") Long id) {
