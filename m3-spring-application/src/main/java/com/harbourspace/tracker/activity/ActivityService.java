@@ -17,7 +17,9 @@ public interface ActivityService {
 
     Activity createActivity(NewActivity activity);
 
-    Activity updateActivity(Activity activity);
+//    Activity updateActivity(Activity activity);
+
+    Activity updateActivity(long id, Activity activity);
 
     void deleteActivity(long id);
 

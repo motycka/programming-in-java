@@ -16,6 +16,7 @@ public interface ActivityJpaRepository extends JpaRepository<ActivityEntity, Lon
 
     Optional<ActivityEntity> findByUserIdAndName(Long userId, String name);
 
+
     Optional<ActivityEntity> findByUserIdAndNameAndKcalPerMinute(Long userId, String name, Double kcalPerMinute);
 
 

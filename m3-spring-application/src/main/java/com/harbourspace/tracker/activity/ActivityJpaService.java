@@ -112,24 +112,58 @@ public class ActivityJpaService implements ActivityService {
     }
 
     @Override
-    public Activity updateActivity(Activity activity) {
-        if (authorizationService.isSystem()) {
-
-            Optional<ActivityEntity> existingActivity = activityRepository.findByUserIdAndNameAndKcalPerMinute(activity.getUserId(), activity.getName(), activity.getKcalPerMinute());
-
-            if (existingActivity.isPresent() && !existingActivity.get().getId().equals(activity.getId())) {
-
-                throw new IllegalStateException("An identical activity already exists. No update will be performed.");
-            }
-
-            // If no duplicates, proceed with update
-            ActivityEntity entityToUpdate = fromActivity(activity);
-            ActivityEntity updatedEntity = activityRepository.save(entityToUpdate);
-            return toActivity(updatedEntity);
-        } else {
+    public Activity updateActivity(long id, Activity activityUpdate) {
+        if (!authorizationService.isSystem()) {
             throw unauthorized();
         }
+
+        ActivityEntity existingActivity = activityRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Activity with id " + id + " not found"));
+
+        // Ensure updates do not change userId
+        if (!existingActivity.getUserId().equals(activityUpdate.userId())) {
+            throw new IllegalStateException("Updating the userId of an activity is not allowed.");
+        }
+
+        // Check for duplicates within the same userId
+        Optional<ActivityEntity> duplicateActivity = activityRepository.findByUserIdAndNameAndKcalPerMinute(
+                existingActivity.getUserId(), activityUpdate.name(), activityUpdate.kcalPerMinute());
+
+        if (duplicateActivity.isPresent() && duplicateActivity.get().getId() != id) {
+            throw new IllegalStateException("An identical activity already exists for this user. No update will be performed.");
+        }
+
+        // Apply updates, excluding userId
+        existingActivity.setName(activityUpdate.name());
+        existingActivity.setKcalPerMinute(activityUpdate.kcalPerMinute());
+        // Assume setType method exists if you're managing a 'type' field and it's allowed to be updated.
+        existingActivity.setType(activityUpdate.type());
+
+        ActivityEntity updatedEntity = activityRepository.save(existingActivity);
+        return toActivity(updatedEntity);
     }
+
+
+
+//    @Override
+//    public Activity updateActivity(Activity activity) {
+//        if (authorizationService.isSystem()) {
+//
+//            Optional<ActivityEntity> existingActivity = activityRepository.findByUserIdAndNameAndKcalPerMinute(activity.getUserId(), activity.getName(), activity.getKcalPerMinute());
+//
+//            if (existingActivity.isPresent() && !existingActivity.get().getId().equals(activity.getId())) {
+//
+//                throw new IllegalStateException("An identical activity already exists. No update will be performed.");
+//            }
+//
+//            // If no duplicates, proceed with update
+//            ActivityEntity entityToUpdate = fromActivity(activity);
+//            ActivityEntity updatedEntity = activityRepository.save(entityToUpdate);
+//            return toActivity(updatedEntity);
+//        } else {
+//            throw unauthorized();
+//        }
+//    }
 
 
 
@@ -195,6 +229,7 @@ public class ActivityJpaService implements ActivityService {
 
 
     public static Activity toActivity(ActivityEntity entity) {
-        return new Activity(entity.getId(), entity.getUserId(), entity.getName(), entity.getType(), entity.getKcalPerMinute());
+        String type = entity.getUserId() == 0 ? "SYSTEM" : "USER";
+        return new Activity(entity.getId(), entity.getUserId(), entity.getName(), type, entity.getKcalPerMinute());
     }
 }

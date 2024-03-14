@@ -51,13 +51,19 @@ public class ActivityController {
         return new ResponseEntity<>(activityService.createActivity(activity), HttpStatus.CREATED);
     }
 
+//    @PutMapping("{id}")
+//    ResponseEntity<Activity> updateActivity(
+//            @PathVariable("id") Long id,
+//            @RequestBody Activity activity
+//    ) {
+//        return ResponseEntity.ok(activityService.updateActivity(activity.copyWithId(id)));
+//    }
+
     @PutMapping("{id}")
-    ResponseEntity<Activity> updateActivity(
-            @PathVariable("id") Long id,
-            @RequestBody Activity activity
-    ) {
-        return ResponseEntity.ok(activityService.updateActivity(activity.copyWithId(id)));
+    public ResponseEntity<Activity> updateActivity(@PathVariable("id") Long id, @RequestBody Activity activity) {
+        return ResponseEntity.ok(activityService.updateActivity(id, activity));
     }
+
 
     @DeleteMapping("{id}")
     ResponseEntity<Object> deleteActivity(@PathVariable("id") Long id) {

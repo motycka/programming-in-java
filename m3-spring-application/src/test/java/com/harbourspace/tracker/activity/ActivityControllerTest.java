@@ -44,7 +44,7 @@ public class ActivityControllerTest {
         Mockito.when(activityService.getActivityByUserId(0L)).thenReturn(ActivityFixtures.activities);
         Mockito.when(activityService.getActivityByName("Running")).thenReturn(ActivityFixtures.activity1);
         Mockito.when(activityService.createActivity(ActivityFixtures.newActivity)).thenReturn(ActivityFixtures.activity5);
-        Mockito.when(activityService.updateActivity(ActivityFixtures.activity5Updated)).thenReturn(ActivityFixtures.activity5Updated);
+        Mockito.when(activityService.updateActivity(ActivityFixtures.activity5Updated.getId(),ActivityFixtures.activity5Updated)).thenReturn(ActivityFixtures.activity5Updated);
     }
 
     @Test
