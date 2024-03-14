@@ -65,12 +65,12 @@ public class ActivityJpaServiceTest {
     @Test
     @DisplayName("should update user")
     public void testUpdateUser() {
-        var entity = fromActivity(ActivityFixtures.activity5Updated);
+        var entity = fromActivity(ActivityFixtures.activity7Updated);
 
         Mockito.when(activityRepository.save(any())).thenReturn(entity);
         Mockito.when(activityRepository.getReferenceById(any())).thenReturn(entity);
 
-        Assertions.assertEquals(ActivityFixtures.activity5Updated, activityService.updateActivity(ActivityFixtures.activity5Updated));
+        Assertions.assertEquals(ActivityFixtures.activity7Updated, activityService.updateActivity(ActivityFixtures.activity7Updated.getId(),ActivityFixtures.activity7Updated));
 
         Mockito.verify(activityRepository).save(any(ActivityEntity.class));
     }
@@ -78,7 +78,7 @@ public class ActivityJpaServiceTest {
     @Test
     @DisplayName("should delete user")
     public void testDeleteUser() {
-        var entity = fromActivity(ActivityFixtures.activity5Updated);
+        var entity = fromActivity(ActivityFixtures.activity7Updated);
         Mockito.when(activityRepository.getReferenceById(entity.getId())).thenReturn(entity);
 
         activityService.deleteActivity(entity.getId());
@@ -102,7 +102,7 @@ public class ActivityJpaServiceTest {
     public void testUpdateUserNotAdmin() {
         Mockito.when(authorizationService.isSystem()).thenReturn(false);
 
-        Assertions.assertThrows(AuthorizationException.class, () -> activityService.updateActivity(ActivityFixtures.activity5Updated));
+        Assertions.assertThrows(AuthorizationException.class, () -> activityService.updateActivity(ActivityFixtures.activity7Updated.getId(),ActivityFixtures.activity7Updated));
 
         Mockito.verifyNoInteractions(activityRepository);
     }

@@ -143,46 +143,34 @@ public class ActivityJpaService implements ActivityService {
         return toActivity(updatedEntity);
     }
 
+    @Override
+    public Activity updateActivity(Long id, Activity activityUpdateRequest) {
+        // Assuming authorizationService.isSystem() checks if the current user is authorized
+        if (!authorizationService.isSystem()) {
+            throw unauthorized();
+        }
 
+        // Find the existing activity
+        ActivityEntity existingActivity = activityRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Activity not found with id: " + id));
 
-//    @Override
-//    public Activity updateActivity(Activity activity) {
-//        if (authorizationService.isSystem()) {
-//
-//            Optional<ActivityEntity> existingActivity = activityRepository.findByUserIdAndNameAndKcalPerMinute(activity.getUserId(), activity.getName(), activity.getKcalPerMinute());
-//
-//            if (existingActivity.isPresent() && !existingActivity.get().getId().equals(activity.getId())) {
-//
-//                throw new IllegalStateException("An identical activity already exists. No update will be performed.");
-//            }
-//
-//            // If no duplicates, proceed with update
-//            ActivityEntity entityToUpdate = fromActivity(activity);
-//            ActivityEntity updatedEntity = activityRepository.save(entityToUpdate);
-//            return toActivity(updatedEntity);
-//        } else {
-//            throw unauthorized();
-//        }
-//    }
+        // Check if the current user is trying to update the userId (which should not be allowed)
+        // Note: This step might be redundant if you're ignoring userId from the update request anyway
+        if (!existingActivity.getUserId().equals(activityUpdateRequest.getUserId())) {
+            throw new IllegalArgumentException("Updating userId is not allowed.");
+        }
 
+        // Update fields except userId
+        existingActivity.setName(activityUpdateRequest.getName());
+        existingActivity.setKcalPerMinute(activityUpdateRequest.getKcalPerMinute());
+        // Assume you have a setType method if type needs to be updated and it's valid to do so
+        // existingActivity.setType(activityUpdateRequest.getType());
 
+        ActivityEntity updatedActivity = activityRepository.save(existingActivity);
 
-//    @Override
-//    public Activity updateActivity(Activity activity){
-//        if (authorizationService.isSystem()){
-//            logger.debug("Updating activity: " + activity);
-//            var entity = activityRepository.save(fromActivity(activity));
-//            return toActivity(entity);
-//        } else throw unauthorized();
-//    }
+        return toActivity(updatedActivity); // Convert the entity back to the DTO/model
+    }
 
-//    @Override
-//    public void deleteActivity(long id){
-//        if (authorizationService.isSystem()){
-//            logger.debug("Deleting activity " + id);
-//            activityRepository.delete(activityRepository.getReferenceById(id));
-//        } else throw unauthorized();
-//    }
 
     @Override
     public void deleteActivity(long id) {
