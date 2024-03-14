@@ -5,6 +5,8 @@ import com.harbourspace.tracker.error.AuthorizationException;
 import com.harbourspace.tracker.error.NotFoundException;
 import com.harbourspace.tracker.activity.model.NewActivity;
 import com.harbourspace.tracker.activity.model.Activity;
+import com.harbourspace.tracker.exercise.ExerciseEntity;
+import com.harbourspace.tracker.exercise.ExerciseJpaRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Primary;
@@ -20,10 +22,12 @@ public class ActivityJpaService implements ActivityService {
     private final Logger logger = LoggerFactory.getLogger(ActivityJpaService.class);
 
     private final ActivityJpaRepository activityRepository;
+    private final ExerciseJpaRepository exerciseRepository;
     private final AuthorizationService authorizationService;
 
-    public ActivityJpaService(ActivityJpaRepository activityRepository, AuthorizationService authorizationService){
+    public ActivityJpaService(ActivityJpaRepository activityRepository, ExerciseJpaRepository exerciseRepository, AuthorizationService authorizationService){
         this.activityRepository = activityRepository;
+        this.exerciseRepository = exerciseRepository;
         this.authorizationService = authorizationService;
     }
 
@@ -172,6 +176,22 @@ public class ActivityJpaService implements ActivityService {
     }
 
 
+//    @Override
+//    public void deleteActivity(long id) {
+//        if (!authorizationService.isSystem()) {
+//            throw unauthorized();
+//        }
+//
+//        ActivityEntity activityEntity = activityRepository.findById(id)
+//                .orElseThrow(() -> new NotFoundException("Activity type not found."));
+//
+//        if (activityEntity.getUserId() == 0) {
+//            throw new IllegalStateException("SYSTEM activity types cannot be deleted.");
+//        }
+//
+//        activityRepository.delete(activityRepository.getReferenceById(id));
+//    }
+
     @Override
     public void deleteActivity(long id) {
         if (!authorizationService.isSystem()) {
@@ -185,8 +205,15 @@ public class ActivityJpaService implements ActivityService {
             throw new IllegalStateException("SYSTEM activity types cannot be deleted.");
         }
 
-        activityRepository.delete(activityRepository.getReferenceById(id));
+        // Check if the activity is in use by any exercise
+        List<ExerciseEntity> exercisesUsingActivity = exerciseRepository.findByActivityId(id);
+        if (!exercisesUsingActivity.isEmpty()) {
+            throw new IllegalStateException("Activity cannot be deleted because it is in use.");
+        }
+
+        activityRepository.delete(activityEntity);
     }
+
 
 
     private AuthorizationException unauthorized() {

@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/excercise")
+@RequestMapping("/api/exercise")
 public class ExcerciseController {
 
     private final ExerciseService exerciseService;

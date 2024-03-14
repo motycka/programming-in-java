@@ -17,6 +17,8 @@ public interface ExerciseService {
 
     Exercise getExerciseById(long id);
 
+    List<Exercise> getExerciseByActivityId(long id);
+
     Exercise createExercise(NewExercise exercise);
 
     Exercise updateExercise(Exercise exercise);

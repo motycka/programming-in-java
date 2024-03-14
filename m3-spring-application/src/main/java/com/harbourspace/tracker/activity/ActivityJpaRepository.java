@@ -1,5 +1,6 @@
 package com.harbourspace.tracker.activity;
 
+import com.harbourspace.tracker.exercise.ExerciseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
